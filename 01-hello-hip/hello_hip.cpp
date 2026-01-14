@@ -28,21 +28,21 @@
  */
 
 #include <hip/hip_runtime.h>
-#include <stido.h>
+#include <stdio.h>
 
 /**
  * Error checking macro - ESSENTIAL for debugging GPU code.
  * GPU errors are often silent; this macro catches them immediately
  */
 
-#define HIP_CHECK(call)
-    do {
-        hipError_t err = call;
-        if (err != hipSuccess) {
-            printf("HIP Error: %s at %s:%d\n", hipGetErrorString(err), __FILE__, __LINE__);
-            exit(1);
-        }
-    } while(0);
+#define HIP_CHECK(call) \
+    do { \
+        hipError_t err = call; \
+        if (err != hipSuccess) { \
+            printf("HIP Error: %s at %s:%d\n", hipGetErrorString(err), __FILE__, __LINE__); \
+            exit(1); \
+        } \
+    } while(0)
 
 /**
  * GPU Kernel: Runs on the GPU (device), not CPU (host).
@@ -76,7 +76,7 @@ __global__ void vector_square_kernel(float* output, const float* input, int n) {
  *  Use this to verify you're on the right GPU.
  */
 void print_device_info() {
-    hipDeviceProt_t props;
+    hipDeviceProp_t props;
     HIP_CHECK(hipGetDeviceProperties(&props, 0));
 
     printf("╔══════════════════════════════════════════════════════════════╗\n");

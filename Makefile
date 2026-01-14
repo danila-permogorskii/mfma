@@ -11,7 +11,7 @@
 
 HIPCC = hipcc
 ARCH = gfx942
-HIPFLAGS = --offload-arch=$(ARCH) -O3
+HIPFLAGS = --offload-arch=$(ARCH) -O3 -D__HIP_PLATFORM_HCC__= -D__HIP_PLATFORM_AMD__= -I/opt/rocm-7.1.0/include
 DEBUGFLAGS = --offload-arch=$(ARCH) -O0 -g -save-temps
 
 # Experiment binaries
