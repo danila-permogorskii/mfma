@@ -152,6 +152,37 @@ __global__ void wavefront_reduction_kernel(int* input, int* output, int n) {
     }
 }
 
+/**
+ * KERNEL 4: Demonstrate lane masking with EXEC
+ * 
+ * AMD GPUs use an EXEC (execute) mask to control which lanes are active.
+ * When you have an if-statement, inactive lanes have their EXEC bit = 0.
+ * 
+ * This is important for understanding MFMA output:
+ *   - All 64 lanes participate
+ *   - Each lane computes a specific element of the output matrix
+ */
+
+ __global__ void exec_mask_demo_kernel(int* output, int n) {
+    int tid = blockIdx.x * blockDim.x + threadIdx.x;
+    int lane_id = threadIdx.x % 64;
+
+    if (tid < n) {
+        // Different code paths based on lane_id
+        // This causes wavefront divergence - all paths execute serially!
+        if (lane_id < 16) {
+            output[tid] = lane_id * 10; // Lanes 0-15
+        } else if (lane_id < 32) {
+            output[tid] = lane_id * 100; // Lanes 15-31
+        } else if (lane_id < 48) {
+            output[tid] = lane_id * 1000; // Lanes 32-47
+        } else {
+            output[tid] = lane_id * 10000; // Lanes 48-53
+        }
+        // In the ISA, this compiles to multiple instructions with different EXCE masks
+    }
+ }
+
 void test_thread_indexing() {
             printf("╔══════════════════════════════════════════════════════════════╗\n");
             printf("║         Test 1: Thread Indexing Within Wavefronts            ║\n");
@@ -261,24 +292,198 @@ void test_wavefront_reduction() {
     free(h_output);
 }
 
-int main() {
-            printf("\n=== Experiment 02: Wavefront basics ===\n\n");
+void test_uniform_vs_divergent() {
+    printf("╔══════════════════════════════════════════════════════════════╗\n");
+    printf("║         Test 2: Uniform vs Divergent Values                  ║\n");
+    printf("╚══════════════════════════════════════════════════════════════╝\n\n");
 
-            hipDeviceProp_t props;
-            HIP_CHECK(hipGetDeviceProperties(&props, 0));
-            printf("Device: %s (wavefront size = %d)\n\n", props.name, props.warpSize);
+    const int N = 256; // 4 wavefronts across 4 blocks
+    size_t bytes = N * sizeof(int);
 
-            test_thread_indexing();
-            test_wavefront_reduction();
+    int *h_output = (int*)malloc(bytes);
+    int *d_output;
 
-            printf("╔══════════════════════════════════════════════════════════════╗\n");
-            printf("║                     Summary                                  ║\n");
-            printf("╚══════════════════════════════════════════════════════════════╝\n\n");
-            printf("  ✓ AMD wavefronts have 64 threads (not 32 like NVIDIA)\n");
-            printf("  ✓ Lane ID (0-63) determines data layout in MFMA\n");
-            printf("  ✓ Cross-lane operations (__shfl_*) enable fast reductions\n");
-            printf("  ✓ Divergent branches serialise - avoid in hot paths!\n\n");
-            printf("NEXT: Experiment 03 - LDS (Local Data Share) Memory\n\n");
+    HIP_CHECK(hipMalloc(&d_output, bytes));
 
-            return 0;
+    // Launch: 4 blocks * 64 threads = 256 threads total
+    // Each block has blockIdx.x = 0, 1, 2, or 3
+    uniform_vs_divergent_kernel<<<4, 64>>>(d_output, N);
+    HIP_CHECK(hipDeviceSynchronize());
+
+    HIP_CHECK(hipMemcpy(h_output, d_output, bytes, hipMemcpyDeviceToHost));
+
+    printf("  Operation: output[tid] = blockIdx.x * 1000 + threadIdx.x\n\n");
+    printf("  blockIdx.x is UNIFORM within a block (same for all 64 threads)\n");
+    printf("  threadIdx.x is DIVERGENT (different per thread)\n\n");
+    
+    printf("  ┌─────────┬───────────┬────────────┬────────────┬─────────────┐\n");
+    printf("  │ Block   │ Thread    │ Uniform    │ Divergent  │ Output      │\n");
+    printf("  │ (idx.x) │ (idx.x)   │ (blk*1000) │ (thr)      │             │\n");
+    printf("  ├─────────┼───────────┼────────────┼────────────┼─────────────┤\n");
+
+    // Show firt and last thread of each block
+    for (int block = 0; block < 4; block++) {
+        int first_tid = block * 64;
+        int last_tid = first_tid + 63;
+
+        int uniform_part = block * 1000;
+
+        printf("    | %7d | %9d | %10d | %10d | %11d |\n",
+            block, 0, uniform_part, 0, h_output[first_tid]);
+        printf("    | %7d | %9d | %10d | %10d | %11d |\n",
+            block, 63, uniform_part, 63, h_output[last_tid]);
+
+        if (block < 3) {
+            printf("  ├─────────┼───────────┼────────────┼────────────┼─────────────┤\n");
         }
+    }
+    printf("  └─────────┴───────────┴────────────┴────────────┴─────────────┘\n\n");
+
+    // Verify
+    int correct = 1;
+    for (int i = 0; i < N; i++) {
+        int block = i / 64;
+        int thread = i % 64;
+        int expected = block * 1000 + thread;
+        if (h_output[i] != expected) correct = 0;
+    }
+
+    printf("  Result: %s\n\n", correct ? "PASS ✓" : "FAIL ✗");
+    
+    printf("  WHY THIS MATTERS:\n");
+    printf("  ┌─────────────────────────────────────────────────────────────┐\n");
+    printf("  │ UNIFORM values (same across wavefront) → stored in SGPRs   │\n");
+    printf("  │ DIVERGENT values (different per lane)  → stored in VGPRs   │\n");
+    printf("  │                                                             │\n");
+    printf("  │ SGPRs are scarce (104 max) but shared across 64 lanes.     │\n");
+    printf("  │ VGPRs are plentiful (256 per lane) but use more power.     │\n");
+    printf("  │                                                             │\n");
+    printf("  │ For MFMA: loop counters → SGPR, matrix elements → VGPR     │\n");
+    printf("  └─────────────────────────────────────────────────────────────┘\n\n");
+    
+    HIP_CHECK(hipFree(d_output));
+    free(h_output);
+}
+
+void test_exec_mask() {
+    printf("╔══════════════════════════════════════════════════════════════╗\n");
+    printf("║         Test 3: EXEC Mask and Divergent Branches             ║\n");
+    printf("╚══════════════════════════════════════════════════════════════╝\n\n");
+
+    const int N = 64; // One wavefront
+    size_t bytes = N * sizeof(int);
+
+    int *h_output = (int*)malloc(bytes);
+    int *d_output;
+
+    HIP_CHECK(hipMalloc(&d_output, bytes));
+
+    // Launch exactly 1 wavefront (64 threads)
+    exec_mask_demo_kernel<<<1, 64>>>(d_output, N);
+    HIP_CHECK(hipDeviceSynchronize());
+
+    HIP_CHECK(hipMemcpy(h_output, d_output, bytes, hipMemcpyDeviceToHost));
+
+    printf("  Operation: Different multipliers based on lane_id range\n\n");
+    printf("  Code structure:\n");
+    printf("  ┌─────────────────────────────────────────────────────────────┐\n");
+    printf("  │ if (lane_id < 16)           output = lane_id * 10;         │\n");
+    printf("  │ else if (lane_id < 32)      output = lane_id * 100;        │\n");
+    printf("  │ else if (lane_id < 48)      output = lane_id * 1000;       │\n");
+    printf("  │ else                        output = lane_id * 10000;      │\n");
+    printf("  └─────────────────────────────────────────────────────────────┘\n\n");
+    
+    printf("  Results by lane group:\n\n");
+    printf("  ┌──────────────┬──────────┬────────────┬───────────────────────┐\n");
+    printf("  │ Lane Range   │ Lane ID  │ Multiplier │ Output                │\n");
+    printf("  ├──────────────┼──────────┼────────────┼───────────────────────┤\n");
+
+    // Show samples from each group
+    int samples[] = {0, 15, 16, 31, 32, 47, 48, 63};
+    int multipliers[] = {10, 10, 100, 100, 1000, 1000, 10000, 10000};
+    const char* groups[] = {"[0-15]", "[0-15]", "[16-31]", "[16-31]",
+                            "[32-47]", "[32-47]", "[48-63]", "[48-63]"};
+
+    for (int i = 0; i < 8; i++) {
+        int lane = samples[i];
+        printf("    | %-12s | %8d | %10d | %21d |\n",
+        groups[i], lane, multipliers[i], h_output[lane]);
+    }
+
+    printf("  └──────────────┴──────────┴────────────┴───────────────────────┘\n\n");
+
+    // Verify
+    int correct = 1;
+    for (int i = 0; i < N; i++) {
+        int expected;
+        if (i < 16)       expected = i * 10;
+        else if (i < 32)  expected = i * 100;
+        else if (i < 48)  expected = i * 1000;
+        else              expected = i * 10000;
+        
+        if (h_output[i] != expected) correct = 0;
+    }
+    printf("  Result: %s\n\n", correct ? "PASS ✓" : "FAIL ✗");
+    
+    printf("  HOW EXEC MASK WORKS:\n");
+    printf("  ┌─────────────────────────────────────────────────────────────┐\n");
+    printf("  │ All 64 lanes start with EXEC = 0xFFFFFFFFFFFFFFFF (all 1s) │\n");
+    printf("  │                                                             │\n");
+    printf("  │ Branch 1 (lane < 16):                                       │\n");
+    printf("  │   EXEC = 0x000000000000FFFF  (lanes 0-15 active)           │\n");
+    printf("  │   → Execute: output = lane_id * 10                         │\n");
+    printf("  │                                                             │\n");
+    printf("  │ Branch 2 (lane 16-31):                                      │\n");
+    printf("  │   EXEC = 0x00000000FFFF0000  (lanes 16-31 active)          │\n");
+    printf("  │   → Execute: output = lane_id * 100                        │\n");
+    printf("  │                                                             │\n");
+    printf("  │ Branch 3 (lane 32-47):                                      │\n");
+    printf("  │   EXEC = 0x0000FFFF00000000  (lanes 32-47 active)          │\n");
+    printf("  │   → Execute: output = lane_id * 1000                       │\n");
+    printf("  │                                                             │\n");
+    printf("  │ Branch 4 (lane 48-63):                                      │\n");
+    printf("  │   EXEC = 0xFFFF000000000000  (lanes 48-63 active)          │\n");
+    printf("  │   → Execute: output = lane_id * 10000                      │\n");
+    printf("  └─────────────────────────────────────────────────────────────┘\n\n");
+    
+    printf("  PERFORMANCE IMPACT:\n");
+    printf("  ┌─────────────────────────────────────────────────────────────┐\n");
+    printf("  │ This 4-way branch executes ALL 4 paths sequentially!       │\n");
+    printf("  │ Total cycles ≈ 4× compared to uniform branch.              │\n");
+    printf("  │                                                             │\n");
+    printf("  │ AVOID divergent branches in performance-critical code.     │\n");
+    printf("  │ Use predication or restructure algorithms instead.         │\n");
+    printf("  │                                                             │\n");
+    printf("  │ For MFMA: All 64 lanes participate in matrix ops,          │\n");
+    printf("  │ so divergence is rarely an issue inside MFMA itself.       │\n");
+    printf("  └─────────────────────────────────────────────────────────────┘\n\n");
+    
+    HIP_CHECK(hipFree(d_output));
+    free(h_output);
+}
+
+int main() {
+    printf("\n=== Experiment 02: Wavefront Basics ===\n\n");
+    
+    hipDeviceProp_t props;
+    HIP_CHECK(hipGetDeviceProperties(&props, 0));
+    printf("Device: %s (wavefront size = %d)\n\n", props.name, props.warpSize);
+    
+    test_thread_indexing();
+    test_uniform_vs_divergent();
+    test_exec_mask();
+    test_wavefront_reduction();
+    
+    printf("╔══════════════════════════════════════════════════════════════╗\n");
+    printf("║                     Summary                                  ║\n");
+    printf("╚══════════════════════════════════════════════════════════════╝\n\n");
+    printf("  ✓ AMD wavefronts have 64 threads (not 32 like NVIDIA)\n");
+    printf("  ✓ Lane ID (0-63) determines data layout in MFMA\n");
+    printf("  ✓ Uniform values → SGPRs, Divergent values → VGPRs\n");
+    printf("  ✓ EXEC mask controls which lanes execute each instruction\n");
+    printf("  ✓ Cross-lane operations (__shfl_*) enable fast reductions\n");
+    printf("  ✓ Divergent branches serialise - avoid in hot paths!\n\n");
+    printf("NEXT: Experiment 03 - LDS (Local Data Share) Memory\n\n");
+    
+    return 0;
+}
