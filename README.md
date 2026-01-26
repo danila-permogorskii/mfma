@@ -507,27 +507,3 @@ Contributions are welcome. Areas where help is particularly valuable:
 ## License
 
 This project is licensed under the Apache License 2.0. See [LICENSE](LICENSE) for details.
-
----
-
-## Acknowledgements
-
-This course draws upon:
-- AMD's excellent ISA documentation and matrix calculator tool
-- The ROCm open-source community
-- Research papers on GPU-accelerated quantum simulation and matrix operations
-- The Composable Kernel project for demonstrating production-grade patterns
-
----
-
-## Contact
-
-For questions about this course, please open a GitHub issue.
-
-For AMD Developer Cloud support: `devcloudrequests@amd.com`
-
-For AMD AI Developer Program: `ai_dev_program@amd.com`
-
----
-
-*Last updated: January 2026*
