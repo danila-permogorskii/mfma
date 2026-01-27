@@ -69,10 +69,23 @@ $(EXP04): 04-mfma-intro/mfma_intro.cpp
 $(EXP05): 05-mfma-gemm/mfma_gemm.cpp
 	$(HIPCC) $(HIPFLAGS) -o $@ $<
 
-# Debug builds (with assembly output)
-%-debug: %.cpp
-	$(HIPCC) $(DEBUGFLAGS) -o $@ $<
-	@echo "Assembly saved to: $*.s"
+exp01-debug: 01-hello-hip/hello_hip.cpp
+	$(HIPCC) $(DEBUGFLAGS) -o 01-hello-hip/hello_hip_debug $<
+
+exp01-asm: 01-hello-hip/hello_hip.cpp
+	$(HIPCC) --offload-arch=$(ARCH) -O3 -S -o 01-hello-hip/hello_hip.s $<
+
+exp02-debug: 02-wavefront-basics/wavefront_basics.cpp
+	$(HIPCC) $(DEBUGFLAGS) -o 02-wavefront-basics/wavefront_basics_debug $<
+
+exp02-asm: 02-wavefront-basics/wavefront_basics.cpp
+	$(HIPCC) --offload-arch=$(ARCH) -O3 -S -o 02-wavefront-basics/wavefront_basics.s $<
+
+exp03-debug: 03-lds-memory/lds_memory.cpp
+	$(HIPCC) $(DEBUGFLAGS) -o 03-lds-memory/lds_memory_debug $<
+
+exp03-asm: 03-lds-memory/lds_memory.cpp
+	$(HIPCC) --offload-arch=$(ARCH) -O3 -S -o 03-lds-memory/lds_memory.s $<
 
 # Run all experiments in order
 run: all
