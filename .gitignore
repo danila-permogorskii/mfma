@@ -1,2 +1,19 @@
-01-hello-hip/hello_hip
-02-wavefront-basics/wavefront_basics
+# Binaries
+hello_hip
+wavefront_basics
+lds_memory
+mfma_intro
+mfma_gemm
+*_debug
+
+# Compiler intermediates
+*.o
+*.s
+*.ll
+*.bc
+
+# IDE
+.idea/
+.vscode/
+.cache/
+compile_commands.json
