@@ -12,6 +12,7 @@ mfma_gemm
 *.ll
 *.bc
 *.hipi
+*.out
 
 # IDE
 .idea/
