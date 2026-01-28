@@ -93,6 +93,12 @@ exp04-debug: 04-mfma-intro/mfma_intro.cpp
 exp04-asm: 04-mfma-intro/mfma_intro.cpp
 	$(HIPCC) --offload-arch=$(ARCH) -O3 -S -o 04-mfma-intro/mfma_intro.s $<
 
+exp05-debug: 05-mfma-gemm/mfma_gemm.cpp
+	$(HIPCC) $(DEBUGFLAGS) -o 05-mfma-gemm/mfma_gemm_debug $<
+
+exp05-asm: 05-mfma-gemm/mfma_gemm.cpp
+	$(HIPCC) --offload-arch=$(ARCH) -O3 -S -o 05-mfma-gemm/mfma_gemm.s $<
+
 # Run all experiments in order
 run: all
 	@echo ""
