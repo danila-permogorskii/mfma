@@ -263,8 +263,8 @@ void test_mfma_concept() {
     float *d_A, *d_B, *d_C, *d_D;
     HIP_CHECK(hipMalloc(&d_A, A_SIZE * sizeof(float)));
     HIP_CHECK(hipMalloc(&d_B, A_SIZE * sizeof(float)));
-    HIP_CHECK(hipMalloc(&d_C, A_SIZE * sizeof(float)));
-    HIP_CHECK(hipMalloc(&d_D, A_SIZE * sizeof(float)));
+    HIP_CHECK(hipMalloc(&d_C, CD_SIZE * sizeof(float)));
+    HIP_CHECK(hipMalloc(&d_D, CD_SIZE * sizeof(float)));
 
     // Initialize with simple values
     for (int i = 0; i < A_SIZE; i++) {
