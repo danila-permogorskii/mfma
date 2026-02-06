@@ -241,6 +241,7 @@ set(HIP_SOURCES
         03-lds-memory/lds_memory.cpp
         04-mfma-intro/mfma_intro.cpp
         05-mfma-gemm/mfma_gemm.cpp
+        06-xcd-awareness/xcd_discovery.cpp
 )
 
 set_source_files_properties(${HIP_SOURCES} PROPERTIES LANGUAGE HIP)
@@ -268,6 +269,7 @@ add_executable(wavefront_basics    02-wavefront-basics/wavefront_basics.cpp)
 add_executable(lds_memory          03-lds-memory/lds_memory.cpp)
 add_executable(mfma_intro          04-mfma-intro/mfma_intro.cpp)
 add_executable(mfma_gemm           05-mfma-gemm/mfma_gemm.cpp)
+add_executable(xcd_discovery       06-xcd-awareness/xcd_discovery.cpp)
 
 
 # ---------------------------------------------------------------------------
