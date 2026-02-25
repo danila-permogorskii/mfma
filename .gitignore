@@ -41,3 +41,31 @@ compile_commands.json
 # Övrigt / Others
 *.txt
 !CMakeLists.txt
+
+# asm experiments
+results.csv
+results.json
+*.csv
+*.json
+pmc_*/
+*.perfetto
+*.sqlite
+
+# temporary
+*.ll
+*.bc
+*.tmp
+
+# editor backup files
+*~
+*.swp
+*.swo
+.*.swp
+
+# ide
+.idea/
+.vscode/
+*.code-workspace
+cmake-build-*/
+.cache/
+compile_commands.json
