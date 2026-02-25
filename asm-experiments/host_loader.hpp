@@ -21,6 +21,18 @@
 //       kernel.launch(grid, block, args, args_size);
 //   }
 //
+// COMPILATION / KOMPILERING:
+//   This is plain C++ — compile with amdclang++, NOT hipcc.
+//   There is no __global__ device code here; we only link
+//   against libamdhip64.so for the runtime API.
+//
+//   Detta är vanlig C++ — kompilera med amdclang++, INTE hipcc.
+//   Det finns ingen __global__-enhetskod här; vi länkar bara
+//   mot libamdhip64.so för körtids-API:t.
+//
+//   amdclang++ -std=c++17 -O2 -I/opt/rocm/include \
+//       -L/opt/rocm/lib -lamdhip64 -o runner host.cpp
+//
 // THE HIP MODULE API — HIP MODULE-API:t:
 //   Unlike the <<<>>> launch syntax used with hipcc-compiled kernels,
 //   externally assembled kernels must be loaded at runtime using:

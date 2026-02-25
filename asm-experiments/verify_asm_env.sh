@@ -164,12 +164,13 @@ echo ""
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # 3. HIP HOST TOOLS
-# 3. HIP-VÄRDVERKTYG
+# 3. HOST COMPILER
+# 3. VÄRDKOMPILATOR
 # ═══════════════════════════════════════════════════════════════════════════════
-echo "── HIP Host Tools / HIP-värdverktyg ──"
-check "hipcc (host compiler)"          "which hipcc"
-print_version "$(which hipcc 2>/dev/null || echo /opt/rocm/bin/hipcc)" "hipcc"
-check "libamdhip64.so (runtime lib)"   "test -f ${ROCM}/lib/libamdhip64.so"
+echo "── Host Compiler / Värdkompilator ──"
+check "amdclang++ (host compiler)"    "test -x ${ROCM}/llvm/bin/amdclang++"
+print_version "${ROCM}/llvm/bin/amdclang++" "amdclang++"
+check "libamdhip64.so (runtime lib)"  "test -f ${ROCM}/lib/libamdhip64.so"
 
 # Verify hipModuleLoad is available in the headers
 # Verifiera att hipModuleLoad finns tillgängligt i header-filerna
