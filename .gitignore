@@ -12,7 +12,7 @@ mfma_gemm
 
 # Kompilatorns mellanfiler / Compiler intermediates
 *.o
-*.s
+#*.s
 *.ll
 *.bc
 *.hipi
