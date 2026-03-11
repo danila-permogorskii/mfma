@@ -1,4789 +1,223 @@
 
-# __CLANG_OFFLOAD_BUNDLE____START__ hip-amdgcn-amd-amdhsa--gfx942
-	.amdgcn_target "amdgcn-amd-amdhsa--gfx942"
+# __CLANG_OFFLOAD_BUNDLE____START__ hip-amdgcn-amd-amdhsa--gfx906
+	.amdgcn_target "amdgcn-amd-amdhsa--gfx906"
 	.amdhsa_code_object_version 6
-	.text
-	.weak	__cxa_pure_virtual              ; -- Begin function __cxa_pure_virtual
-	.p2align	2
-	.type	__cxa_pure_virtual,@function
-__cxa_pure_virtual:                     ; @__cxa_pure_virtual
+	.section	.text._Z20vector_square_kernelIfEvPT_S1_y,"axG",@progbits,_Z20vector_square_kernelIfEvPT_S1_y,comdat
+	.protected	_Z20vector_square_kernelIfEvPT_S1_y ; -- Begin function _Z20vector_square_kernelIfEvPT_S1_y
+	.globl	_Z20vector_square_kernelIfEvPT_S1_y
+	.p2align	8
+	.type	_Z20vector_square_kernelIfEvPT_S1_y,@function
+_Z20vector_square_kernelIfEvPT_S1_y:    ; @_Z20vector_square_kernelIfEvPT_S1_y
 ; %bb.0:
-	s_waitcnt vmcnt(0) expcnt(0) lgkmcnt(0)
-	s_mov_b32 s0, s33
-	s_mov_b32 s33, s32
-	s_trap 2
-.Lfunc_end0:
-	.size	__cxa_pure_virtual, .Lfunc_end0-__cxa_pure_virtual
-                                        ; -- End function
-	.set __cxa_pure_virtual.num_vgpr, 0
-	.set __cxa_pure_virtual.num_agpr, 0
-	.set __cxa_pure_virtual.numbered_sgpr, 34
-	.set __cxa_pure_virtual.num_named_barrier, 0
-	.set __cxa_pure_virtual.private_seg_size, 0
-	.set __cxa_pure_virtual.uses_vcc, 0
-	.set __cxa_pure_virtual.uses_flat_scratch, 0
-	.set __cxa_pure_virtual.has_dyn_sized_stack, 0
-	.set __cxa_pure_virtual.has_recursion, 0
-	.set __cxa_pure_virtual.has_indirect_call, 0
-	.section	.AMDGPU.csdata,"",@progbits
-; Function info:
-; codeLenInByte = 16
-; TotalNumSgprs: 40
-; NumVgprs: 0
-; NumAgprs: 0
-; TotalNumVgprs: 0
-; ScratchSize: 0
-; MemoryBound: 0
-	.text
-	.weak	__cxa_deleted_virtual           ; -- Begin function __cxa_deleted_virtual
-	.p2align	2
-	.type	__cxa_deleted_virtual,@function
-__cxa_deleted_virtual:                  ; @__cxa_deleted_virtual
-; %bb.0:
-	s_waitcnt vmcnt(0) expcnt(0) lgkmcnt(0)
-	s_mov_b32 s0, s33
-	s_mov_b32 s33, s32
-	s_trap 2
-.Lfunc_end1:
-	.size	__cxa_deleted_virtual, .Lfunc_end1-__cxa_deleted_virtual
-                                        ; -- End function
-	.set __cxa_deleted_virtual.num_vgpr, 0
-	.set __cxa_deleted_virtual.num_agpr, 0
-	.set __cxa_deleted_virtual.numbered_sgpr, 34
-	.set __cxa_deleted_virtual.num_named_barrier, 0
-	.set __cxa_deleted_virtual.private_seg_size, 0
-	.set __cxa_deleted_virtual.uses_vcc, 0
-	.set __cxa_deleted_virtual.uses_flat_scratch, 0
-	.set __cxa_deleted_virtual.has_dyn_sized_stack, 0
-	.set __cxa_deleted_virtual.has_recursion, 0
-	.set __cxa_deleted_virtual.has_indirect_call, 0
-	.section	.AMDGPU.csdata,"",@progbits
-; Function info:
-; codeLenInByte = 16
-; TotalNumSgprs: 40
-; NumVgprs: 0
-; NumAgprs: 0
-; TotalNumVgprs: 0
-; ScratchSize: 0
-; MemoryBound: 0
-	.text
-	.p2align	2                               ; -- Begin function __ockl_hsa_signal_add
-	.type	__ockl_hsa_signal_add,@function
-__ockl_hsa_signal_add:                  ; @__ockl_hsa_signal_add
-; %bb.0:
-	s_waitcnt vmcnt(0) expcnt(0) lgkmcnt(0)
-	s_mov_b32 s12, s33
-	s_mov_b32 s33, s32
-	s_xor_saveexec_b64 s[0:1], -1
-	scratch_store_dword off, v6, s33 offset:44 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[0:1]
-	s_add_i32 s32, s32, 52
-	scratch_store_dword off, v4, s33 offset:32 ; 4-byte Folded Spill
-	scratch_store_dword off, v3, s33 offset:28 ; 4-byte Folded Spill
-	v_mov_b32_e32 v4, v1
-	scratch_load_dword v1, off, s33 offset:28 ; 4-byte Folded Reload
-                                        ; kill: def $vgpr2 killed $vgpr2 def $vgpr2_vgpr3 killed $exec
-	s_waitcnt vmcnt(0)
-	v_mov_b32_e32 v3, v1
-                                        ; kill: def $vgpr0 killed $vgpr0 def $vgpr0_vgpr1 killed $exec
-	v_mov_b32_e32 v1, v4
-	scratch_store_dwordx2 off, v[2:3], s33 offset:20 ; 8-byte Folded Spill
-	v_mov_b64_e32 v[2:3], v[0:1]
-	scratch_store_dwordx2 off, v[2:3], s33 offset:12 ; 8-byte Folded Spill
-	s_mov_b64 s[0:1], 8
-	v_lshl_add_u64 v[0:1], v[0:1], 0, s[0:1]
-	scratch_store_dwordx2 off, v[0:1], s33 offset:4 ; 8-byte Folded Spill
-; %bb.1:
-	scratch_load_dword v0, off, s33 offset:32 ; 4-byte Folded Reload
-	s_mov_b32 s0, 3
-	s_waitcnt vmcnt(0)
-	v_cmp_gt_i32_e64 s[0:1], v0, s0
-	s_mov_b64 s[2:3], 0
-                                        ; implicit-def: $vgpr6 : SGPR spill to VGPR lane
-	v_writelane_b32 v6, s2, 0
-	s_nop 1
-	v_writelane_b32 v6, s3, 1
-	s_mov_b64 s[2:3], exec
-	s_and_b64 s[0:1], s[2:3], s[0:1]
-	s_xor_b64 s[2:3], s[0:1], s[2:3]
-	v_writelane_b32 v6, s2, 2
-	s_nop 1
-	v_writelane_b32 v6, s3, 3
-	s_or_saveexec_b64 s[10:11], -1
-	scratch_store_dword off, v6, s33        ; 4-byte Folded Spill
-	s_mov_b64 exec, s[10:11]
-	s_mov_b64 exec, s[0:1]
-	s_cbranch_execz .LBB2_3
-; %bb.2:
-	s_or_saveexec_b64 s[10:11], -1
-	scratch_load_dword v6, off, s33         ; 4-byte Folded Reload
-	s_mov_b64 exec, s[10:11]
-	scratch_load_dword v0, off, s33 offset:32 ; 4-byte Folded Reload
-	s_mov_b32 s0, 4
-	s_waitcnt vmcnt(0)
-	v_cmp_gt_i32_e64 s[0:1], v0, s0
-	s_mov_b64 s[2:3], 0
-	v_writelane_b32 v6, s2, 4
-	s_nop 1
-	v_writelane_b32 v6, s3, 5
-	s_mov_b64 s[2:3], exec
-	s_and_b64 s[0:1], s[2:3], s[0:1]
-	s_xor_b64 s[2:3], s[0:1], s[2:3]
-	v_writelane_b32 v6, s2, 6
-	s_nop 1
-	v_writelane_b32 v6, s3, 7
-	s_or_saveexec_b64 s[10:11], -1
-	scratch_store_dword off, v6, s33        ; 4-byte Folded Spill
-	s_mov_b64 exec, s[10:11]
-	s_mov_b64 exec, s[0:1]
-	s_cbranch_execz .LBB2_17
-	s_branch .LBB2_4
-.LBB2_3:
-	s_or_saveexec_b64 s[10:11], -1
-	scratch_load_dword v6, off, s33         ; 4-byte Folded Reload
-	s_mov_b64 exec, s[10:11]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v6, 2
-	v_readlane_b32 s1, v6, 3
-	s_or_saveexec_b64 s[0:1], s[0:1]
-	v_readlane_b32 s4, v6, 0
-	v_readlane_b32 s5, v6, 1
-	s_nop 0
-	v_writelane_b32 v6, s4, 8
-	s_nop 1
-	v_writelane_b32 v6, s5, 9
-	s_mov_b64 s[2:3], 0
-	v_writelane_b32 v6, s4, 10
-	s_nop 1
-	v_writelane_b32 v6, s5, 11
-	v_writelane_b32 v6, s2, 12
-	s_nop 1
-	v_writelane_b32 v6, s3, 13
-	s_and_b64 s[0:1], exec, s[0:1]
-	v_writelane_b32 v6, s0, 14
-	s_nop 1
-	v_writelane_b32 v6, s1, 15
-	s_or_saveexec_b64 s[10:11], -1
-	scratch_store_dword off, v6, s33        ; 4-byte Folded Spill
-	s_mov_b64 exec, s[10:11]
-	s_xor_b64 exec, exec, s[0:1]
-	s_cbranch_execz .LBB2_13
-	s_branch .LBB2_6
-.LBB2_4:
-	s_or_saveexec_b64 s[10:11], -1
-	scratch_load_dword v6, off, s33         ; 4-byte Folded Reload
-	s_mov_b64 exec, s[10:11]
-	scratch_load_dword v0, off, s33 offset:32 ; 4-byte Folded Reload
-	s_mov_b32 s0, 5
-	s_waitcnt vmcnt(0)
-	v_cmp_eq_u32_e64 s[2:3], v0, s0
-	s_mov_b64 s[0:1], -1
-	v_writelane_b32 v6, s0, 16
-	s_nop 1
-	v_writelane_b32 v6, s1, 17
-	s_mov_b64 s[0:1], exec
-	v_writelane_b32 v6, s0, 18
-	s_nop 1
-	v_writelane_b32 v6, s1, 19
-	s_or_saveexec_b64 s[10:11], -1
-	scratch_store_dword off, v6, s33        ; 4-byte Folded Spill
-	s_mov_b64 exec, s[10:11]
-	s_and_b64 s[0:1], s[0:1], s[2:3]
-	s_mov_b64 exec, s[0:1]
-	s_cbranch_execz .LBB2_15
-	s_branch .LBB2_18
-.LBB2_5:
-	s_or_saveexec_b64 s[10:11], -1
-	scratch_load_dword v6, off, s33         ; 4-byte Folded Reload
-	s_mov_b64 exec, s[10:11]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s2, v6, 20
-	v_readlane_b32 s3, v6, 21
-	s_or_b64 exec, exec, s[2:3]
-	v_readlane_b32 s0, v6, 22
-	v_readlane_b32 s1, v6, 23
-	s_and_b64 s[0:1], s[0:1], exec
-	v_writelane_b32 v6, s0, 0
-	s_nop 1
-	v_writelane_b32 v6, s1, 1
-	s_or_saveexec_b64 s[10:11], -1
-	scratch_store_dword off, v6, s33        ; 4-byte Folded Spill
-	s_mov_b64 exec, s[10:11]
-	s_branch .LBB2_3
-.LBB2_6:
-	s_or_saveexec_b64 s[10:11], -1
-	scratch_load_dword v6, off, s33         ; 4-byte Folded Reload
-	s_mov_b64 exec, s[10:11]
-	scratch_load_dword v0, off, s33 offset:32 ; 4-byte Folded Reload
-	s_mov_b32 s0, 2
-	s_waitcnt vmcnt(0)
-	v_cmp_gt_i32_e64 s[0:1], v0, s0
-	s_mov_b64 s[2:3], exec
-	s_and_b64 s[0:1], s[2:3], s[0:1]
-	s_xor_b64 s[2:3], s[0:1], s[2:3]
-	v_writelane_b32 v6, s2, 24
-	s_nop 1
-	v_writelane_b32 v6, s3, 25
-	s_or_saveexec_b64 s[10:11], -1
-	scratch_store_dword off, v6, s33        ; 4-byte Folded Spill
-	s_mov_b64 exec, s[10:11]
-	s_mov_b64 exec, s[0:1]
-	s_cbranch_execz .LBB2_7
-	s_branch .LBB2_14
-.LBB2_7:
-	s_or_saveexec_b64 s[10:11], -1
-	scratch_load_dword v6, off, s33         ; 4-byte Folded Reload
-	s_mov_b64 exec, s[10:11]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v6, 24
-	v_readlane_b32 s1, v6, 25
-	s_or_saveexec_b64 s[0:1], s[0:1]
-	v_readlane_b32 s4, v6, 8
-	v_readlane_b32 s5, v6, 9
-	s_mov_b64 s[2:3], 0
-	v_writelane_b32 v6, s4, 26
-	s_nop 1
-	v_writelane_b32 v6, s5, 27
-	v_writelane_b32 v6, s2, 28
-	s_nop 1
-	v_writelane_b32 v6, s3, 29
-	s_and_b64 s[0:1], exec, s[0:1]
-	v_writelane_b32 v6, s0, 30
-	s_nop 1
-	v_writelane_b32 v6, s1, 31
-	s_or_saveexec_b64 s[10:11], -1
-	scratch_store_dword off, v6, s33        ; 4-byte Folded Spill
-	s_mov_b64 exec, s[10:11]
-	s_xor_b64 exec, exec, s[0:1]
-	s_cbranch_execz .LBB2_9
-; %bb.8:
-	s_or_saveexec_b64 s[10:11], -1
-	scratch_load_dword v6, off, s33         ; 4-byte Folded Reload
-	s_mov_b64 exec, s[10:11]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s2, v6, 8
-	v_readlane_b32 s3, v6, 9
-	scratch_load_dword v0, off, s33 offset:32 ; 4-byte Folded Reload
-	s_mov_b32 s0, 1
-	s_waitcnt vmcnt(0)
-	v_cmp_lt_i32_e64 s[4:5], v0, s0
-	s_mov_b64 s[0:1], -1
-	s_mov_b64 s[0:1], exec
-	s_andn2_b64 s[2:3], s[2:3], exec
-	s_and_b64 s[4:5], s[4:5], exec
-	s_or_b64 s[2:3], s[2:3], s[4:5]
-	v_writelane_b32 v6, s2, 26
-	s_nop 1
-	v_writelane_b32 v6, s3, 27
-	v_writelane_b32 v6, s0, 28
-	s_nop 1
-	v_writelane_b32 v6, s1, 29
-	s_or_saveexec_b64 s[10:11], -1
-	scratch_store_dword off, v6, s33        ; 4-byte Folded Spill
-	s_mov_b64 exec, s[10:11]
-.LBB2_9:
-	s_or_saveexec_b64 s[10:11], -1
-	scratch_load_dword v6, off, s33         ; 4-byte Folded Reload
-	s_mov_b64 exec, s[10:11]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s6, v6, 30
-	v_readlane_b32 s7, v6, 31
-	s_or_b64 exec, exec, s[6:7]
-	v_readlane_b32 s2, v6, 8
-	v_readlane_b32 s3, v6, 9
-	v_readlane_b32 s4, v6, 26
-	v_readlane_b32 s5, v6, 27
-	v_readlane_b32 s0, v6, 28
-	v_readlane_b32 s1, v6, 29
-	s_and_b64 s[0:1], s[0:1], exec
-	s_andn2_b64 s[2:3], s[2:3], exec
-	s_and_b64 s[4:5], s[4:5], exec
-	s_or_b64 s[2:3], s[2:3], s[4:5]
-	v_writelane_b32 v6, s2, 10
-	s_nop 1
-	v_writelane_b32 v6, s3, 11
-	v_writelane_b32 v6, s0, 12
-	s_nop 1
-	v_writelane_b32 v6, s1, 13
-	s_or_saveexec_b64 s[10:11], -1
-	scratch_store_dword off, v6, s33        ; 4-byte Folded Spill
-	s_mov_b64 exec, s[10:11]
-	s_branch .LBB2_13
-.LBB2_10:
-	s_or_saveexec_b64 s[10:11], -1
-	scratch_load_dword v6, off, s33         ; 4-byte Folded Reload
-	s_mov_b64 exec, s[10:11]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v6, 32
-	v_readlane_b32 s1, v6, 33
-	scratch_load_dwordx2 v[0:1], off, s33 offset:4 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[2:3], off, s33 offset:20 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	global_atomic_add_x2 v[0:1], v[2:3], off sc1
-	s_mov_b64 s[2:3], 0
-	s_andn2_b64 s[0:1], s[0:1], exec
-	v_writelane_b32 v6, s0, 34
-	s_nop 1
-	v_writelane_b32 v6, s1, 35
-	s_or_saveexec_b64 s[10:11], -1
-	scratch_store_dword off, v6, s33        ; 4-byte Folded Spill
-	s_mov_b64 exec, s[10:11]
-.LBB2_11:
-	s_or_saveexec_b64 s[10:11], -1
-	scratch_load_dword v6, off, s33         ; 4-byte Folded Reload
-	s_mov_b64 exec, s[10:11]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v6, 36
-	v_readlane_b32 s1, v6, 37
-	s_or_b64 exec, exec, s[0:1]
-	v_readlane_b32 s2, v6, 34
-	v_readlane_b32 s3, v6, 35
-	s_mov_b64 s[0:1], exec
-	v_writelane_b32 v6, s0, 38
-	s_nop 1
-	v_writelane_b32 v6, s1, 39
-	s_or_saveexec_b64 s[10:11], -1
-	scratch_store_dword off, v6, s33        ; 4-byte Folded Spill
-	s_mov_b64 exec, s[10:11]
-	s_and_b64 s[0:1], s[0:1], s[2:3]
-	s_mov_b64 exec, s[0:1]
-	s_cbranch_execz .LBB2_19
-; %bb.12:
-	scratch_load_dwordx2 v[0:1], off, s33 offset:4 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[2:3], off, s33 offset:20 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	global_atomic_add_x2 v[0:1], v[2:3], off sc1
-	s_waitcnt vmcnt(0)
-	buffer_inv sc0 sc1
-	s_branch .LBB2_19
-.LBB2_13:
-	s_or_saveexec_b64 s[10:11], -1
-	scratch_load_dword v6, off, s33         ; 4-byte Folded Reload
-	s_mov_b64 exec, s[10:11]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s4, v6, 14
-	v_readlane_b32 s5, v6, 15
-	s_or_b64 exec, exec, s[4:5]
-	v_readlane_b32 s0, v6, 10
-	v_readlane_b32 s1, v6, 11
-	v_readlane_b32 s2, v6, 12
-	v_readlane_b32 s3, v6, 13
-	s_nop 0
-	v_writelane_b32 v6, s2, 32
-	s_nop 1
-	v_writelane_b32 v6, s3, 33
-	v_writelane_b32 v6, s2, 34
-	s_nop 1
-	v_writelane_b32 v6, s3, 35
-	s_mov_b64 s[2:3], exec
-	s_and_b64 s[0:1], s[2:3], s[0:1]
-	s_xor_b64 s[2:3], s[0:1], s[2:3]
-	v_writelane_b32 v6, s2, 36
-	s_nop 1
-	v_writelane_b32 v6, s3, 37
-	s_or_saveexec_b64 s[10:11], -1
-	scratch_store_dword off, v6, s33        ; 4-byte Folded Spill
-	s_mov_b64 exec, s[10:11]
-	s_mov_b64 exec, s[0:1]
-	s_cbranch_execz .LBB2_11
-	s_branch .LBB2_10
-.LBB2_14:
-	scratch_load_dwordx2 v[0:1], off, s33 offset:4 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[2:3], off, s33 offset:20 ; 8-byte Folded Reload
-	buffer_wbl2 sc0 sc1
-	s_waitcnt vmcnt(0)
-	global_atomic_add_x2 v[0:1], v[2:3], off sc1
-	s_branch .LBB2_7
-.LBB2_15:
-	s_or_saveexec_b64 s[10:11], -1
-	scratch_load_dword v6, off, s33         ; 4-byte Folded Reload
-	s_mov_b64 exec, s[10:11]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s2, v6, 18
-	v_readlane_b32 s3, v6, 19
-	s_or_b64 exec, exec, s[2:3]
-	v_readlane_b32 s0, v6, 16
-	v_readlane_b32 s1, v6, 17
-	s_and_b64 s[0:1], s[0:1], exec
-	v_writelane_b32 v6, s0, 4
-	s_nop 1
-	v_writelane_b32 v6, s1, 5
-	s_or_saveexec_b64 s[10:11], -1
-	scratch_store_dword off, v6, s33        ; 4-byte Folded Spill
-	s_mov_b64 exec, s[10:11]
-	s_branch .LBB2_17
-.LBB2_16:
-	scratch_load_dwordx2 v[0:1], off, s33 offset:4 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[2:3], off, s33 offset:20 ; 8-byte Folded Reload
-	buffer_wbl2 sc0 sc1
-	s_waitcnt vmcnt(0)
-	global_atomic_add_x2 v[0:1], v[2:3], off sc1
-	s_waitcnt vmcnt(0)
-	buffer_inv sc0 sc1
-	s_branch .LBB2_5
-.LBB2_17:
-	s_or_saveexec_b64 s[10:11], -1
-	scratch_load_dword v6, off, s33         ; 4-byte Folded Reload
-	s_mov_b64 exec, s[10:11]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v6, 6
-	v_readlane_b32 s1, v6, 7
-	s_or_saveexec_b64 s[0:1], s[0:1]
-	v_readlane_b32 s2, v6, 4
-	v_readlane_b32 s3, v6, 5
-	s_nop 0
-	v_writelane_b32 v6, s2, 22
-	s_nop 1
-	v_writelane_b32 v6, s3, 23
-	s_and_b64 s[0:1], exec, s[0:1]
-	v_writelane_b32 v6, s0, 20
-	s_nop 1
-	v_writelane_b32 v6, s1, 21
-	s_or_saveexec_b64 s[10:11], -1
-	scratch_store_dword off, v6, s33        ; 4-byte Folded Spill
-	s_mov_b64 exec, s[10:11]
-	s_xor_b64 exec, exec, s[0:1]
-	s_cbranch_execz .LBB2_5
-	s_branch .LBB2_16
-.LBB2_18:
-	s_or_saveexec_b64 s[10:11], -1
-	scratch_load_dword v6, off, s33         ; 4-byte Folded Reload
-	s_mov_b64 exec, s[10:11]
-	scratch_load_dwordx2 v[0:1], off, s33 offset:4 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[2:3], off, s33 offset:20 ; 8-byte Folded Reload
-	buffer_wbl2 sc0 sc1
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	global_atomic_add_x2 v[0:1], v[2:3], off sc1
-	s_waitcnt vmcnt(0)
-	buffer_inv sc0 sc1
-	s_mov_b64 s[0:1], 0
-	s_xor_b64 s[0:1], exec, -1
-	v_writelane_b32 v6, s0, 16
-	s_nop 1
-	v_writelane_b32 v6, s1, 17
-	s_or_saveexec_b64 s[10:11], -1
-	scratch_store_dword off, v6, s33        ; 4-byte Folded Spill
-	s_mov_b64 exec, s[10:11]
-	s_branch .LBB2_15
-.LBB2_19:
-	s_or_saveexec_b64 s[10:11], -1
-	scratch_load_dword v6, off, s33         ; 4-byte Folded Reload
-	s_mov_b64 exec, s[10:11]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v6, 38
-	v_readlane_b32 s1, v6, 39
-	s_or_b64 exec, exec, s[0:1]
-	scratch_load_dwordx2 v[0:1], off, s33 offset:12 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	global_load_dwordx2 v[0:1], v[0:1], off offset:16
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx2 off, v[0:1], s33 offset:36 ; 8-byte Folded Spill
-	s_mov_b64 s[0:1], 0
-	v_cmp_ne_u64_e64 s[2:3], v[0:1], s[0:1]
-	s_mov_b64 s[0:1], exec
-	v_writelane_b32 v6, s0, 40
-	s_nop 1
-	v_writelane_b32 v6, s1, 41
-	s_or_saveexec_b64 s[10:11], -1
-	scratch_store_dword off, v6, s33        ; 4-byte Folded Spill
-	s_mov_b64 exec, s[10:11]
-	s_and_b64 s[0:1], s[0:1], s[2:3]
-	s_mov_b64 exec, s[0:1]
-	s_cbranch_execz .LBB2_21
-; %bb.20:
-	scratch_load_dwordx2 v[2:3], off, s33 offset:36 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[0:1], off, s33 offset:12 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	global_load_dword v0, v[0:1], off offset:24
-	s_mov_b32 s0, 0
+	s_load_dword s0, s[4:5], 0x24
+	s_load_dwordx2 s[8:9], s[4:5], 0x10
+	s_add_u32 s10, s4, 24
+	s_addc_u32 s11, s5, 0
 	v_mov_b32_e32 v1, 0
-	s_waitcnt vmcnt(0)
-	v_mov_b32_e32 v4, v0
-	v_mov_b32_e32 v5, v1
-	buffer_wbl2 sc0 sc1
-	s_waitcnt vmcnt(0)
-	global_store_dwordx2 v[2:3], v[4:5], off sc0 sc1
-	s_getpc_b64 s[0:1]
-	s_add_u32 s0, s0, __oclc_ISA_version@rel32@lo+4
-	s_addc_u32 s1, s1, __oclc_ISA_version@rel32@hi+12
-	s_load_dword s0, s[0:1], 0x0
-	s_mov_b32 s1, 0x2af8
 	s_waitcnt lgkmcnt(0)
-	s_cmp_lt_u32 s0, s1
-	s_mov_b32 s1, 0xffffff
-	s_mov_b32 s2, 0x7fffff
-	s_cselect_b32 s2, s2, s1
-	s_mov_b32 s3, 0x2710
-	s_cmp_lt_u32 s0, s3
-	s_cselect_b32 s1, s1, s2
-	s_mov_b32 s2, 0x2328
-	s_cmp_lt_i32 s0, s2
-	s_mov_b32 s0, 0xff
-	s_cselect_b32 s0, s0, s1
-	v_and_b32_e64 v0, s0, v0
-	s_nop 0
-	v_readfirstlane_b32 s0, v0
-	s_mov_b32 m0, s0
-	s_nop 0
-	s_sendmsg sendmsg(MSG_INTERRUPT)
-.LBB2_21:
-	s_or_saveexec_b64 s[10:11], -1
-	scratch_load_dword v6, off, s33         ; 4-byte Folded Reload
-	s_mov_b64 exec, s[10:11]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v6, 40
-	v_readlane_b32 s1, v6, 41
-	s_or_b64 exec, exec, s[0:1]
-	s_mov_b32 s32, s33
-	s_xor_saveexec_b64 s[0:1], -1
-	scratch_load_dword v6, off, s33 offset:44 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[0:1]
-	s_mov_b32 s33, s12
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	s_setpc_b64 s[30:31]
-.Lfunc_end2:
-	.size	__ockl_hsa_signal_add, .Lfunc_end2-__ockl_hsa_signal_add
-                                        ; -- End function
-	.set .L__ockl_hsa_signal_add.num_vgpr, 7
-	.set .L__ockl_hsa_signal_add.num_agpr, 0
-	.set .L__ockl_hsa_signal_add.numbered_sgpr, 34
-	.set .L__ockl_hsa_signal_add.num_named_barrier, 0
-	.set .L__ockl_hsa_signal_add.private_seg_size, 52
-	.set .L__ockl_hsa_signal_add.uses_vcc, 0
-	.set .L__ockl_hsa_signal_add.uses_flat_scratch, 0
-	.set .L__ockl_hsa_signal_add.has_dyn_sized_stack, 0
-	.set .L__ockl_hsa_signal_add.has_recursion, 0
-	.set .L__ockl_hsa_signal_add.has_indirect_call, 0
-	.section	.AMDGPU.csdata,"",@progbits
-; Function info:
-; codeLenInByte = 2564
-; TotalNumSgprs: 40
-; NumVgprs: 7
-; NumAgprs: 0
-; TotalNumVgprs: 7
-; ScratchSize: 52
-; MemoryBound: 0
-	.text
-	.p2align	2                               ; -- Begin function __ockl_hostcall_internal
-	.type	__ockl_hostcall_internal,@function
-__ockl_hostcall_internal:               ; @__ockl_hostcall_internal
-; %bb.0:
-	s_waitcnt vmcnt(0) expcnt(0) lgkmcnt(0)
-	s_mov_b32 s13, s33
-	s_mov_b32 s33, s32
-	s_xor_saveexec_b64 s[0:1], -1
-	scratch_store_dword off, v21, s33 offset:204 ; 4-byte Folded Spill
-	scratch_store_dword off, v22, s33 offset:208 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[0:1]
-	s_add_i32 s32, s32, 0xe0
-	v_writelane_b32 v21, s30, 0
-	s_nop 1
-	v_writelane_b32 v21, s31, 1
-	v_accvgpr_write_b32 a0, v18             ;  Reload Reuse
-	v_accvgpr_write_b32 a1, v17             ;  Reload Reuse
-	v_mov_b32_e32 v17, v16
-	v_accvgpr_read_b32 v16, a1              ;  Reload Reuse
-	v_accvgpr_write_b32 a2, v17             ;  Reload Reuse
-	v_mov_b32_e32 v17, v15
-	v_accvgpr_read_b32 v15, a0              ;  Reload Reuse
-	v_accvgpr_write_b32 a3, v17             ;  Reload Reuse
-	v_mov_b32_e32 v17, v14
-	v_accvgpr_read_b32 v14, a3              ;  Reload Reuse
-	v_accvgpr_write_b32 a4, v17             ;  Reload Reuse
-	v_mov_b32_e32 v17, v13
-	v_accvgpr_read_b32 v13, a2              ;  Reload Reuse
-	v_accvgpr_write_b32 a5, v17             ;  Reload Reuse
-	v_mov_b32_e32 v17, v12
-	v_accvgpr_read_b32 v12, a5              ;  Reload Reuse
-	v_accvgpr_write_b32 a6, v17             ;  Reload Reuse
-	v_mov_b32_e32 v17, v11
-	v_accvgpr_read_b32 v11, a4              ;  Reload Reuse
-	v_accvgpr_write_b32 a7, v17             ;  Reload Reuse
-	v_mov_b32_e32 v17, v10
-	v_accvgpr_read_b32 v10, a7              ;  Reload Reuse
-	v_accvgpr_write_b32 a8, v17             ;  Reload Reuse
-	v_mov_b32_e32 v17, v9
-	v_accvgpr_read_b32 v9, a6               ;  Reload Reuse
-	v_accvgpr_write_b32 a9, v17             ;  Reload Reuse
-	v_mov_b32_e32 v17, v8
-	v_accvgpr_read_b32 v8, a9               ;  Reload Reuse
-	v_accvgpr_write_b32 a10, v17            ;  Reload Reuse
-	v_mov_b32_e32 v17, v7
-	v_accvgpr_read_b32 v7, a8               ;  Reload Reuse
-	v_accvgpr_write_b32 a11, v17            ;  Reload Reuse
-	v_mov_b32_e32 v17, v6
-	v_accvgpr_read_b32 v6, a11              ;  Reload Reuse
-	v_accvgpr_write_b32 a12, v17            ;  Reload Reuse
-	v_mov_b32_e32 v17, v5
-	v_accvgpr_read_b32 v5, a10              ;  Reload Reuse
-	v_accvgpr_write_b32 a13, v17            ;  Reload Reuse
-	v_mov_b32_e32 v17, v4
-	v_accvgpr_read_b32 v4, a13              ;  Reload Reuse
-	v_accvgpr_write_b32 a14, v17            ;  Reload Reuse
-	v_mov_b32_e32 v17, v3
-	v_accvgpr_read_b32 v3, a14              ;  Reload Reuse
-	v_accvgpr_write_b32 a15, v17            ;  Reload Reuse
-	v_accvgpr_write_b32 a16, v2             ;  Reload Reuse
-	v_mov_b32_e32 v18, v1
-	v_accvgpr_read_b32 v1, a12              ;  Reload Reuse
-	v_mov_b32_e32 v2, v0
-	v_accvgpr_read_b32 v0, a15              ;  Reload Reuse
-                                        ; kill: def $vgpr16 killed $vgpr16 def $vgpr16_vgpr17 killed $exec
-	v_mov_b32_e32 v17, v15
-                                        ; kill: def $vgpr14 killed $vgpr14 def $vgpr14_vgpr15 killed $exec
-	v_mov_b32_e32 v15, v13
-                                        ; kill: def $vgpr12 killed $vgpr12 def $vgpr12_vgpr13 killed $exec
-	v_mov_b32_e32 v13, v11
-                                        ; kill: def $vgpr10 killed $vgpr10 def $vgpr10_vgpr11 killed $exec
-	v_mov_b32_e32 v11, v9
-                                        ; kill: def $vgpr8 killed $vgpr8 def $vgpr8_vgpr9 killed $exec
-	v_mov_b32_e32 v9, v7
-                                        ; kill: def $vgpr6 killed $vgpr6 def $vgpr6_vgpr7 killed $exec
-	v_mov_b32_e32 v7, v5
-                                        ; kill: def $vgpr4 killed $vgpr4 def $vgpr4_vgpr5 killed $exec
-	v_mov_b32_e32 v5, v1
-                                        ; kill: def $vgpr0 killed $vgpr0 def $vgpr0_vgpr1 killed $exec
-	v_mov_b32_e32 v1, v3
-                                        ; kill: def $vgpr2 killed $vgpr2 def $vgpr2_vgpr3 killed $exec
-	v_mov_b32_e32 v3, v18
-	v_accvgpr_write_b32 a17, v17            ;  Reload Reuse
-	v_accvgpr_write_b32 a18, v16            ;  Reload Reuse
-	v_accvgpr_write_b32 a19, v15            ;  Reload Reuse
-	v_accvgpr_write_b32 a20, v14            ;  Reload Reuse
-	v_accvgpr_write_b32 a21, v13            ;  Reload Reuse
-	v_accvgpr_write_b32 a22, v12            ;  Reload Reuse
-	v_accvgpr_write_b32 a23, v11            ;  Reload Reuse
-	v_accvgpr_write_b32 a24, v10            ;  Reload Reuse
-	v_accvgpr_write_b32 a25, v9             ;  Reload Reuse
-	v_accvgpr_write_b32 a26, v8             ;  Reload Reuse
-	v_accvgpr_write_b32 a27, v7             ;  Reload Reuse
-	v_accvgpr_write_b32 a28, v6             ;  Reload Reuse
-	v_accvgpr_write_b32 a29, v5             ;  Reload Reuse
-	v_accvgpr_write_b32 a30, v4             ;  Reload Reuse
-	v_accvgpr_write_b32 a31, v1             ;  Reload Reuse
-	scratch_store_dword off, v0, s33 offset:24 ; 4-byte Folded Spill
-	s_mov_b32 s1, 0
-	s_mov_b32 s0, -1
-	v_mov_b32_e32 v0, s1
-	v_mbcnt_lo_u32_b32 v0, s0, v0
-	v_mbcnt_hi_u32_b32 v0, s0, v0
-	scratch_store_dword off, v0, s33 offset:20 ; 4-byte Folded Spill
-	v_readfirstlane_b32 s0, v0
-	scratch_store_dwordx2 off, v[2:3], s33 offset:12 ; 8-byte Folded Spill
-	s_nop 0
-	v_cmp_eq_u32_e64 s[2:3], v0, s0
-	s_mov_b64 s[0:1], s[2:3]
-                                        ; implicit-def: $vgpr22 : SGPR spill to VGPR lane
-	v_writelane_b32 v22, s0, 0
-	s_nop 1
-	v_writelane_b32 v22, s1, 1
-	v_mov_b64_e32 v[0:1], 0
-	scratch_store_dwordx2 off, v[0:1], s33 offset:4 ; 8-byte Folded Spill
-	s_mov_b64 s[0:1], exec
-	v_writelane_b32 v22, s0, 2
-	s_nop 1
-	v_writelane_b32 v22, s1, 3
-	s_or_saveexec_b64 s[14:15], -1
-	scratch_store_dword off, v22, s33       ; 4-byte Folded Spill
-	s_mov_b64 exec, s[14:15]
-	s_and_b64 s[0:1], s[0:1], s[2:3]
-	s_mov_b64 exec, s[0:1]
-	s_cbranch_execz .LBB3_6
+	s_and_b32 s12, s0, 0xffff
+	s_mul_i32 s6, s6, s12
+	v_add_u32_e32 v0, s6, v0
+	v_cmp_gt_u64_e32 vcc, s[8:9], v[0:1]
+	s_and_saveexec_b64 s[0:1], vcc
+	s_cbranch_execz .LBB0_3
 ; %bb.1:
-	s_or_saveexec_b64 s[14:15], -1
-	scratch_load_dword v22, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[14:15]
-	scratch_load_dwordx2 v[0:1], off, s33 offset:12 ; 8-byte Folded Reload
-	s_mov_b64 s[0:1], 24
-	s_waitcnt vmcnt(0)
-	v_lshl_add_u64 v[2:3], v[0:1], 0, s[0:1]
-	scratch_store_dwordx2 off, v[2:3], s33 offset:56 ; 8-byte Folded Spill
-	global_load_dwordx2 v[2:3], v[0:1], off offset:24 sc0 sc1
-	s_waitcnt vmcnt(0)
-	buffer_inv sc0 sc1
-	s_mov_b64 s[0:1], 40
-	v_lshl_add_u64 v[4:5], v[0:1], 0, s[0:1]
-	scratch_store_dwordx2 off, v[4:5], s33 offset:48 ; 8-byte Folded Spill
-	global_load_dwordx2 v[4:5], v[0:1], off
-	s_nop 0
-	global_load_dwordx2 v[6:7], v[0:1], off offset:40
-	v_mov_b32_e32 v8, v3
-	s_waitcnt vmcnt(0)
-	v_mov_b32_e32 v9, v7
-	v_and_b32_e64 v10, v9, v8
-	v_mov_b32_e32 v9, v2
-                                        ; kill: def $vgpr6 killed $vgpr6 killed $vgpr6_vgpr7 killed $exec
-	v_and_b32_e64 v6, v6, v9
-                                        ; kill: def $vgpr6 killed $vgpr6 def $vgpr6_vgpr7 killed $exec
-	v_mov_b32_e32 v7, v10
-	v_mov_b32_e32 v10, v6
-	s_mov_b32 s1, 24
-	v_mad_u64_u32 v[12:13], s[2:3], v10, s1, 0
-	v_mov_b32_e32 v10, v13
-                                        ; implicit-def: $sgpr0
-                                        ; implicit-def: $sgpr2
-	v_mov_b32_e32 v14, s0
-                                        ; kill: def $vgpr10 killed $vgpr10 def $vgpr10_vgpr11 killed $exec
-	v_mov_b32_e32 v11, v14
-	s_mov_b32 s0, 32
-	v_lshrrev_b64 v[6:7], s0, v[6:7]
-                                        ; kill: def $vgpr6 killed $vgpr6 killed $vgpr6_vgpr7 killed $exec
-	v_mad_u64_u32 v[6:7], s[2:3], v6, s1, v[10:11]
-                                        ; kill: def $vgpr6 killed $vgpr6 killed $vgpr6_vgpr7 killed $exec
-                                        ; implicit-def: $sgpr1
-                                        ; implicit-def: $sgpr2
-	v_mov_b32_e32 v10, s1
-                                        ; kill: def $vgpr6 killed $vgpr6 def $vgpr6_vgpr7 killed $exec
-	v_mov_b32_e32 v7, v10
-	v_lshlrev_b64 v[6:7], s0, v[6:7]
-	v_mov_b32_e32 v11, v7
-                                        ; kill: def $vgpr12 killed $vgpr12 killed $vgpr12_vgpr13 killed $exec
-	s_mov_b32 s0, 0
-	v_mov_b32_e32 v10, 0
-                                        ; kill: def $vgpr12 killed $vgpr12 def $vgpr12_vgpr13 killed $exec
-	v_mov_b32_e32 v13, v10
-	v_mov_b32_e32 v10, v13
-	v_or_b32_e64 v10, v10, v11
-	v_mov_b32_e32 v7, v6
-	v_mov_b32_e32 v6, v12
-	v_or_b32_e64 v6, v6, v7
-                                        ; kill: def $vgpr6 killed $vgpr6 def $vgpr6_vgpr7 killed $exec
-	v_mov_b32_e32 v7, v10
-	v_lshl_add_u64 v[4:5], v[4:5], 0, v[6:7]
-	global_load_dwordx2 v[4:5], v[4:5], off sc0 sc1
-	s_waitcnt vmcnt(0)
-	v_mov_b32_e32 v10, v5
-                                        ; kill: def $vgpr4 killed $vgpr4 killed $vgpr4_vgpr5 killed $exec
-                                        ; kill: def $vgpr4 killed $vgpr4 def $vgpr4_vgpr5_vgpr6_vgpr7 killed $exec
-	v_mov_b32_e32 v5, v10
-	v_mov_b32_e32 v6, v9
-	v_mov_b32_e32 v7, v8
-	global_atomic_cmpswap_x2 v[0:1], v[0:1], v[4:7], off offset:24 sc0 sc1
-	s_waitcnt vmcnt(0)
-	buffer_inv sc0 sc1
-	v_cmp_ne_u64_e64 s[2:3], v[0:1], v[2:3]
-	s_mov_b64 s[0:1], 0
-	v_writelane_b32 v22, s0, 4
-	s_nop 1
-	v_writelane_b32 v22, s1, 5
-	v_mov_b64_e32 v[2:3], v[0:1]
-	scratch_store_dwordx2 off, v[2:3], s33 offset:40 ; 8-byte Folded Spill
-	scratch_store_dwordx2 off, v[0:1], s33 offset:32 ; 8-byte Folded Spill
-	s_mov_b64 s[0:1], exec
-	v_writelane_b32 v22, s0, 6
-	s_nop 1
-	v_writelane_b32 v22, s1, 7
-	s_or_saveexec_b64 s[14:15], -1
-	scratch_store_dword off, v22, s33       ; 4-byte Folded Spill
-	s_mov_b64 exec, s[14:15]
-	s_and_b64 s[0:1], s[0:1], s[2:3]
-	s_mov_b64 exec, s[0:1]
-	s_cbranch_execz .LBB3_5
-.LBB3_2:                                ; =>This Inner Loop Header: Depth=1
-	s_or_saveexec_b64 s[14:15], -1
-	scratch_load_dword v22, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[14:15]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s2, v22, 4
-	v_readlane_b32 s3, v22, 5
-	scratch_load_dwordx2 v[2:3], off, s33 offset:40 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[0:1], off, s33 offset:56 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[6:7], off, s33 offset:48 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[4:5], off, s33 offset:12 ; 8-byte Folded Reload
-	s_sleep 1
-	s_waitcnt vmcnt(0)
-	global_load_dwordx2 v[4:5], v[4:5], off
-	s_nop 0
-	global_load_dwordx2 v[6:7], v[6:7], off
-	v_mov_b32_e32 v8, v3
-	s_waitcnt vmcnt(0)
-	v_mov_b32_e32 v9, v7
-	v_and_b32_e64 v10, v9, v8
-	v_mov_b32_e32 v9, v2
-                                        ; kill: def $vgpr6 killed $vgpr6 killed $vgpr6_vgpr7 killed $exec
-	v_and_b32_e64 v6, v6, v9
-                                        ; kill: def $vgpr6 killed $vgpr6 def $vgpr6_vgpr7 killed $exec
-	v_mov_b32_e32 v7, v10
-	v_mov_b32_e32 v10, v6
-	s_mov_b32 s1, 24
-	v_mad_u64_u32 v[12:13], s[4:5], v10, s1, 0
-	v_mov_b32_e32 v10, v13
-                                        ; implicit-def: $sgpr0
-                                        ; implicit-def: $sgpr4
-	v_mov_b32_e32 v14, s0
-                                        ; kill: def $vgpr10 killed $vgpr10 def $vgpr10_vgpr11 killed $exec
-	v_mov_b32_e32 v11, v14
-	s_mov_b32 s0, 32
-	v_lshrrev_b64 v[6:7], s0, v[6:7]
-                                        ; kill: def $vgpr6 killed $vgpr6 killed $vgpr6_vgpr7 killed $exec
-	v_mad_u64_u32 v[6:7], s[4:5], v6, s1, v[10:11]
-                                        ; kill: def $vgpr6 killed $vgpr6 killed $vgpr6_vgpr7 killed $exec
-                                        ; implicit-def: $sgpr1
-                                        ; implicit-def: $sgpr4
-	v_mov_b32_e32 v10, s1
-                                        ; kill: def $vgpr6 killed $vgpr6 def $vgpr6_vgpr7 killed $exec
-	v_mov_b32_e32 v7, v10
-	v_lshlrev_b64 v[6:7], s0, v[6:7]
-	v_mov_b32_e32 v11, v7
-                                        ; kill: def $vgpr12 killed $vgpr12 killed $vgpr12_vgpr13 killed $exec
-	s_mov_b32 s0, 0
-	v_mov_b32_e32 v10, 0
-                                        ; kill: def $vgpr12 killed $vgpr12 def $vgpr12_vgpr13 killed $exec
-	v_mov_b32_e32 v13, v10
-	v_mov_b32_e32 v10, v13
-	v_or_b32_e64 v10, v10, v11
-	v_mov_b32_e32 v7, v6
-	v_mov_b32_e32 v6, v12
-	v_or_b32_e64 v6, v6, v7
-                                        ; kill: def $vgpr6 killed $vgpr6 def $vgpr6_vgpr7 killed $exec
-	v_mov_b32_e32 v7, v10
-	v_lshl_add_u64 v[4:5], v[4:5], 0, v[6:7]
-	global_load_dwordx2 v[4:5], v[4:5], off sc0 sc1
-	s_waitcnt vmcnt(0)
-	v_mov_b32_e32 v10, v5
-                                        ; kill: def $vgpr4 killed $vgpr4 killed $vgpr4_vgpr5 killed $exec
-                                        ; kill: def $vgpr4 killed $vgpr4 def $vgpr4_vgpr5_vgpr6_vgpr7 killed $exec
-	v_mov_b32_e32 v5, v10
-	v_mov_b32_e32 v6, v9
-	v_mov_b32_e32 v7, v8
-	global_atomic_cmpswap_x2 v[0:1], v[0:1], v[4:7], off sc0 sc1
-	s_waitcnt vmcnt(0)
-	buffer_inv sc0 sc1
-	v_cmp_eq_u64_e64 s[0:1], v[0:1], v[2:3]
-	s_or_b64 s[0:1], s[0:1], s[2:3]
-	s_mov_b64 s[2:3], s[0:1]
-	v_writelane_b32 v22, s2, 4
-	s_nop 1
-	v_writelane_b32 v22, s3, 5
-	v_mov_b64_e32 v[2:3], v[0:1]
-	scratch_store_dwordx2 off, v[2:3], s33 offset:40 ; 8-byte Folded Spill
-	scratch_store_dwordx2 off, v[0:1], s33 offset:64 ; 8-byte Folded Spill
-	s_mov_b64 s[2:3], s[0:1]
-	v_writelane_b32 v22, s2, 8
-	s_nop 1
-	v_writelane_b32 v22, s3, 9
-	s_or_saveexec_b64 s[14:15], -1
-	scratch_store_dword off, v22, s33       ; 4-byte Folded Spill
-	s_mov_b64 exec, s[14:15]
-	s_andn2_b64 exec, exec, s[0:1]
-	s_cbranch_execnz .LBB3_2
-; %bb.3:
-	s_or_saveexec_b64 s[14:15], -1
-	scratch_load_dword v22, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[14:15]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v22, 8
-	v_readlane_b32 s1, v22, 9
-	s_or_b64 exec, exec, s[0:1]
-; %bb.4:
-	scratch_load_dwordx2 v[0:1], off, s33 offset:64 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx2 off, v[0:1], s33 offset:32 ; 8-byte Folded Spill
-.LBB3_5:
-	s_or_saveexec_b64 s[14:15], -1
-	scratch_load_dword v22, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[14:15]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v22, 6
-	v_readlane_b32 s1, v22, 7
-	s_or_b64 exec, exec, s[0:1]
-	scratch_load_dwordx2 v[0:1], off, s33 offset:32 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx2 off, v[0:1], s33 offset:4 ; 8-byte Folded Spill
-.LBB3_6:
-	s_or_saveexec_b64 s[14:15], -1
-	scratch_load_dword v22, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[14:15]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v22, 2
-	v_readlane_b32 s1, v22, 3
-	s_or_b64 exec, exec, s[0:1]
-	v_readlane_b32 s2, v22, 0
-	v_readlane_b32 s3, v22, 1
-	scratch_load_dwordx2 v[0:1], off, s33 offset:12 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[2:3], off, s33 offset:4 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	v_mov_b32_e32 v4, v3
-	s_nop 0
-	v_readfirstlane_b32 s4, v4
-                                        ; kill: def $vgpr2 killed $vgpr2 killed $vgpr2_vgpr3 killed $exec
-	v_readfirstlane_b32 s0, v2
-                                        ; kill: def $sgpr0 killed $sgpr0 def $sgpr0_sgpr1
-	s_mov_b32 s1, s4
-	s_mov_b64 s[4:5], s[0:1]
-	v_writelane_b32 v22, s4, 10
-	s_nop 1
-	v_writelane_b32 v22, s5, 11
-	global_load_dwordx2 v[4:5], v[0:1], off
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx2 off, v[4:5], s33 offset:96 ; 8-byte Folded Spill
-	s_mov_b64 s[4:5], 40
-	v_lshl_add_u64 v[2:3], v[0:1], 0, s[4:5]
-	scratch_store_dwordx2 off, v[2:3], s33 offset:88 ; 8-byte Folded Spill
-	global_load_dwordx2 v[2:3], v[0:1], off offset:40
-	s_mov_b32 s4, s1
-	s_waitcnt vmcnt(0)
-	v_mov_b32_e32 v6, v3
-	v_and_b32_e64 v6, v6, s4
-                                        ; kill: def $sgpr0 killed $sgpr0 killed $sgpr0_sgpr1
-                                        ; kill: def $vgpr2 killed $vgpr2 killed $vgpr2_vgpr3 killed $exec
-	v_and_b32_e64 v2, v2, s0
-                                        ; kill: def $vgpr2 killed $vgpr2 def $vgpr2_vgpr3 killed $exec
-	v_mov_b32_e32 v3, v6
-	v_mov_b32_e32 v6, v2
-	s_mov_b32 s1, 24
-	v_mad_u64_u32 v[10:11], s[4:5], v6, s1, 0
-	v_mov_b32_e32 v8, v11
-                                        ; implicit-def: $sgpr0
-                                        ; implicit-def: $sgpr4
-	v_mov_b32_e32 v6, s0
-                                        ; kill: def $vgpr8 killed $vgpr8 def $vgpr8_vgpr9 killed $exec
-	v_mov_b32_e32 v9, v6
-	s_mov_b32 s0, 32
-	v_lshrrev_b64 v[6:7], s0, v[2:3]
-                                        ; kill: def $vgpr6 killed $vgpr6 killed $vgpr6_vgpr7 killed $exec
-	v_mad_u64_u32 v[6:7], s[4:5], v6, s1, v[8:9]
-                                        ; kill: def $vgpr6 killed $vgpr6 killed $vgpr6_vgpr7 killed $exec
-                                        ; implicit-def: $sgpr1
-                                        ; implicit-def: $sgpr4
-	v_mov_b32_e32 v8, s1
-                                        ; kill: def $vgpr6 killed $vgpr6 def $vgpr6_vgpr7 killed $exec
-	v_mov_b32_e32 v7, v8
-	v_lshlrev_b64 v[6:7], s0, v[6:7]
-	v_mov_b32_e32 v9, v7
-                                        ; kill: def $vgpr10 killed $vgpr10 killed $vgpr10_vgpr11 killed $exec
-	s_mov_b32 s0, 0
-	v_mov_b32_e32 v8, 0
-                                        ; kill: def $vgpr10 killed $vgpr10 def $vgpr10_vgpr11 killed $exec
-	v_mov_b32_e32 v11, v8
-	v_mov_b32_e32 v8, v11
-	v_or_b32_e64 v8, v8, v9
-	v_mov_b32_e32 v7, v6
-	v_mov_b32_e32 v6, v10
-	v_or_b32_e64 v6, v6, v7
-                                        ; kill: def $vgpr6 killed $vgpr6 def $vgpr6_vgpr7 killed $exec
-	v_mov_b32_e32 v7, v8
-	v_lshl_add_u64 v[4:5], v[4:5], 0, v[6:7]
-	scratch_store_dwordx2 off, v[4:5], s33 offset:80 ; 8-byte Folded Spill
-	global_load_dwordx2 v[0:1], v[0:1], off offset:8
-	s_mov_b32 s0, 12
-	v_lshlrev_b64 v[2:3], s0, v[2:3]
-	s_waitcnt vmcnt(0)
-	v_lshl_add_u64 v[0:1], v[0:1], 0, v[2:3]
-	scratch_store_dwordx2 off, v[0:1], s33 offset:72 ; 8-byte Folded Spill
-	s_mov_b64 s[0:1], exec
-	v_writelane_b32 v22, s0, 12
-	s_nop 1
-	v_writelane_b32 v22, s1, 13
-	s_mov_b64 s[0:1], exec
-	v_writelane_b32 v22, s0, 14
-	s_nop 1
-	v_writelane_b32 v22, s1, 15
-	s_or_saveexec_b64 s[14:15], -1
-	scratch_store_dword off, v22, s33       ; 4-byte Folded Spill
-	s_mov_b64 exec, s[14:15]
-	s_and_b64 s[0:1], s[0:1], s[2:3]
-	s_mov_b64 exec, s[0:1]
-	s_cbranch_execz .LBB3_8
-; %bb.7:
-	s_or_saveexec_b64 s[14:15], -1
-	scratch_load_dword v22, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[14:15]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v22, 12
-	v_readlane_b32 s1, v22, 13
-	scratch_load_dwordx2 v[0:1], off, s33 offset:80 ; 8-byte Folded Reload
-	v_accvgpr_read_b32 v2, a16              ;  Reload Reuse
-	s_waitcnt vmcnt(0)
-	global_store_dword v[0:1], v2, off offset:16
-	v_mov_b64_e32 v[2:3], s[0:1]
-	global_store_dwordx2 v[0:1], v[2:3], off offset:8
-	v_mov_b32_e32 v2, 1
-	global_store_dword v[0:1], v2, off offset:20
-.LBB3_8:
-	s_or_saveexec_b64 s[14:15], -1
-	scratch_load_dword v22, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[14:15]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v22, 14
-	v_readlane_b32 s1, v22, 15
-	s_or_b64 exec, exec, s[0:1]
-	v_readlane_b32 s2, v22, 0
-	v_readlane_b32 s3, v22, 1
-	v_accvgpr_read_b32 v3, a17              ;  Reload Reuse
-	v_accvgpr_read_b32 v2, a18              ;  Reload Reuse
-	v_accvgpr_read_b32 v5, a19              ;  Reload Reuse
-	v_accvgpr_read_b32 v4, a20              ;  Reload Reuse
-	v_accvgpr_read_b32 v7, a21              ;  Reload Reuse
-	v_accvgpr_read_b32 v6, a22              ;  Reload Reuse
-	v_accvgpr_read_b32 v9, a23              ;  Reload Reuse
-	v_accvgpr_read_b32 v8, a24              ;  Reload Reuse
-	v_accvgpr_read_b32 v11, a25             ;  Reload Reuse
-	v_accvgpr_read_b32 v10, a26             ;  Reload Reuse
-	v_accvgpr_read_b32 v13, a27             ;  Reload Reuse
-	v_accvgpr_read_b32 v12, a28             ;  Reload Reuse
-	v_accvgpr_read_b32 v15, a29             ;  Reload Reuse
-	v_accvgpr_read_b32 v14, a30             ;  Reload Reuse
-	v_accvgpr_read_b32 v17, a31             ;  Reload Reuse
-	scratch_load_dword v16, off, s33 offset:24 ; 4-byte Folded Reload
-	scratch_load_dwordx2 v[0:1], off, s33 offset:72 ; 8-byte Folded Reload
-	scratch_load_dword v18, off, s33 offset:20 ; 4-byte Folded Reload
-	s_mov_b32 s0, 0
-	v_mov_b32_e32 v20, 0
-                                        ; kill: def $vgpr18 killed $vgpr18 def $vgpr18_vgpr19 killed $exec
-	v_mov_b32_e32 v19, v20
-	s_mov_b32 s0, 6
-	s_waitcnt vmcnt(0)
-	v_lshlrev_b64 v[18:19], s0, v[18:19]
-	v_lshl_add_u64 v[0:1], v[0:1], 0, v[18:19]
-	scratch_store_dwordx2 off, v[0:1], s33 offset:112 ; 8-byte Folded Spill
-	global_store_dwordx2 v[0:1], v[16:17], off
-	s_mov_b64 s[0:1], 8
-	v_lshl_add_u64 v[16:17], v[0:1], 0, s[0:1]
-	scratch_store_dwordx2 off, v[16:17], s33 offset:104 ; 8-byte Folded Spill
-	global_store_dwordx2 v[0:1], v[14:15], off offset:8
-	global_store_dwordx2 v[0:1], v[12:13], off offset:16
-	global_store_dwordx2 v[0:1], v[10:11], off offset:24
-	global_store_dwordx2 v[0:1], v[8:9], off offset:32
-	global_store_dwordx2 v[0:1], v[6:7], off offset:40
-	global_store_dwordx2 v[0:1], v[4:5], off offset:48
-	global_store_dwordx2 v[0:1], v[2:3], off offset:56
-	s_mov_b64 s[0:1], exec
-	v_writelane_b32 v22, s0, 16
-	s_nop 1
-	v_writelane_b32 v22, s1, 17
-	s_or_saveexec_b64 s[14:15], -1
-	scratch_store_dword off, v22, s33       ; 4-byte Folded Spill
-	s_mov_b64 exec, s[14:15]
-	s_and_b64 s[0:1], s[0:1], s[2:3]
-	s_mov_b64 exec, s[0:1]
-	s_cbranch_execz .LBB3_13
-; %bb.9:
-	s_or_saveexec_b64 s[14:15], -1
-	scratch_load_dword v22, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[14:15]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s2, v22, 10
-	v_readlane_b32 s3, v22, 11
-	scratch_load_dwordx2 v[0:1], off, s33 offset:12 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[4:5], off, s33 offset:96 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[6:7], off, s33 offset:88 ; 8-byte Folded Reload
-	s_mov_b64 s[0:1], 32
-	s_waitcnt vmcnt(2)
-	v_lshl_add_u64 v[2:3], v[0:1], 0, s[0:1]
-	scratch_store_dwordx2 off, v[2:3], s33 offset:136 ; 8-byte Folded Spill
-	global_load_dwordx2 v[2:3], v[0:1], off offset:32 sc0 sc1
-	s_waitcnt vmcnt(2)
-	global_load_dwordx2 v[6:7], v[6:7], off
-	s_mov_b32 s0, s3
-	s_waitcnt vmcnt(0)
-	v_mov_b32_e32 v8, v7
-	v_and_b32_e64 v8, v8, s0
-	s_mov_b32 s1, s2
-                                        ; kill: def $vgpr6 killed $vgpr6 killed $vgpr6_vgpr7 killed $exec
-	v_and_b32_e64 v6, v6, s1
-                                        ; kill: def $vgpr6 killed $vgpr6 def $vgpr6_vgpr7 killed $exec
-	v_mov_b32_e32 v7, v8
-	v_mov_b32_e32 v8, v6
-	s_mov_b32 s3, 24
-	v_mad_u64_u32 v[10:11], s[4:5], v8, s3, 0
-	v_mov_b32_e32 v8, v11
-                                        ; implicit-def: $sgpr2
-                                        ; implicit-def: $sgpr4
-	v_mov_b32_e32 v12, s2
-                                        ; kill: def $vgpr8 killed $vgpr8 def $vgpr8_vgpr9 killed $exec
-	v_mov_b32_e32 v9, v12
-	s_mov_b32 s2, 32
-	v_lshrrev_b64 v[6:7], s2, v[6:7]
-                                        ; kill: def $vgpr6 killed $vgpr6 killed $vgpr6_vgpr7 killed $exec
-	v_mad_u64_u32 v[6:7], s[4:5], v6, s3, v[8:9]
-                                        ; kill: def $vgpr6 killed $vgpr6 killed $vgpr6_vgpr7 killed $exec
-                                        ; implicit-def: $sgpr3
-                                        ; implicit-def: $sgpr4
-	v_mov_b32_e32 v8, s3
-                                        ; kill: def $vgpr6 killed $vgpr6 def $vgpr6_vgpr7 killed $exec
-	v_mov_b32_e32 v7, v8
-	v_lshlrev_b64 v[6:7], s2, v[6:7]
-	v_mov_b32_e32 v9, v7
-                                        ; kill: def $vgpr10 killed $vgpr10 killed $vgpr10_vgpr11 killed $exec
-	s_mov_b32 s2, 0
-	v_mov_b32_e32 v8, 0
-                                        ; kill: def $vgpr10 killed $vgpr10 def $vgpr10_vgpr11 killed $exec
-	v_mov_b32_e32 v11, v8
-	v_mov_b32_e32 v8, v11
-	v_or_b32_e64 v8, v8, v9
-	v_mov_b32_e32 v7, v6
-	v_mov_b32_e32 v6, v10
-	v_or_b32_e64 v6, v6, v7
-                                        ; kill: def $vgpr6 killed $vgpr6 def $vgpr6_vgpr7 killed $exec
-	v_mov_b32_e32 v7, v8
-	v_lshl_add_u64 v[4:5], v[4:5], 0, v[6:7]
-	scratch_store_dwordx2 off, v[4:5], s33 offset:128 ; 8-byte Folded Spill
-	global_store_dwordx2 v[4:5], v[2:3], off
-	v_mov_b32_e32 v8, v3
-	v_mov_b32_e32 v9, v2
-	v_mov_b32_e32 v4, s1
-	v_mov_b32_e32 v10, s0
-                                        ; kill: def $vgpr4 killed $vgpr4 def $vgpr4_vgpr5_vgpr6_vgpr7 killed $exec
-	v_mov_b32_e32 v5, v10
-	v_mov_b32_e32 v6, v9
-	v_mov_b32_e32 v7, v8
-	buffer_wbl2 sc0 sc1
-	s_waitcnt vmcnt(0)
-	global_atomic_cmpswap_x2 v[0:1], v[0:1], v[4:7], off offset:32 sc0 sc1
-	s_waitcnt vmcnt(0)
-	v_cmp_eq_u64_e64 s[4:5], v[0:1], v[2:3]
-	v_cmp_ne_u64_e64 s[2:3], v[0:1], v[2:3]
-	s_mov_b64 s[0:1], 0
-	v_writelane_b32 v22, s4, 18
-	s_nop 1
-	v_writelane_b32 v22, s5, 19
-	v_writelane_b32 v22, s0, 20
-	s_nop 1
-	v_writelane_b32 v22, s1, 21
-	scratch_store_dwordx2 off, v[0:1], s33 offset:120 ; 8-byte Folded Spill
-	s_mov_b64 s[0:1], exec
-	v_writelane_b32 v22, s0, 22
-	s_nop 1
-	v_writelane_b32 v22, s1, 23
-	s_or_saveexec_b64 s[14:15], -1
-	scratch_store_dword off, v22, s33       ; 4-byte Folded Spill
-	s_mov_b64 exec, s[14:15]
-	s_and_b64 s[0:1], s[0:1], s[2:3]
-	s_mov_b64 exec, s[0:1]
-	s_cbranch_execz .LBB3_14
-.LBB3_10:                               ; =>This Inner Loop Header: Depth=1
-	s_or_saveexec_b64 s[14:15], -1
-	scratch_load_dword v22, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[14:15]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v22, 20
-	v_readlane_b32 s1, v22, 21
-	v_readlane_b32 s2, v22, 18
-	v_readlane_b32 s3, v22, 19
-	v_readlane_b32 s4, v22, 10
-	v_readlane_b32 s5, v22, 11
-	scratch_load_dwordx2 v[2:3], off, s33 offset:120 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[0:1], off, s33 offset:136 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[4:5], off, s33 offset:128 ; 8-byte Folded Reload
-	s_sleep 1
-	s_waitcnt vmcnt(0)
-	global_store_dwordx2 v[4:5], v[2:3], off
-	v_mov_b32_e32 v8, v3
-	v_mov_b32_e32 v9, v2
-	s_mov_b32 s2, s5
-	s_mov_b32 s3, s4
+	s_load_dword s13, s[10:11], 0x0
+	s_load_dwordx4 s[0:3], s[4:5], 0x0
+	s_mov_b32 s5, 0
+	v_lshlrev_b64 v[2:3], 2, v[0:1]
+	s_mov_b64 s[6:7], 0
+	s_waitcnt lgkmcnt(0)
+	s_mul_i32 s4, s13, s12
+	s_lshl_b64 s[10:11], s[4:5], 2
 	v_mov_b32_e32 v4, s3
-	v_mov_b32_e32 v10, s2
-                                        ; kill: def $vgpr4 killed $vgpr4 def $vgpr4_vgpr5_vgpr6_vgpr7 killed $exec
-	v_mov_b32_e32 v5, v10
-	v_mov_b32_e32 v6, v9
-	v_mov_b32_e32 v7, v8
-	buffer_wbl2 sc0 sc1
+	v_mov_b32_e32 v5, s1
+	v_mov_b32_e32 v6, s11
+.LBB0_2:                                ; =>This Inner Loop Header: Depth=1
+	v_add_co_u32_e32 v7, vcc, s2, v2
+	v_addc_co_u32_e32 v8, vcc, v4, v3, vcc
+	global_load_dword v9, v[7:8], off
+	v_add_co_u32_e32 v7, vcc, s0, v2
+	v_addc_co_u32_e32 v8, vcc, v5, v3, vcc
+	v_add_co_u32_e32 v0, vcc, s4, v0
+	v_addc_co_u32_e32 v1, vcc, 0, v1, vcc
+	v_add_co_u32_e32 v2, vcc, s10, v2
+	v_addc_co_u32_e32 v3, vcc, v3, v6, vcc
+	v_cmp_le_u64_e32 vcc, s[8:9], v[0:1]
+	s_or_b64 s[6:7], vcc, s[6:7]
 	s_waitcnt vmcnt(0)
-	global_atomic_cmpswap_x2 v[0:1], v[0:1], v[4:7], off sc0 sc1
-	s_waitcnt vmcnt(0)
-	v_cmp_eq_u64_e64 s[2:3], v[0:1], v[2:3]
-	s_or_b64 s[0:1], s[2:3], s[0:1]
-	s_nop 0
-	v_writelane_b32 v22, s2, 18
-	s_nop 1
-	v_writelane_b32 v22, s3, 19
-	s_mov_b64 s[2:3], s[0:1]
-	v_writelane_b32 v22, s2, 20
-	s_nop 1
-	v_writelane_b32 v22, s3, 21
-	scratch_store_dwordx2 off, v[0:1], s33 offset:120 ; 8-byte Folded Spill
-	s_mov_b64 s[2:3], s[0:1]
-	v_writelane_b32 v22, s2, 24
-	s_nop 1
-	v_writelane_b32 v22, s3, 25
-	s_or_saveexec_b64 s[14:15], -1
-	scratch_store_dword off, v22, s33       ; 4-byte Folded Spill
-	s_mov_b64 exec, s[14:15]
-	s_andn2_b64 exec, exec, s[0:1]
-	s_cbranch_execnz .LBB3_10
-; %bb.11:
-	s_or_saveexec_b64 s[14:15], -1
-	scratch_load_dword v22, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[14:15]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v22, 24
-	v_readlane_b32 s1, v22, 25
-	s_or_b64 exec, exec, s[0:1]
-; %bb.12:
-	s_branch .LBB3_14
-.LBB3_13:
-	s_or_saveexec_b64 s[14:15], -1
-	scratch_load_dword v22, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[14:15]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v22, 16
-	v_readlane_b32 s1, v22, 17
-	s_or_b64 exec, exec, s[0:1]
-	s_branch .LBB3_15
-.LBB3_14:
-	s_or_saveexec_b64 s[14:15], -1
-	scratch_load_dword v22, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[14:15]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v22, 22
-	v_readlane_b32 s1, v22, 23
-	s_or_b64 exec, exec, s[0:1]
-	scratch_load_dwordx2 v[0:1], off, s33 offset:12 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	global_load_dwordx2 v[2:3], v[0:1], off offset:16
-	s_mov_b32 s0, 32
-	s_waitcnt vmcnt(0)
-	v_lshrrev_b64 v[0:1], s0, v[2:3]
-	v_mov_b32_e32 v1, v0
-	v_mov_b32_e32 v0, v2
-	s_getpc_b64 s[0:1]
-	s_add_u32 s0, s0, __ockl_hsa_signal_add@rel32@lo+4
-	s_addc_u32 s1, s1, __ockl_hsa_signal_add@rel32@hi+12
-	v_mov_b32_e32 v2, 1
-	v_mov_b32_e32 v3, 0
-	v_mov_b32_e32 v4, 3
-	s_swappc_b64 s[30:31], s[0:1]
-	s_branch .LBB3_13
-.LBB3_15:
-	scratch_load_dwordx2 v[0:1], off, s33 offset:80 ; 8-byte Folded Reload
-	s_mov_b64 s[0:1], 20
-	s_waitcnt vmcnt(0)
-	v_lshl_add_u64 v[0:1], v[0:1], 0, s[0:1]
-	scratch_store_dwordx2 off, v[0:1], s33 offset:144 ; 8-byte Folded Spill
-.LBB3_16:                               ; =>This Inner Loop Header: Depth=1
-	s_or_saveexec_b64 s[14:15], -1
-	scratch_load_dword v22, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[14:15]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s2, v22, 0
-	v_readlane_b32 s3, v22, 1
-	v_mov_b32_e32 v0, 1
-	scratch_store_dword off, v0, s33 offset:152 ; 4-byte Folded Spill
-	s_mov_b64 s[0:1], exec
-	v_writelane_b32 v22, s0, 26
-	s_nop 1
-	v_writelane_b32 v22, s1, 27
-	s_or_saveexec_b64 s[14:15], -1
-	scratch_store_dword off, v22, s33       ; 4-byte Folded Spill
-	s_mov_b64 exec, s[14:15]
-	s_and_b64 s[0:1], s[0:1], s[2:3]
-	s_mov_b64 exec, s[0:1]
-	s_cbranch_execz .LBB3_18
-; %bb.17:                               ;   in Loop: Header=BB3_16 Depth=1
-	scratch_load_dwordx2 v[0:1], off, s33 offset:144 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	global_load_dword v0, v[0:1], off sc0 sc1
-	s_waitcnt vmcnt(0)
-	buffer_inv sc0 sc1
-	s_mov_b32 s0, 1
-	v_and_b32_e64 v0, v0, s0
-	scratch_store_dword off, v0, s33 offset:152 ; 4-byte Folded Spill
-.LBB3_18:                               ;   in Loop: Header=BB3_16 Depth=1
-	s_or_saveexec_b64 s[14:15], -1
-	scratch_load_dword v22, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[14:15]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v22, 26
-	v_readlane_b32 s1, v22, 27
-	s_or_b64 exec, exec, s[0:1]
-	scratch_load_dword v0, off, s33 offset:152 ; 4-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	v_readfirstlane_b32 s2, v0
-	s_mov_b64 s[0:1], -1
-	s_mov_b32 s3, 0
-	s_cmp_eq_u32 s2, s3
-	v_writelane_b32 v22, s0, 28
-	s_nop 1
-	v_writelane_b32 v22, s1, 29
-	s_mov_b64 s[14:15], exec
-	s_mov_b64 exec, -1
-	scratch_store_dword off, v22, s33       ; 4-byte Folded Spill
-	s_mov_b64 exec, s[14:15]
-	s_cbranch_scc1 .LBB3_20
-; %bb.19:                               ;   in Loop: Header=BB3_16 Depth=1
-	s_or_saveexec_b64 s[14:15], -1
-	scratch_load_dword v22, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[14:15]
-	s_sleep 1
-	s_mov_b64 s[0:1], 0
-	s_waitcnt vmcnt(0)
-	v_writelane_b32 v22, s0, 28
-	s_nop 1
-	v_writelane_b32 v22, s1, 29
-	s_or_saveexec_b64 s[14:15], -1
-	scratch_store_dword off, v22, s33       ; 4-byte Folded Spill
-	s_mov_b64 exec, s[14:15]
-.LBB3_20:                               ;   in Loop: Header=BB3_16 Depth=1
-	s_or_saveexec_b64 s[14:15], -1
-	scratch_load_dword v22, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[14:15]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v22, 28
-	v_readlane_b32 s1, v22, 29
-	s_nop 1
-	v_cndmask_b32_e64 v0, 0, 1, s[0:1]
-	s_mov_b32 s0, 1
-	v_cmp_ne_u32_e64 s[0:1], v0, s0
-	s_and_b64 vcc, exec, s[0:1]
-	s_cbranch_vccnz .LBB3_16
-; %bb.21:
-	s_or_saveexec_b64 s[14:15], -1
-	scratch_load_dword v22, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[14:15]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s2, v22, 0
-	v_readlane_b32 s3, v22, 1
-	scratch_load_dwordx2 v[0:1], off, s33 offset:104 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[2:3], off, s33 offset:112 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	global_load_dwordx2 v[2:3], v[2:3], off
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx2 off, v[2:3], s33 offset:164 ; 8-byte Folded Spill
-	global_load_dwordx2 v[0:1], v[0:1], off
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx2 off, v[0:1], s33 offset:156 ; 8-byte Folded Spill
-	s_mov_b64 s[0:1], exec
-	v_writelane_b32 v22, s0, 30
-	s_nop 1
-	v_writelane_b32 v22, s1, 31
-	s_or_saveexec_b64 s[14:15], -1
-	scratch_store_dword off, v22, s33       ; 4-byte Folded Spill
-	s_mov_b64 exec, s[14:15]
-	s_and_b64 s[0:1], s[0:1], s[2:3]
-	s_mov_b64 exec, s[0:1]
-	s_cbranch_execz .LBB3_27
-; %bb.22:
-	s_or_saveexec_b64 s[14:15], -1
-	scratch_load_dword v22, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[14:15]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v22, 10
-	v_readlane_b32 s1, v22, 11
-	scratch_load_dwordx2 v[0:1], off, s33 offset:12 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[2:3], off, s33 offset:88 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	global_load_dwordx2 v[12:13], v[2:3], off
-	s_mov_b64 s[2:3], 1
-	s_waitcnt vmcnt(0)
-	v_lshl_add_u64 v[2:3], v[12:13], 0, s[2:3]
-	v_lshl_add_u64 v[4:5], v[2:3], 0, s[0:1]
-	s_mov_b64 s[0:1], 0
-	v_cmp_eq_u64_e64 s[2:3], v[4:5], s[0:1]
-	v_mov_b32_e32 v7, v3
-	v_mov_b32_e32 v6, v5
-	v_cndmask_b32_e64 v10, v6, v7, s[2:3]
-	v_mov_b32_e32 v3, v2
-	v_mov_b32_e32 v2, v4
-	v_cndmask_b32_e64 v4, v2, v3, s[2:3]
-	v_mov_b32_e32 v8, v4
-	v_mov_b32_e32 v9, v10
-	v_mov_b64_e32 v[2:3], v[8:9]
-	scratch_store_dwordx2 off, v[2:3], s33 offset:196 ; 8-byte Folded Spill
-	s_mov_b64 s[2:3], 24
-	v_lshl_add_u64 v[2:3], v[0:1], 0, s[2:3]
-	scratch_store_dwordx2 off, v[2:3], s33 offset:188 ; 8-byte Folded Spill
-	global_load_dwordx2 v[2:3], v[0:1], off offset:24 sc0 sc1
-	s_nop 0
-	global_load_dwordx2 v[6:7], v[0:1], off
-	v_mov_b32_e32 v5, v9
-	v_mov_b32_e32 v11, v13
-	v_and_b32_e64 v5, v5, v11
-                                        ; kill: def $vgpr8 killed $vgpr8 killed $vgpr8_vgpr9 killed $exec
-	v_mov_b32_e32 v9, v12
-	v_and_b32_e64 v14, v8, v9
-                                        ; kill: def $vgpr14 killed $vgpr14 def $vgpr14_vgpr15 killed $exec
-	v_mov_b32_e32 v15, v5
-	v_mov_b32_e32 v5, v14
-	s_mov_b32 s3, 24
-	v_mad_u64_u32 v[12:13], s[4:5], v5, s3, 0
-	v_mov_b32_e32 v8, v13
-                                        ; implicit-def: $sgpr2
-                                        ; implicit-def: $sgpr4
-	v_mov_b32_e32 v5, s2
-                                        ; kill: def $vgpr8 killed $vgpr8 def $vgpr8_vgpr9 killed $exec
-	v_mov_b32_e32 v9, v5
-	s_mov_b32 s2, 32
-	v_lshrrev_b64 v[14:15], s2, v[14:15]
-	v_mov_b32_e32 v5, v14
-	v_mad_u64_u32 v[8:9], s[4:5], v5, s3, v[8:9]
-                                        ; kill: def $vgpr8 killed $vgpr8 killed $vgpr8_vgpr9 killed $exec
-                                        ; implicit-def: $sgpr3
-                                        ; implicit-def: $sgpr4
-	v_mov_b32_e32 v5, s3
-                                        ; kill: def $vgpr8 killed $vgpr8 def $vgpr8_vgpr9 killed $exec
-	v_mov_b32_e32 v9, v5
-	v_lshlrev_b64 v[8:9], s2, v[8:9]
-	v_mov_b32_e32 v11, v9
-                                        ; kill: def $vgpr12 killed $vgpr12 killed $vgpr12_vgpr13 killed $exec
-	s_mov_b32 s2, 0
-	v_mov_b32_e32 v5, 0
-                                        ; kill: def $vgpr12 killed $vgpr12 def $vgpr12_vgpr13 killed $exec
-	v_mov_b32_e32 v13, v5
-	v_mov_b32_e32 v5, v13
-	v_or_b32_e64 v5, v5, v11
-	v_mov_b32_e32 v9, v8
-	v_mov_b32_e32 v8, v12
-	v_or_b32_e64 v8, v8, v9
-                                        ; kill: def $vgpr8 killed $vgpr8 def $vgpr8_vgpr9 killed $exec
-	v_mov_b32_e32 v9, v5
-	s_waitcnt vmcnt(0)
-	v_lshl_add_u64 v[6:7], v[6:7], 0, v[8:9]
-	scratch_store_dwordx2 off, v[6:7], s33 offset:180 ; 8-byte Folded Spill
-	global_store_dwordx2 v[6:7], v[2:3], off
-	v_mov_b32_e32 v8, v3
-	v_mov_b32_e32 v9, v2
-                                        ; kill: def $vgpr4 killed $vgpr4 def $vgpr4_vgpr5_vgpr6_vgpr7 killed $exec
-	v_mov_b32_e32 v5, v10
-	v_mov_b32_e32 v6, v9
-	v_mov_b32_e32 v7, v8
-	buffer_wbl2 sc0 sc1
-	s_waitcnt vmcnt(0)
-	global_atomic_cmpswap_x2 v[0:1], v[0:1], v[4:7], off offset:24 sc0 sc1
-	s_waitcnt vmcnt(0)
-	v_cmp_eq_u64_e64 s[4:5], v[0:1], v[2:3]
-	v_cmp_ne_u64_e64 s[2:3], v[0:1], v[2:3]
-	s_nop 0
-	v_writelane_b32 v22, s4, 32
-	s_nop 1
-	v_writelane_b32 v22, s5, 33
-	v_writelane_b32 v22, s0, 34
-	s_nop 1
-	v_writelane_b32 v22, s1, 35
-	scratch_store_dwordx2 off, v[0:1], s33 offset:172 ; 8-byte Folded Spill
-	s_mov_b64 s[0:1], exec
-	v_writelane_b32 v22, s0, 36
-	s_nop 1
-	v_writelane_b32 v22, s1, 37
-	s_or_saveexec_b64 s[14:15], -1
-	scratch_store_dword off, v22, s33       ; 4-byte Folded Spill
-	s_mov_b64 exec, s[14:15]
-	s_and_b64 s[0:1], s[0:1], s[2:3]
-	s_mov_b64 exec, s[0:1]
-	s_cbranch_execz .LBB3_26
-.LBB3_23:                               ; =>This Inner Loop Header: Depth=1
-	s_or_saveexec_b64 s[14:15], -1
-	scratch_load_dword v22, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[14:15]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v22, 34
-	v_readlane_b32 s1, v22, 35
-	v_readlane_b32 s2, v22, 32
-	v_readlane_b32 s3, v22, 33
-	scratch_load_dwordx2 v[2:3], off, s33 offset:172 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[0:1], off, s33 offset:188 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[4:5], off, s33 offset:196 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[6:7], off, s33 offset:180 ; 8-byte Folded Reload
-	s_sleep 1
-	s_waitcnt vmcnt(0)
-	global_store_dwordx2 v[6:7], v[2:3], off
-	v_mov_b32_e32 v8, v3
-	v_mov_b32_e32 v9, v2
-	v_mov_b32_e32 v10, v5
-                                        ; kill: def $vgpr4 killed $vgpr4 def $vgpr4_vgpr5_vgpr6_vgpr7 killed $exec
-	v_mov_b32_e32 v5, v10
-	v_mov_b32_e32 v6, v9
-	v_mov_b32_e32 v7, v8
-	buffer_wbl2 sc0 sc1
-	s_waitcnt vmcnt(0)
-	global_atomic_cmpswap_x2 v[0:1], v[0:1], v[4:7], off sc0 sc1
-	s_waitcnt vmcnt(0)
-	v_cmp_eq_u64_e64 s[2:3], v[0:1], v[2:3]
-	s_or_b64 s[0:1], s[2:3], s[0:1]
-	s_nop 0
-	v_writelane_b32 v22, s2, 32
-	s_nop 1
-	v_writelane_b32 v22, s3, 33
-	s_mov_b64 s[2:3], s[0:1]
-	v_writelane_b32 v22, s2, 34
-	s_nop 1
-	v_writelane_b32 v22, s3, 35
-	scratch_store_dwordx2 off, v[0:1], s33 offset:172 ; 8-byte Folded Spill
-	s_mov_b64 s[2:3], s[0:1]
-	v_writelane_b32 v22, s2, 38
-	s_nop 1
-	v_writelane_b32 v22, s3, 39
-	s_or_saveexec_b64 s[14:15], -1
-	scratch_store_dword off, v22, s33       ; 4-byte Folded Spill
-	s_mov_b64 exec, s[14:15]
-	s_andn2_b64 exec, exec, s[0:1]
-	s_cbranch_execnz .LBB3_23
-; %bb.24:
-	s_or_saveexec_b64 s[14:15], -1
-	scratch_load_dword v22, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[14:15]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v22, 38
-	v_readlane_b32 s1, v22, 39
-	s_or_b64 exec, exec, s[0:1]
-; %bb.25:
-.LBB3_26:
-	s_or_saveexec_b64 s[14:15], -1
-	scratch_load_dword v22, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[14:15]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v22, 36
-	v_readlane_b32 s1, v22, 37
-	s_or_b64 exec, exec, s[0:1]
-.LBB3_27:
-	s_or_saveexec_b64 s[14:15], -1
-	scratch_load_dword v22, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[14:15]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v22, 30
-	v_readlane_b32 s1, v22, 31
-	s_or_b64 exec, exec, s[0:1]
-	scratch_load_dwordx2 v[4:5], off, s33 offset:156 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[2:3], off, s33 offset:164 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	v_mov_b32_e32 v0, v2
-	v_mov_b32_e32 v1, v3
-	v_mov_b32_e32 v2, v4
-	v_mov_b32_e32 v3, v5
-	v_readlane_b32 s30, v21, 0
-	v_readlane_b32 s31, v21, 1
-	s_mov_b32 s32, s33
-	s_xor_saveexec_b64 s[0:1], -1
-	scratch_load_dword v21, off, s33 offset:204 ; 4-byte Folded Reload
-	scratch_load_dword v22, off, s33 offset:208 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[0:1]
-	s_mov_b32 s33, s13
-	s_waitcnt vmcnt(0)
-	s_setpc_b64 s[30:31]
-.Lfunc_end3:
-	.size	__ockl_hostcall_internal, .Lfunc_end3-__ockl_hostcall_internal
+	v_mul_f32_e32 v9, v9, v9
+	global_store_dword v[7:8], v9, off
+	s_andn2_b64 exec, exec, s[6:7]
+	s_cbranch_execnz .LBB0_2
+.LBB0_3:
+	s_endpgm
+	.section	.rodata,"a",@progbits
+	.p2align	6, 0x0
+	.amdhsa_kernel _Z20vector_square_kernelIfEvPT_S1_y
+		.amdhsa_group_segment_fixed_size 0
+		.amdhsa_private_segment_fixed_size 0
+		.amdhsa_kernarg_size 280
+		.amdhsa_user_sgpr_count 6
+		.amdhsa_user_sgpr_private_segment_buffer 1
+		.amdhsa_user_sgpr_dispatch_ptr 0
+		.amdhsa_user_sgpr_queue_ptr 0
+		.amdhsa_user_sgpr_kernarg_segment_ptr 1
+		.amdhsa_user_sgpr_dispatch_id 0
+		.amdhsa_user_sgpr_flat_scratch_init 0
+		.amdhsa_user_sgpr_private_segment_size 0
+		.amdhsa_uses_dynamic_stack 0
+		.amdhsa_system_sgpr_private_segment_wavefront_offset 0
+		.amdhsa_system_sgpr_workgroup_id_x 1
+		.amdhsa_system_sgpr_workgroup_id_y 0
+		.amdhsa_system_sgpr_workgroup_id_z 0
+		.amdhsa_system_sgpr_workgroup_info 0
+		.amdhsa_system_vgpr_workitem_id 0
+		.amdhsa_next_free_vgpr 10
+		.amdhsa_next_free_sgpr 14
+		.amdhsa_reserve_vcc 1
+		.amdhsa_reserve_flat_scratch 0
+		.amdhsa_float_round_mode_32 0
+		.amdhsa_float_round_mode_16_64 0
+		.amdhsa_float_denorm_mode_32 3
+		.amdhsa_float_denorm_mode_16_64 3
+		.amdhsa_dx10_clamp 1
+		.amdhsa_ieee_mode 1
+		.amdhsa_fp16_overflow 0
+		.amdhsa_exception_fp_ieee_invalid_op 0
+		.amdhsa_exception_fp_denorm_src 0
+		.amdhsa_exception_fp_ieee_div_zero 0
+		.amdhsa_exception_fp_ieee_overflow 0
+		.amdhsa_exception_fp_ieee_underflow 0
+		.amdhsa_exception_fp_ieee_inexact 0
+		.amdhsa_exception_int_div_zero 0
+	.end_amdhsa_kernel
+	.section	.text._Z20vector_square_kernelIfEvPT_S1_y,"axG",@progbits,_Z20vector_square_kernelIfEvPT_S1_y,comdat
+.Lfunc_end0:
+	.size	_Z20vector_square_kernelIfEvPT_S1_y, .Lfunc_end0-_Z20vector_square_kernelIfEvPT_S1_y
                                         ; -- End function
-	.set .L__ockl_hostcall_internal.num_vgpr, max(23, .L__ockl_hsa_signal_add.num_vgpr)
-	.set .L__ockl_hostcall_internal.num_agpr, max(32, .L__ockl_hsa_signal_add.num_agpr)
-	.set .L__ockl_hostcall_internal.numbered_sgpr, max(34, .L__ockl_hsa_signal_add.numbered_sgpr)
-	.set .L__ockl_hostcall_internal.num_named_barrier, max(0, .L__ockl_hsa_signal_add.num_named_barrier)
-	.set .L__ockl_hostcall_internal.private_seg_size, 224+max(.L__ockl_hsa_signal_add.private_seg_size)
-	.set .L__ockl_hostcall_internal.uses_vcc, or(1, .L__ockl_hsa_signal_add.uses_vcc)
-	.set .L__ockl_hostcall_internal.uses_flat_scratch, or(0, .L__ockl_hsa_signal_add.uses_flat_scratch)
-	.set .L__ockl_hostcall_internal.has_dyn_sized_stack, or(0, .L__ockl_hsa_signal_add.has_dyn_sized_stack)
-	.set .L__ockl_hostcall_internal.has_recursion, or(0, .L__ockl_hsa_signal_add.has_recursion)
-	.set .L__ockl_hostcall_internal.has_indirect_call, or(0, .L__ockl_hsa_signal_add.has_indirect_call)
+	.set _Z20vector_square_kernelIfEvPT_S1_y.num_vgpr, 10
+	.set _Z20vector_square_kernelIfEvPT_S1_y.num_agpr, 0
+	.set _Z20vector_square_kernelIfEvPT_S1_y.numbered_sgpr, 14
+	.set _Z20vector_square_kernelIfEvPT_S1_y.num_named_barrier, 0
+	.set _Z20vector_square_kernelIfEvPT_S1_y.private_seg_size, 0
+	.set _Z20vector_square_kernelIfEvPT_S1_y.uses_vcc, 1
+	.set _Z20vector_square_kernelIfEvPT_S1_y.uses_flat_scratch, 0
+	.set _Z20vector_square_kernelIfEvPT_S1_y.has_dyn_sized_stack, 0
+	.set _Z20vector_square_kernelIfEvPT_S1_y.has_recursion, 0
+	.set _Z20vector_square_kernelIfEvPT_S1_y.has_indirect_call, 0
 	.section	.AMDGPU.csdata,"",@progbits
-; Function info:
-; codeLenInByte = 5084
-; TotalNumSgprs: 40
-; NumVgprs: 23
-; NumAgprs: 32
-; TotalNumVgprs: 56
-; ScratchSize: 276
-; MemoryBound: 0
-	.text
-	.p2align	2                               ; -- Begin function __ockl_hostcall_preview
-	.type	__ockl_hostcall_preview,@function
-__ockl_hostcall_preview:                ; @__ockl_hostcall_preview
-; %bb.0:
-	s_waitcnt vmcnt(0) expcnt(0) lgkmcnt(0)
-	s_mov_b32 s18, s33
-	s_mov_b32 s33, s32
-	s_xor_saveexec_b64 s[0:1], -1
-	scratch_store_dword off, v23, s33       ; 4-byte Folded Spill
-	s_mov_b64 exec, s[0:1]
-	s_add_i32 s32, s32, 8
-	v_writelane_b32 v23, s30, 0
-	s_nop 1
-	v_writelane_b32 v23, s31, 1
-	v_mov_b32_e32 v18, v16
-	v_mov_b32_e32 v17, v15
-	v_mov_b32_e32 v16, v14
-	v_mov_b32_e32 v15, v13
-	v_mov_b32_e32 v14, v12
-	v_mov_b32_e32 v13, v11
-	v_mov_b32_e32 v12, v10
-	v_mov_b32_e32 v11, v9
-	v_mov_b32_e32 v10, v8
-	v_mov_b32_e32 v9, v7
-	v_mov_b32_e32 v8, v6
-	v_mov_b32_e32 v7, v5
-	v_mov_b32_e32 v6, v4
-	v_mov_b32_e32 v5, v3
-	v_mov_b32_e32 v4, v2
-	v_mov_b32_e32 v3, v1
-	v_mov_b32_e32 v2, v0
-	s_getpc_b64 s[0:1]
-	s_add_u32 s0, s0, __oclc_ABI_version@rel32@lo+4
-	s_addc_u32 s1, s1, __oclc_ABI_version@rel32@hi+12
-	s_load_dword s0, s[0:1], 0x0
-	s_mov_b32 s1, 0x1f4
-	s_waitcnt lgkmcnt(0)
-	s_cmp_lt_i32 s0, s1
-	s_mov_b64 s[2:3], 0x50
-	s_mov_b32 s1, s3
-	s_mov_b64 s[16:17], 24
-	s_mov_b32 s0, s17
-	s_cselect_b32 s0, s0, s1
-                                        ; kill: def $sgpr2 killed $sgpr2 killed $sgpr2_sgpr3
-	s_mov_b32 s1, s16
-	s_cselect_b32 s16, s1, s2
-                                        ; kill: def $sgpr16 killed $sgpr16 def $sgpr16_sgpr17
-	s_mov_b32 s17, s0
-	s_mov_b32 s0, s8
-	s_mov_b32 s1, s9
-	s_mov_b32 s3, s16
-	s_mov_b32 s2, s17
-	s_add_u32 s0, s0, s3
-	s_addc_u32 s2, s1, s2
-                                        ; kill: def $sgpr0 killed $sgpr0 def $sgpr0_sgpr1
-	s_mov_b32 s1, s2
-	s_load_dwordx2 s[0:1], s[0:1], 0x0
-	s_waitcnt lgkmcnt(0)
-	s_mov_b32 s3, s0
-	s_mov_b32 s2, 32
-	s_lshr_b64 s[0:1], s[0:1], s2
-	s_mov_b32 s2, s0
-	s_getpc_b64 s[0:1]
-	s_add_u32 s0, s0, __ockl_hostcall_internal@rel32@lo+4
-	s_addc_u32 s1, s1, __ockl_hostcall_internal@rel32@hi+12
-	v_mov_b32_e32 v0, s3
-	v_mov_b32_e32 v1, s2
-	v_readlane_b32 s30, v23, 0
-	v_readlane_b32 s31, v23, 1
-	s_mov_b32 s32, s33
-	s_xor_saveexec_b64 s[2:3], -1
-	scratch_load_dword v23, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[2:3]
-	s_mov_b32 s33, s18
-	s_setpc_b64 s[0:1]
-.Lfunc_end4:
-	.size	__ockl_hostcall_preview, .Lfunc_end4-__ockl_hostcall_preview
-                                        ; -- End function
-	.set .L__ockl_hostcall_preview.num_vgpr, max(24, .L__ockl_hostcall_internal.num_vgpr)
-	.set .L__ockl_hostcall_preview.num_agpr, max(0, .L__ockl_hostcall_internal.num_agpr)
-	.set .L__ockl_hostcall_preview.numbered_sgpr, max(34, .L__ockl_hostcall_internal.numbered_sgpr)
-	.set .L__ockl_hostcall_preview.num_named_barrier, max(0, .L__ockl_hostcall_internal.num_named_barrier)
-	.set .L__ockl_hostcall_preview.private_seg_size, 8+max(.L__ockl_hostcall_internal.private_seg_size)
-	.set .L__ockl_hostcall_preview.uses_vcc, or(1, .L__ockl_hostcall_internal.uses_vcc)
-	.set .L__ockl_hostcall_preview.uses_flat_scratch, or(0, .L__ockl_hostcall_internal.uses_flat_scratch)
-	.set .L__ockl_hostcall_preview.has_dyn_sized_stack, or(0, .L__ockl_hostcall_internal.has_dyn_sized_stack)
-	.set .L__ockl_hostcall_preview.has_recursion, or(0, .L__ockl_hostcall_internal.has_recursion)
-	.set .L__ockl_hostcall_preview.has_indirect_call, or(0, .L__ockl_hostcall_internal.has_indirect_call)
-	.section	.AMDGPU.csdata,"",@progbits
-; Function info:
-; codeLenInByte = 328
-; TotalNumSgprs: 40
-; NumVgprs: 24
-; NumAgprs: 32
-; TotalNumVgprs: 56
-; ScratchSize: 284
-; MemoryBound: 0
-	.text
-	.p2align	2                               ; -- Begin function __ockl_fprintf_stderr_begin
-	.type	__ockl_fprintf_stderr_begin,@function
-__ockl_fprintf_stderr_begin:            ; @__ockl_fprintf_stderr_begin
-; %bb.0:
-	s_waitcnt vmcnt(0) expcnt(0) lgkmcnt(0)
-	s_mov_b32 s19, s33
-	s_mov_b32 s33, s32
-	s_xor_saveexec_b64 s[0:1], -1
-	scratch_store_dword off, v24, s33       ; 4-byte Folded Spill
-	s_mov_b64 exec, s[0:1]
-	s_add_i32 s32, s32, 16
-	v_writelane_b32 v24, s30, 0
-	s_nop 1
-	v_writelane_b32 v24, s31, 1
-	s_getpc_b64 s[0:1]
-	s_add_u32 s0, s0, __ockl_hostcall_preview@rel32@lo+4
-	s_addc_u32 s1, s1, __ockl_hostcall_preview@rel32@hi+12
-	v_mov_b32_e32 v0, 2
-	v_mov_b32_e32 v1, 33
-	v_mov_b32_e32 v3, 1
-	v_mov_b32_e32 v16, 0
-	v_mov_b32_e32 v2, v16
-	v_mov_b32_e32 v4, v16
-	v_mov_b32_e32 v5, v16
-	v_mov_b32_e32 v6, v16
-	v_mov_b32_e32 v7, v16
-	v_mov_b32_e32 v8, v16
-	v_mov_b32_e32 v9, v16
-	v_mov_b32_e32 v10, v16
-	v_mov_b32_e32 v11, v16
-	v_mov_b32_e32 v12, v16
-	v_mov_b32_e32 v13, v16
-	v_mov_b32_e32 v14, v16
-	v_mov_b32_e32 v15, v16
-	s_swappc_b64 s[30:31], s[0:1]
-                                        ; implicit-def: $sgpr0
-                                        ; implicit-def: $sgpr1
-	v_mov_b32_e32 v2, s0
-                                        ; kill: def $vgpr2 killed $vgpr2 def $vgpr2_vgpr3 killed $exec
-	v_mov_b32_e32 v3, v1
-	s_mov_b32 s0, 32
-	v_lshrrev_b64 v[2:3], s0, v[2:3]
-	v_mov_b32_e32 v1, v2
-	v_readlane_b32 s30, v24, 0
-	v_readlane_b32 s31, v24, 1
-	s_mov_b32 s32, s33
-	s_xor_saveexec_b64 s[0:1], -1
-	scratch_load_dword v24, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[0:1]
-	s_mov_b32 s33, s19
-	s_waitcnt vmcnt(0)
-	s_setpc_b64 s[30:31]
-.Lfunc_end5:
-	.size	__ockl_fprintf_stderr_begin, .Lfunc_end5-__ockl_fprintf_stderr_begin
-                                        ; -- End function
-	.set .L__ockl_fprintf_stderr_begin.num_vgpr, max(25, .L__ockl_hostcall_preview.num_vgpr)
-	.set .L__ockl_fprintf_stderr_begin.num_agpr, max(0, .L__ockl_hostcall_preview.num_agpr)
-	.set .L__ockl_fprintf_stderr_begin.numbered_sgpr, max(34, .L__ockl_hostcall_preview.numbered_sgpr)
-	.set .L__ockl_fprintf_stderr_begin.num_named_barrier, max(0, .L__ockl_hostcall_preview.num_named_barrier)
-	.set .L__ockl_fprintf_stderr_begin.private_seg_size, 16+max(.L__ockl_hostcall_preview.private_seg_size)
-	.set .L__ockl_fprintf_stderr_begin.uses_vcc, or(1, .L__ockl_hostcall_preview.uses_vcc)
-	.set .L__ockl_fprintf_stderr_begin.uses_flat_scratch, or(0, .L__ockl_hostcall_preview.uses_flat_scratch)
-	.set .L__ockl_fprintf_stderr_begin.has_dyn_sized_stack, or(0, .L__ockl_hostcall_preview.has_dyn_sized_stack)
-	.set .L__ockl_fprintf_stderr_begin.has_recursion, or(0, .L__ockl_hostcall_preview.has_recursion)
-	.set .L__ockl_fprintf_stderr_begin.has_indirect_call, or(0, .L__ockl_hostcall_preview.has_indirect_call)
-	.section	.AMDGPU.csdata,"",@progbits
-; Function info:
-; codeLenInByte = 216
-; TotalNumSgprs: 40
-; NumVgprs: 25
-; NumAgprs: 32
-; TotalNumVgprs: 60
-; ScratchSize: 300
-; MemoryBound: 0
-	.text
-	.p2align	2                               ; -- Begin function __ockl_fprintf_append_string_n
-	.type	__ockl_fprintf_append_string_n,@function
-__ockl_fprintf_append_string_n:         ; @__ockl_fprintf_append_string_n
-; %bb.0:
-	s_waitcnt vmcnt(0) expcnt(0) lgkmcnt(0)
-	s_mov_b32 s19, s33
-	s_mov_b32 s33, s32
-	s_xor_saveexec_b64 s[0:1], -1
-	scratch_store_dword off, v30, s33 offset:656 ; 4-byte Folded Spill
-	scratch_store_dword off, v34, s33 offset:660 ; 4-byte Folded Spill
-	scratch_store_dword off, v35, s33 offset:664 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[0:1]
-	s_add_i32 s32, s32, 0x2a0
-	v_writelane_b32 v30, s30, 0
-	s_nop 1
-	v_writelane_b32 v30, s31, 1
-	scratch_store_dword off, v31, s33 offset:44 ; 4-byte Folded Spill
-	scratch_store_dword off, v6, s33 offset:40 ; 4-byte Folded Spill
-	scratch_store_dword off, v5, s33 offset:36 ; 4-byte Folded Spill
-	v_mov_b32_e32 v7, v3
-	v_mov_b32_e32 v3, v2
-	scratch_load_dword v2, off, s33 offset:40 ; 4-byte Folded Reload
-	s_nop 0
-	scratch_store_dword off, v3, s33 offset:32 ; 4-byte Folded Spill
-	v_mov_b32_e32 v3, v1
-	scratch_load_dword v1, off, s33 offset:36 ; 4-byte Folded Reload
-	v_mov_b32_e32 v6, v0
-	scratch_load_dword v0, off, s33 offset:32 ; 4-byte Folded Reload
-                                        ; implicit-def: $vgpr35 : SGPR spill to VGPR lane
-	v_writelane_b32 v35, s15, 0
-	v_writelane_b32 v35, s14, 1
-	v_writelane_b32 v35, s13, 2
-	v_writelane_b32 v35, s12, 3
-	v_writelane_b32 v35, s10, 4
-	s_nop 1
-	v_writelane_b32 v35, s11, 5
-	v_writelane_b32 v35, s8, 6
-	s_nop 1
-	v_writelane_b32 v35, s9, 7
-	v_writelane_b32 v35, s6, 8
-	s_nop 1
-	v_writelane_b32 v35, s7, 9
-	v_writelane_b32 v35, s4, 10
-	s_nop 1
-	v_writelane_b32 v35, s5, 11
-                                        ; kill: def $vgpr4 killed $vgpr4 def $vgpr4_vgpr5 killed $exec
-	s_waitcnt vmcnt(1)
-	v_mov_b32_e32 v5, v1
-                                        ; kill: def $vgpr0 killed $vgpr0 def $vgpr0_vgpr1 killed $exec
-	v_mov_b32_e32 v1, v7
-                                        ; kill: def $vgpr6 killed $vgpr6 def $vgpr6_vgpr7 killed $exec
-	v_mov_b32_e32 v7, v3
-	scratch_store_dwordx2 off, v[4:5], s33 offset:24 ; 8-byte Folded Spill
-	s_waitcnt vmcnt(1)
-	v_mov_b64_e32 v[4:5], v[0:1]
-	scratch_store_dwordx2 off, v[4:5], s33 offset:16 ; 8-byte Folded Spill
-	s_mov_b32 s0, 0
-	v_cmp_eq_u32_e64 s[0:1], v2, s0
-	v_mov_b32_e32 v4, v7
-	s_mov_b64 s[2:3], 2
-	s_mov_b32 s4, s3
-	v_or_b32_e64 v2, v4, s4
-	v_mov_b32_e32 v3, v6
-                                        ; kill: def $sgpr2 killed $sgpr2 killed $sgpr2_sgpr3
-	v_or_b32_e64 v6, v3, s2
-                                        ; kill: def $vgpr6 killed $vgpr6 def $vgpr6_vgpr7 killed $exec
-	v_mov_b32_e32 v7, v2
-	v_mov_b32_e32 v2, v7
-	v_cndmask_b32_e64 v4, v2, v4, s[0:1]
-	v_mov_b32_e32 v2, v6
-	v_cndmask_b32_e64 v2, v2, v3, s[0:1]
-                                        ; kill: def $vgpr2 killed $vgpr2 def $vgpr2_vgpr3 killed $exec
-	v_mov_b32_e32 v3, v4
-	scratch_store_dwordx2 off, v[2:3], s33 offset:8 ; 8-byte Folded Spill
-	s_mov_b64 s[0:1], 0
-	v_cmp_ne_u64_e64 s[0:1], v[0:1], s[0:1]
-                                        ; implicit-def: $vgpr0_vgpr1_vgpr2_vgpr3
-	s_mov_b64 s[2:3], exec
-	s_and_b64 s[0:1], s[2:3], s[0:1]
-	s_xor_b64 s[2:3], s[0:1], s[2:3]
-	v_writelane_b32 v35, s2, 12
-	s_nop 1
-	v_writelane_b32 v35, s3, 13
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_store_dword off, v35, s33       ; 4-byte Folded Spill
-	s_mov_b64 exec, s[22:23]
-	s_mov_b64 exec, s[0:1]
-	s_cbranch_execz .LBB6_3
-	s_branch .LBB6_2
-.LBB6_1:
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s15, v35, 0
-	v_readlane_b32 s14, v35, 1
-	v_readlane_b32 s13, v35, 2
-	v_readlane_b32 s12, v35, 3
-	v_readlane_b32 s10, v35, 4
-	v_readlane_b32 s11, v35, 5
-	v_readlane_b32 s8, v35, 6
-	v_readlane_b32 s9, v35, 7
-	v_readlane_b32 s6, v35, 8
-	v_readlane_b32 s7, v35, 9
-	v_readlane_b32 s4, v35, 10
-	v_readlane_b32 s5, v35, 11
-	scratch_load_dword v31, off, s33 offset:44 ; 4-byte Folded Reload
-	scratch_load_dwordx2 v[2:3], off, s33 offset:8 ; 8-byte Folded Reload
-	s_mov_b32 s0, 0xffffff1f
-	s_mov_b32 s1, -1
-	s_mov_b32 s2, s1
-	s_waitcnt vmcnt(0)
-	v_mov_b32_e32 v0, v3
-	v_and_b32_e64 v4, v0, s2
-                                        ; kill: def $sgpr0 killed $sgpr0 killed $sgpr0_sgpr1
-	v_mov_b32_e32 v0, v2
-	v_and_b32_e64 v0, v0, s0
-                                        ; kill: def $vgpr0 killed $vgpr0 def $vgpr0_vgpr1 killed $exec
-	v_mov_b32_e32 v1, v4
-	v_mov_b32_e32 v4, v1
-	s_mov_b64 s[0:1], 32
-	s_mov_b32 s2, s1
-	v_or_b32_e64 v4, v4, s2
-                                        ; kill: def $vgpr0 killed $vgpr0 killed $vgpr0_vgpr1 killed $exec
-                                        ; kill: def $sgpr0 killed $sgpr0 killed $sgpr0_sgpr1
-	v_or_b32_e64 v0, v0, s0
-                                        ; kill: def $vgpr0 killed $vgpr0 def $vgpr0_vgpr1 killed $exec
-	v_mov_b32_e32 v1, v4
-	v_mov_b32_e32 v1, v0
-	s_mov_b32 s0, 32
-	v_lshrrev_b64 v[2:3], s0, v[2:3]
-                                        ; kill: def $vgpr2 killed $vgpr2 killed $vgpr2_vgpr3 killed $exec
-	s_getpc_b64 s[0:1]
-	s_add_u32 s0, s0, __ockl_hostcall_preview@rel32@lo+4
-	s_addc_u32 s1, s1, __ockl_hostcall_preview@rel32@hi+12
-	v_mov_b32_e32 v0, 2
-	v_mov_b32_e32 v16, 0
-	scratch_store_dword off, v16, s33 offset:64 ; 4-byte Folded Spill
-	v_mov_b32_e32 v3, v16
-	v_mov_b32_e32 v4, v16
-	v_mov_b32_e32 v5, v16
-	v_mov_b32_e32 v6, v16
-	v_mov_b32_e32 v7, v16
-	v_mov_b32_e32 v8, v16
-	v_mov_b32_e32 v9, v16
-	v_mov_b32_e32 v10, v16
-	v_mov_b32_e32 v11, v16
-	v_mov_b32_e32 v12, v16
-	v_mov_b32_e32 v13, v16
-	v_mov_b32_e32 v14, v16
-	v_mov_b32_e32 v15, v16
-	s_swappc_b64 s[30:31], s[0:1]
-	v_mov_b32_e32 v6, v1
-	v_mov_b32_e32 v5, v2
-	v_mov_b32_e32 v4, v3
-                                        ; kill: def $vgpr0 killed $vgpr0 def $vgpr0_vgpr1_vgpr2_vgpr3 killed $exec
-	v_mov_b32_e32 v1, v6
-	v_mov_b32_e32 v2, v5
-	v_mov_b32_e32 v3, v4
-	scratch_store_dwordx4 off, v[0:3], s33 offset:48 ; 16-byte Folded Spill
-	s_branch .LBB6_63
-.LBB6_2:
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	scratch_load_dwordx2 v[4:5], off, s33 offset:16 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[6:7], off, s33 offset:24 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[2:3], off, s33 offset:8 ; 8-byte Folded Reload
-	s_mov_b64 s[0:1], 2
-	s_mov_b32 s2, s1
-	s_waitcnt vmcnt(0)
-	v_mov_b32_e32 v1, v3
-	v_and_b32_e64 v8, v1, s2
-                                        ; kill: def $sgpr0 killed $sgpr0 killed $sgpr0_sgpr1
-	v_mov_b32_e32 v0, v2
-	v_and_b32_e64 v2, v0, s0
-                                        ; kill: def $vgpr2 killed $vgpr2 def $vgpr2_vgpr3 killed $exec
-	v_mov_b32_e32 v3, v8
-	scratch_store_dwordx2 off, v[2:3], s33 offset:100 ; 8-byte Folded Spill
-	s_mov_b64 s[0:1], -3
-	s_mov_b32 s2, s1
-	v_and_b32_e64 v2, v1, s2
-                                        ; kill: def $sgpr0 killed $sgpr0 killed $sgpr0_sgpr1
-	v_and_b32_e64 v0, v0, s0
-                                        ; kill: def $vgpr0 killed $vgpr0 def $vgpr0_vgpr1 killed $exec
-	v_mov_b32_e32 v1, v2
-	v_mov_b32_e32 v10, v1
-                                        ; kill: def $vgpr0 killed $vgpr0 killed $vgpr0_vgpr1 killed $exec
-	s_mov_b64 s[0:1], 0
-	s_mov_b32 s2, s1
-	s_mov_b32 s3, s0
-	v_mov_b32_e32 v9, s3
-	v_mov_b32_e32 v8, s2
-                                        ; kill: def $vgpr0 killed $vgpr0 def $vgpr0_vgpr1_vgpr2_vgpr3 killed $exec
-	v_mov_b32_e32 v1, v10
-	v_mov_b32_e32 v2, v9
-	v_mov_b32_e32 v3, v8
-	v_writelane_b32 v35, s0, 14
-	s_nop 1
-	v_writelane_b32 v35, s1, 15
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_store_dword off, v35, s33       ; 4-byte Folded Spill
-	s_mov_b64 exec, s[22:23]
-	scratch_store_dwordx2 off, v[6:7], s33 offset:92 ; 8-byte Folded Spill
-	scratch_store_dwordx2 off, v[4:5], s33 offset:84 ; 8-byte Folded Spill
-	scratch_store_dwordx4 off, v[0:3], s33 offset:68 ; 16-byte Folded Spill
-	s_branch .LBB6_4
-.LBB6_3:
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 12
-	v_readlane_b32 s1, v35, 13
-	s_or_saveexec_b64 s[0:1], s[0:1]
-	scratch_load_dwordx4 v[0:3], off, s33 offset:108 ; 16-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx4 off, v[0:3], s33 offset:48 ; 16-byte Folded Spill
-	s_and_b64 s[0:1], exec, s[0:1]
-	v_writelane_b32 v35, s0, 16
-	s_nop 1
-	v_writelane_b32 v35, s1, 17
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_store_dword off, v35, s33       ; 4-byte Folded Spill
-	s_mov_b64 exec, s[22:23]
-	s_xor_b64 exec, exec, s[0:1]
-	s_cbranch_execz .LBB6_63
-	s_branch .LBB6_1
-.LBB6_4:                                ; =>This Loop Header: Depth=1
-                                        ;     Child Loop BB6_8 Depth 2
-                                        ;     Child Loop BB6_16 Depth 2
-                                        ;     Child Loop BB6_24 Depth 2
-                                        ;     Child Loop BB6_32 Depth 2
-                                        ;     Child Loop BB6_40 Depth 2
-                                        ;     Child Loop BB6_48 Depth 2
-                                        ;     Child Loop BB6_56 Depth 2
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 14
-	v_readlane_b32 s1, v35, 15
-	scratch_load_dwordx2 v[4:5], off, s33 offset:100 ; 8-byte Folded Reload
-	scratch_load_dwordx4 v[10:13], off, s33 offset:68 ; 16-byte Folded Reload
-	scratch_load_dwordx2 v[2:3], off, s33 offset:92 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[0:1], off, s33 offset:84 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx2 off, v[0:1], s33 offset:168 ; 8-byte Folded Spill
-	scratch_store_dwordx2 off, v[2:3], s33 offset:160 ; 8-byte Folded Spill
-	v_writelane_b32 v35, s0, 18
-	s_nop 1
-	v_writelane_b32 v35, s1, 19
-	s_mov_b64 s[4:5], 56
-	v_cmp_gt_u64_e64 s[0:1], v[2:3], s[4:5]
-	v_mov_b32_e32 v8, v11
-	v_mov_b32_e32 v6, v10
-                                        ; kill: def $vgpr6 killed $vgpr6 def $vgpr6_vgpr7 killed $exec
-	v_mov_b32_e32 v7, v8
-	scratch_store_dwordx2 off, v[6:7], s33 offset:152 ; 8-byte Folded Spill
-	v_cmp_lt_u64_e64 s[2:3], v[2:3], s[4:5]
-	v_mov_b32_e32 v7, v3
-	s_mov_b32 s6, s5
-	v_mov_b32_e32 v6, s6
-	v_cndmask_b32_e64 v8, v6, v7, s[2:3]
-	v_mov_b32_e32 v7, v2
-                                        ; kill: def $sgpr4 killed $sgpr4 killed $sgpr4_sgpr5
-	v_mov_b32_e32 v6, s4
-	v_cndmask_b32_e64 v6, v6, v7, s[2:3]
-	scratch_store_dword off, v6, s33 offset:148 ; 4-byte Folded Spill
-                                        ; kill: def $vgpr6 killed $vgpr6 def $vgpr6_vgpr7 killed $exec
-	v_mov_b32_e32 v7, v8
-	scratch_store_dwordx2 off, v[6:7], s33 offset:140 ; 8-byte Folded Spill
-	s_mov_b64 s[2:3], 0
-	s_mov_b32 s4, s3
-	v_mov_b32_e32 v6, v5
-	v_mov_b32_e32 v7, s4
-	v_cndmask_b32_e64 v6, v6, v7, s[0:1]
-                                        ; kill: def $sgpr2 killed $sgpr2 killed $sgpr2_sgpr3
-	v_mov_b32_e32 v5, s2
-	v_cndmask_b32_e64 v4, v4, v5, s[0:1]
-                                        ; kill: def $vgpr4 killed $vgpr4 def $vgpr4_vgpr5 killed $exec
-	v_mov_b32_e32 v5, v6
-	scratch_store_dwordx2 off, v[4:5], s33 offset:132 ; 8-byte Folded Spill
-	s_mov_b64 s[2:3], 8
-	v_cmp_lt_u64_e64 s[0:1], v[2:3], s[2:3]
-	v_lshl_add_u64 v[0:1], v[0:1], 0, s[2:3]
-                                        ; implicit-def: $vgpr2_vgpr3
-	scratch_store_dwordx2 off, v[0:1], s33 offset:124 ; 8-byte Folded Spill
-	s_mov_b64 s[2:3], exec
-	s_and_b64 s[0:1], s[2:3], s[0:1]
-	s_xor_b64 s[2:3], s[0:1], s[2:3]
-	v_writelane_b32 v35, s2, 20
-	s_nop 1
-	v_writelane_b32 v35, s3, 21
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_store_dword off, v35, s33       ; 4-byte Folded Spill
-	s_mov_b64 exec, s[22:23]
-	s_mov_b64 exec, s[0:1]
-	s_cbranch_execz .LBB6_6
-; %bb.5:                                ;   in Loop: Header=BB6_4 Depth=1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	scratch_load_dwordx2 v[0:1], off, s33 offset:160 ; 8-byte Folded Reload
-	s_mov_b64 s[4:5], 0
-	s_waitcnt vmcnt(0)
-	v_cmp_ne_u64_e64 s[2:3], v[0:1], s[4:5]
-	s_mov_b32 s0, 0
-	v_mov_b64_e32 v[2:3], 0
-	v_mov_b64_e32 v[0:1], 0
-	v_writelane_b32 v35, s4, 22
-	s_nop 1
-	v_writelane_b32 v35, s5, 23
-	v_writelane_b32 v35, s0, 24
-	scratch_store_dwordx2 off, v[2:3], s33 offset:184 ; 8-byte Folded Spill
-	scratch_store_dwordx2 off, v[0:1], s33 offset:176 ; 8-byte Folded Spill
-	s_mov_b64 s[0:1], exec
-	v_writelane_b32 v35, s0, 25
-	s_nop 1
-	v_writelane_b32 v35, s1, 26
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_store_dword off, v35, s33       ; 4-byte Folded Spill
-	s_mov_b64 exec, s[22:23]
-	s_and_b64 s[0:1], s[0:1], s[2:3]
-	s_mov_b64 exec, s[0:1]
-	s_cbranch_execz .LBB6_11
-	s_branch .LBB6_8
-.LBB6_6:                                ;   in Loop: Header=BB6_4 Depth=1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 20
-	v_readlane_b32 s1, v35, 21
-	s_or_saveexec_b64 s[0:1], s[0:1]
-	scratch_load_dwordx2 v[0:1], off, s33 offset:212 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[2:3], off, s33 offset:124 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx2 off, v[2:3], s33 offset:204 ; 8-byte Folded Spill
-	v_mov_b32_e32 v2, 0
-	scratch_store_dword off, v2, s33 offset:200 ; 4-byte Folded Spill
-	scratch_store_dwordx2 off, v[0:1], s33 offset:192 ; 8-byte Folded Spill
-	s_and_b64 s[0:1], exec, s[0:1]
-	v_writelane_b32 v35, s0, 27
-	s_nop 1
-	v_writelane_b32 v35, s1, 28
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_store_dword off, v35, s33       ; 4-byte Folded Spill
-	s_mov_b64 exec, s[22:23]
-	s_xor_b64 exec, exec, s[0:1]
-	s_cbranch_execz .LBB6_12
-; %bb.7:                                ;   in Loop: Header=BB6_4 Depth=1
-	scratch_load_dword v2, off, s33 offset:148 ; 4-byte Folded Reload
-	scratch_load_dwordx2 v[0:1], off, s33 offset:168 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	flat_load_dwordx2 v[0:1], v[0:1]
-	s_mov_b32 s0, -8
-	v_add_u32_e64 v2, v2, s0
-	scratch_store_dword off, v2, s33 offset:200 ; 4-byte Folded Spill
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	scratch_store_dwordx2 off, v[0:1], s33 offset:192 ; 8-byte Folded Spill
-	s_branch .LBB6_12
-.LBB6_8:                                ;   Parent Loop BB6_4 Depth=1
-                                        ; =>  This Inner Loop Header: Depth=2
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 24
-	v_readlane_b32 s4, v35, 22
-	v_readlane_b32 s5, v35, 23
-	scratch_load_dwordx2 v[4:5], off, s33 offset:184 ; 8-byte Folded Reload
-	scratch_load_dword v2, off, s33 offset:148 ; 4-byte Folded Reload
-	scratch_load_dwordx2 v[0:1], off, s33 offset:168 ; 8-byte Folded Reload
-	s_mov_b32 s1, 0
-	s_mov_b32 s2, s0
-	s_mov_b32 s3, s1
-	s_waitcnt vmcnt(0)
-	v_lshl_add_u64 v[0:1], v[0:1], 0, s[2:3]
-	flat_load_ubyte v0, v[0:1]
-	s_mov_b32 s2, 0xffff
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	v_and_b32_e64 v0, s2, v0
-                                        ; kill: def $vgpr0 killed $vgpr0 def $vgpr0_vgpr1 killed $exec
-	v_mov_b32_e32 v1, s1
-	s_mov_b32 s1, 3
-	s_lshl_b32 s1, s0, s1
-	v_lshlrev_b64 v[0:1], s1, v[0:1]
-	v_mov_b32_e32 v3, v1
-	v_mov_b32_e32 v6, v5
-	v_or_b32_e64 v3, v3, v6
-                                        ; kill: def $vgpr0 killed $vgpr0 killed $vgpr0_vgpr1 killed $exec
-	v_mov_b32_e32 v1, v4
-	v_or_b32_e64 v0, v0, v1
-                                        ; kill: def $vgpr0 killed $vgpr0 def $vgpr0_vgpr1 killed $exec
-	v_mov_b32_e32 v1, v3
-	s_mov_b32 s1, 1
-	s_add_i32 s2, s0, s1
-	v_cmp_eq_u32_e64 s[0:1], s2, v2
-	s_or_b64 s[0:1], s[0:1], s[4:5]
-	s_mov_b64 s[4:5], s[0:1]
-	v_writelane_b32 v35, s4, 22
-	s_nop 1
-	v_writelane_b32 v35, s5, 23
-	v_writelane_b32 v35, s2, 24
-	v_mov_b64_e32 v[2:3], v[0:1]
-	scratch_store_dwordx2 off, v[2:3], s33 offset:184 ; 8-byte Folded Spill
-	scratch_store_dwordx2 off, v[0:1], s33 offset:220 ; 8-byte Folded Spill
-	s_mov_b64 s[2:3], s[0:1]
-	v_writelane_b32 v35, s2, 29
-	s_nop 1
-	v_writelane_b32 v35, s3, 30
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_store_dword off, v35, s33       ; 4-byte Folded Spill
-	s_mov_b64 exec, s[22:23]
-	s_andn2_b64 exec, exec, s[0:1]
-	s_cbranch_execnz .LBB6_8
-; %bb.9:                                ;   in Loop: Header=BB6_4 Depth=1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 29
-	v_readlane_b32 s1, v35, 30
-	s_or_b64 exec, exec, s[0:1]
-; %bb.10:                               ;   in Loop: Header=BB6_4 Depth=1
-	scratch_load_dwordx2 v[0:1], off, s33 offset:220 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx2 off, v[0:1], s33 offset:176 ; 8-byte Folded Spill
-.LBB6_11:                               ;   in Loop: Header=BB6_4 Depth=1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 25
-	v_readlane_b32 s1, v35, 26
-	s_or_b64 exec, exec, s[0:1]
-	scratch_load_dwordx2 v[0:1], off, s33 offset:168 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[2:3], off, s33 offset:176 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx2 off, v[2:3], s33 offset:212 ; 8-byte Folded Spill
-	scratch_store_dwordx2 off, v[0:1], s33 offset:124 ; 8-byte Folded Spill
-	s_branch .LBB6_6
-.LBB6_12:                               ;   in Loop: Header=BB6_4 Depth=1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 27
-	v_readlane_b32 s1, v35, 28
-	s_or_b64 exec, exec, s[0:1]
-	scratch_load_dwordx2 v[0:1], off, s33 offset:204 ; 8-byte Folded Reload
-	scratch_load_dword v2, off, s33 offset:200 ; 4-byte Folded Reload
-	scratch_load_dwordx2 v[4:5], off, s33 offset:192 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx2 off, v[4:5], s33 offset:240 ; 8-byte Folded Spill
-	scratch_store_dword off, v2, s33 offset:236 ; 4-byte Folded Spill
-	s_mov_b32 s0, 8
-	v_cmp_lt_u32_e64 s[0:1], v2, s0
-	s_mov_b64 s[2:3], 8
-	v_lshl_add_u64 v[0:1], v[0:1], 0, s[2:3]
-                                        ; implicit-def: $vgpr2_vgpr3
-	scratch_store_dwordx2 off, v[0:1], s33 offset:228 ; 8-byte Folded Spill
-	s_mov_b64 s[2:3], exec
-	s_and_b64 s[0:1], s[2:3], s[0:1]
-	s_xor_b64 s[2:3], s[0:1], s[2:3]
-	v_writelane_b32 v35, s2, 31
-	s_nop 1
-	v_writelane_b32 v35, s3, 32
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_store_dword off, v35, s33       ; 4-byte Folded Spill
-	s_mov_b64 exec, s[22:23]
-	s_mov_b64 exec, s[0:1]
-	s_cbranch_execz .LBB6_14
-; %bb.13:                               ;   in Loop: Header=BB6_4 Depth=1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	scratch_load_dword v0, off, s33 offset:236 ; 4-byte Folded Reload
-	s_mov_b32 s0, 0
-	s_waitcnt vmcnt(0)
-	v_cmp_ne_u32_e64 s[2:3], v0, s0
-	s_mov_b64 s[4:5], 0
-	v_mov_b64_e32 v[2:3], 0
-	v_mov_b64_e32 v[0:1], 0
-	v_writelane_b32 v35, s4, 33
-	s_nop 1
-	v_writelane_b32 v35, s5, 34
-	v_writelane_b32 v35, s0, 35
-	scratch_store_dwordx2 off, v[2:3], s33 offset:256 ; 8-byte Folded Spill
-	scratch_store_dwordx2 off, v[0:1], s33 offset:248 ; 8-byte Folded Spill
-	s_mov_b64 s[0:1], exec
-	v_writelane_b32 v35, s0, 36
-	s_nop 1
-	v_writelane_b32 v35, s1, 37
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_store_dword off, v35, s33       ; 4-byte Folded Spill
-	s_mov_b64 exec, s[22:23]
-	s_and_b64 s[0:1], s[0:1], s[2:3]
-	s_mov_b64 exec, s[0:1]
-	s_cbranch_execz .LBB6_19
-	s_branch .LBB6_16
-.LBB6_14:                               ;   in Loop: Header=BB6_4 Depth=1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 31
-	v_readlane_b32 s1, v35, 32
-	s_or_saveexec_b64 s[0:1], s[0:1]
-	scratch_load_dwordx2 v[0:1], off, s33 offset:284 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[2:3], off, s33 offset:228 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx2 off, v[2:3], s33 offset:276 ; 8-byte Folded Spill
-	v_mov_b32_e32 v2, 0
-	scratch_store_dword off, v2, s33 offset:272 ; 4-byte Folded Spill
-	scratch_store_dwordx2 off, v[0:1], s33 offset:264 ; 8-byte Folded Spill
-	s_and_b64 s[0:1], exec, s[0:1]
-	v_writelane_b32 v35, s0, 38
-	s_nop 1
-	v_writelane_b32 v35, s1, 39
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_store_dword off, v35, s33       ; 4-byte Folded Spill
-	s_mov_b64 exec, s[22:23]
-	s_xor_b64 exec, exec, s[0:1]
-	s_cbranch_execz .LBB6_20
-; %bb.15:                               ;   in Loop: Header=BB6_4 Depth=1
-	scratch_load_dword v2, off, s33 offset:236 ; 4-byte Folded Reload
-	scratch_load_dwordx2 v[0:1], off, s33 offset:204 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	flat_load_dwordx2 v[0:1], v[0:1]
-	s_mov_b32 s0, -8
-	v_add_u32_e64 v2, v2, s0
-	scratch_store_dword off, v2, s33 offset:272 ; 4-byte Folded Spill
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	scratch_store_dwordx2 off, v[0:1], s33 offset:264 ; 8-byte Folded Spill
-	s_branch .LBB6_20
-.LBB6_16:                               ;   Parent Loop BB6_4 Depth=1
-                                        ; =>  This Inner Loop Header: Depth=2
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 35
-	v_readlane_b32 s4, v35, 33
-	v_readlane_b32 s5, v35, 34
-	scratch_load_dwordx2 v[4:5], off, s33 offset:256 ; 8-byte Folded Reload
-	scratch_load_dword v2, off, s33 offset:236 ; 4-byte Folded Reload
-	scratch_load_dwordx2 v[0:1], off, s33 offset:204 ; 8-byte Folded Reload
-	s_mov_b32 s1, 0
-	s_mov_b32 s2, s0
-	s_mov_b32 s3, s1
-	s_waitcnt vmcnt(0)
-	v_lshl_add_u64 v[0:1], v[0:1], 0, s[2:3]
-	flat_load_ubyte v0, v[0:1]
-	s_mov_b32 s2, 0xffff
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	v_and_b32_e64 v0, s2, v0
-                                        ; kill: def $vgpr0 killed $vgpr0 def $vgpr0_vgpr1 killed $exec
-	v_mov_b32_e32 v1, s1
-	s_mov_b32 s1, 3
-	s_lshl_b32 s1, s0, s1
-	v_lshlrev_b64 v[0:1], s1, v[0:1]
-	v_mov_b32_e32 v3, v1
-	v_mov_b32_e32 v6, v5
-	v_or_b32_e64 v3, v3, v6
-                                        ; kill: def $vgpr0 killed $vgpr0 killed $vgpr0_vgpr1 killed $exec
-	v_mov_b32_e32 v1, v4
-	v_or_b32_e64 v0, v0, v1
-                                        ; kill: def $vgpr0 killed $vgpr0 def $vgpr0_vgpr1 killed $exec
-	v_mov_b32_e32 v1, v3
-	s_mov_b32 s1, 1
-	s_add_i32 s2, s0, s1
-	v_cmp_eq_u32_e64 s[0:1], s2, v2
-	s_or_b64 s[0:1], s[0:1], s[4:5]
-	s_mov_b64 s[4:5], s[0:1]
-	v_writelane_b32 v35, s4, 33
-	s_nop 1
-	v_writelane_b32 v35, s5, 34
-	v_writelane_b32 v35, s2, 35
-	v_mov_b64_e32 v[2:3], v[0:1]
-	scratch_store_dwordx2 off, v[2:3], s33 offset:256 ; 8-byte Folded Spill
-	scratch_store_dwordx2 off, v[0:1], s33 offset:292 ; 8-byte Folded Spill
-	s_mov_b64 s[2:3], s[0:1]
-	v_writelane_b32 v35, s2, 40
-	s_nop 1
-	v_writelane_b32 v35, s3, 41
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_store_dword off, v35, s33       ; 4-byte Folded Spill
-	s_mov_b64 exec, s[22:23]
-	s_andn2_b64 exec, exec, s[0:1]
-	s_cbranch_execnz .LBB6_16
-; %bb.17:                               ;   in Loop: Header=BB6_4 Depth=1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 40
-	v_readlane_b32 s1, v35, 41
-	s_or_b64 exec, exec, s[0:1]
-; %bb.18:                               ;   in Loop: Header=BB6_4 Depth=1
-	scratch_load_dwordx2 v[0:1], off, s33 offset:292 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx2 off, v[0:1], s33 offset:248 ; 8-byte Folded Spill
-.LBB6_19:                               ;   in Loop: Header=BB6_4 Depth=1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 36
-	v_readlane_b32 s1, v35, 37
-	s_or_b64 exec, exec, s[0:1]
-	scratch_load_dwordx2 v[0:1], off, s33 offset:204 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[2:3], off, s33 offset:248 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx2 off, v[2:3], s33 offset:284 ; 8-byte Folded Spill
-	scratch_store_dwordx2 off, v[0:1], s33 offset:228 ; 8-byte Folded Spill
-	s_branch .LBB6_14
-.LBB6_20:                               ;   in Loop: Header=BB6_4 Depth=1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 38
-	v_readlane_b32 s1, v35, 39
-	s_or_b64 exec, exec, s[0:1]
-	scratch_load_dwordx2 v[0:1], off, s33 offset:276 ; 8-byte Folded Reload
-	scratch_load_dword v2, off, s33 offset:272 ; 4-byte Folded Reload
-	scratch_load_dwordx2 v[4:5], off, s33 offset:264 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx2 off, v[4:5], s33 offset:312 ; 8-byte Folded Spill
-	scratch_store_dword off, v2, s33 offset:308 ; 4-byte Folded Spill
-	s_mov_b32 s0, 8
-	v_cmp_lt_u32_e64 s[0:1], v2, s0
-	s_mov_b64 s[2:3], 8
-	v_lshl_add_u64 v[0:1], v[0:1], 0, s[2:3]
-                                        ; implicit-def: $vgpr2_vgpr3
-	scratch_store_dwordx2 off, v[0:1], s33 offset:300 ; 8-byte Folded Spill
-	s_mov_b64 s[2:3], exec
-	s_and_b64 s[0:1], s[2:3], s[0:1]
-	s_xor_b64 s[2:3], s[0:1], s[2:3]
-	v_writelane_b32 v35, s2, 42
-	s_nop 1
-	v_writelane_b32 v35, s3, 43
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_store_dword off, v35, s33       ; 4-byte Folded Spill
-	s_mov_b64 exec, s[22:23]
-	s_mov_b64 exec, s[0:1]
-	s_cbranch_execz .LBB6_22
-; %bb.21:                               ;   in Loop: Header=BB6_4 Depth=1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	scratch_load_dword v0, off, s33 offset:308 ; 4-byte Folded Reload
-	s_mov_b32 s0, 0
-	s_waitcnt vmcnt(0)
-	v_cmp_ne_u32_e64 s[2:3], v0, s0
-	s_mov_b64 s[4:5], 0
-	v_mov_b64_e32 v[2:3], 0
-	v_mov_b64_e32 v[0:1], 0
-	v_writelane_b32 v35, s4, 44
-	s_nop 1
-	v_writelane_b32 v35, s5, 45
-	v_writelane_b32 v35, s0, 46
-	scratch_store_dwordx2 off, v[2:3], s33 offset:328 ; 8-byte Folded Spill
-	scratch_store_dwordx2 off, v[0:1], s33 offset:320 ; 8-byte Folded Spill
-	s_mov_b64 s[0:1], exec
-	v_writelane_b32 v35, s0, 47
-	s_nop 1
-	v_writelane_b32 v35, s1, 48
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_store_dword off, v35, s33       ; 4-byte Folded Spill
-	s_mov_b64 exec, s[22:23]
-	s_and_b64 s[0:1], s[0:1], s[2:3]
-	s_mov_b64 exec, s[0:1]
-	s_cbranch_execz .LBB6_27
-	s_branch .LBB6_24
-.LBB6_22:                               ;   in Loop: Header=BB6_4 Depth=1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 42
-	v_readlane_b32 s1, v35, 43
-	s_or_saveexec_b64 s[0:1], s[0:1]
-	scratch_load_dwordx2 v[0:1], off, s33 offset:356 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[2:3], off, s33 offset:300 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx2 off, v[2:3], s33 offset:348 ; 8-byte Folded Spill
-	v_mov_b32_e32 v2, 0
-	scratch_store_dword off, v2, s33 offset:344 ; 4-byte Folded Spill
-	scratch_store_dwordx2 off, v[0:1], s33 offset:336 ; 8-byte Folded Spill
-	s_and_b64 s[0:1], exec, s[0:1]
-	v_writelane_b32 v35, s0, 49
-	s_nop 1
-	v_writelane_b32 v35, s1, 50
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_store_dword off, v35, s33       ; 4-byte Folded Spill
-	s_mov_b64 exec, s[22:23]
-	s_xor_b64 exec, exec, s[0:1]
-	s_cbranch_execz .LBB6_28
-; %bb.23:                               ;   in Loop: Header=BB6_4 Depth=1
-	scratch_load_dword v2, off, s33 offset:308 ; 4-byte Folded Reload
-	scratch_load_dwordx2 v[0:1], off, s33 offset:276 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	flat_load_dwordx2 v[0:1], v[0:1]
-	s_mov_b32 s0, -8
-	v_add_u32_e64 v2, v2, s0
-	scratch_store_dword off, v2, s33 offset:344 ; 4-byte Folded Spill
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	scratch_store_dwordx2 off, v[0:1], s33 offset:336 ; 8-byte Folded Spill
-	s_branch .LBB6_28
-.LBB6_24:                               ;   Parent Loop BB6_4 Depth=1
-                                        ; =>  This Inner Loop Header: Depth=2
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 46
-	v_readlane_b32 s4, v35, 44
-	v_readlane_b32 s5, v35, 45
-	scratch_load_dwordx2 v[4:5], off, s33 offset:328 ; 8-byte Folded Reload
-	scratch_load_dword v2, off, s33 offset:308 ; 4-byte Folded Reload
-	scratch_load_dwordx2 v[0:1], off, s33 offset:276 ; 8-byte Folded Reload
-	s_mov_b32 s1, 0
-	s_mov_b32 s2, s0
-	s_mov_b32 s3, s1
-	s_waitcnt vmcnt(0)
-	v_lshl_add_u64 v[0:1], v[0:1], 0, s[2:3]
-	flat_load_ubyte v0, v[0:1]
-	s_mov_b32 s2, 0xffff
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	v_and_b32_e64 v0, s2, v0
-                                        ; kill: def $vgpr0 killed $vgpr0 def $vgpr0_vgpr1 killed $exec
-	v_mov_b32_e32 v1, s1
-	s_mov_b32 s1, 3
-	s_lshl_b32 s1, s0, s1
-	v_lshlrev_b64 v[0:1], s1, v[0:1]
-	v_mov_b32_e32 v3, v1
-	v_mov_b32_e32 v6, v5
-	v_or_b32_e64 v3, v3, v6
-                                        ; kill: def $vgpr0 killed $vgpr0 killed $vgpr0_vgpr1 killed $exec
-	v_mov_b32_e32 v1, v4
-	v_or_b32_e64 v0, v0, v1
-                                        ; kill: def $vgpr0 killed $vgpr0 def $vgpr0_vgpr1 killed $exec
-	v_mov_b32_e32 v1, v3
-	s_mov_b32 s1, 1
-	s_add_i32 s2, s0, s1
-	v_cmp_eq_u32_e64 s[0:1], s2, v2
-	s_or_b64 s[0:1], s[0:1], s[4:5]
-	s_mov_b64 s[4:5], s[0:1]
-	v_writelane_b32 v35, s4, 44
-	s_nop 1
-	v_writelane_b32 v35, s5, 45
-	v_writelane_b32 v35, s2, 46
-	v_mov_b64_e32 v[2:3], v[0:1]
-	scratch_store_dwordx2 off, v[2:3], s33 offset:328 ; 8-byte Folded Spill
-	scratch_store_dwordx2 off, v[0:1], s33 offset:364 ; 8-byte Folded Spill
-	s_mov_b64 s[2:3], s[0:1]
-	v_writelane_b32 v35, s2, 51
-	s_nop 1
-	v_writelane_b32 v35, s3, 52
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_store_dword off, v35, s33       ; 4-byte Folded Spill
-	s_mov_b64 exec, s[22:23]
-	s_andn2_b64 exec, exec, s[0:1]
-	s_cbranch_execnz .LBB6_24
-; %bb.25:                               ;   in Loop: Header=BB6_4 Depth=1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 51
-	v_readlane_b32 s1, v35, 52
-	s_or_b64 exec, exec, s[0:1]
-; %bb.26:                               ;   in Loop: Header=BB6_4 Depth=1
-	scratch_load_dwordx2 v[0:1], off, s33 offset:364 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx2 off, v[0:1], s33 offset:320 ; 8-byte Folded Spill
-.LBB6_27:                               ;   in Loop: Header=BB6_4 Depth=1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 47
-	v_readlane_b32 s1, v35, 48
-	s_or_b64 exec, exec, s[0:1]
-	scratch_load_dwordx2 v[0:1], off, s33 offset:276 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[2:3], off, s33 offset:320 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx2 off, v[2:3], s33 offset:356 ; 8-byte Folded Spill
-	scratch_store_dwordx2 off, v[0:1], s33 offset:300 ; 8-byte Folded Spill
-	s_branch .LBB6_22
-.LBB6_28:                               ;   in Loop: Header=BB6_4 Depth=1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 49
-	v_readlane_b32 s1, v35, 50
-	s_or_b64 exec, exec, s[0:1]
-	scratch_load_dwordx2 v[0:1], off, s33 offset:348 ; 8-byte Folded Reload
-	scratch_load_dword v2, off, s33 offset:344 ; 4-byte Folded Reload
-	scratch_load_dwordx2 v[4:5], off, s33 offset:336 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx2 off, v[4:5], s33 offset:384 ; 8-byte Folded Spill
-	scratch_store_dword off, v2, s33 offset:380 ; 4-byte Folded Spill
-	s_mov_b32 s0, 8
-	v_cmp_lt_u32_e64 s[0:1], v2, s0
-	s_mov_b64 s[2:3], 8
-	v_lshl_add_u64 v[0:1], v[0:1], 0, s[2:3]
-                                        ; implicit-def: $vgpr2_vgpr3
-	scratch_store_dwordx2 off, v[0:1], s33 offset:372 ; 8-byte Folded Spill
-	s_mov_b64 s[2:3], exec
-	s_and_b64 s[0:1], s[2:3], s[0:1]
-	s_xor_b64 s[2:3], s[0:1], s[2:3]
-	v_writelane_b32 v35, s2, 53
-	s_nop 1
-	v_writelane_b32 v35, s3, 54
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_store_dword off, v35, s33       ; 4-byte Folded Spill
-	s_mov_b64 exec, s[22:23]
-	s_mov_b64 exec, s[0:1]
-	s_cbranch_execz .LBB6_30
-; %bb.29:                               ;   in Loop: Header=BB6_4 Depth=1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	scratch_load_dword v0, off, s33 offset:380 ; 4-byte Folded Reload
-	s_mov_b32 s0, 0
-	s_waitcnt vmcnt(0)
-	v_cmp_ne_u32_e64 s[2:3], v0, s0
-	s_mov_b64 s[4:5], 0
-	v_mov_b64_e32 v[2:3], 0
-	v_mov_b64_e32 v[0:1], 0
-	v_writelane_b32 v35, s4, 55
-	s_nop 1
-	v_writelane_b32 v35, s5, 56
-	v_writelane_b32 v35, s0, 57
-	scratch_store_dwordx2 off, v[2:3], s33 offset:400 ; 8-byte Folded Spill
-	scratch_store_dwordx2 off, v[0:1], s33 offset:392 ; 8-byte Folded Spill
-	s_mov_b64 s[0:1], exec
-	v_writelane_b32 v35, s0, 58
-	s_nop 1
-	v_writelane_b32 v35, s1, 59
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_store_dword off, v35, s33       ; 4-byte Folded Spill
-	s_mov_b64 exec, s[22:23]
-	s_and_b64 s[0:1], s[0:1], s[2:3]
-	s_mov_b64 exec, s[0:1]
-	s_cbranch_execz .LBB6_35
-	s_branch .LBB6_32
-.LBB6_30:                               ;   in Loop: Header=BB6_4 Depth=1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 53
-	v_readlane_b32 s1, v35, 54
-	s_or_saveexec_b64 s[0:1], s[0:1]
-	scratch_load_dwordx2 v[0:1], off, s33 offset:428 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[2:3], off, s33 offset:372 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx2 off, v[2:3], s33 offset:420 ; 8-byte Folded Spill
-	v_mov_b32_e32 v2, 0
-	scratch_store_dword off, v2, s33 offset:416 ; 4-byte Folded Spill
-	scratch_store_dwordx2 off, v[0:1], s33 offset:408 ; 8-byte Folded Spill
-	s_and_b64 s[0:1], exec, s[0:1]
-	v_writelane_b32 v35, s0, 60
-	s_nop 1
-	v_writelane_b32 v35, s1, 61
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_store_dword off, v35, s33       ; 4-byte Folded Spill
-	s_mov_b64 exec, s[22:23]
-	s_xor_b64 exec, exec, s[0:1]
-	s_cbranch_execz .LBB6_36
-; %bb.31:                               ;   in Loop: Header=BB6_4 Depth=1
-	scratch_load_dword v2, off, s33 offset:380 ; 4-byte Folded Reload
-	scratch_load_dwordx2 v[0:1], off, s33 offset:348 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	flat_load_dwordx2 v[0:1], v[0:1]
-	s_mov_b32 s0, -8
-	v_add_u32_e64 v2, v2, s0
-	scratch_store_dword off, v2, s33 offset:416 ; 4-byte Folded Spill
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	scratch_store_dwordx2 off, v[0:1], s33 offset:408 ; 8-byte Folded Spill
-	s_branch .LBB6_36
-.LBB6_32:                               ;   Parent Loop BB6_4 Depth=1
-                                        ; =>  This Inner Loop Header: Depth=2
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 57
-	v_readlane_b32 s4, v35, 55
-	v_readlane_b32 s5, v35, 56
-	scratch_load_dwordx2 v[4:5], off, s33 offset:400 ; 8-byte Folded Reload
-	scratch_load_dword v2, off, s33 offset:380 ; 4-byte Folded Reload
-	scratch_load_dwordx2 v[0:1], off, s33 offset:348 ; 8-byte Folded Reload
-	s_mov_b32 s1, 0
-	s_mov_b32 s2, s0
-	s_mov_b32 s3, s1
-	s_waitcnt vmcnt(0)
-	v_lshl_add_u64 v[0:1], v[0:1], 0, s[2:3]
-	flat_load_ubyte v0, v[0:1]
-	s_mov_b32 s2, 0xffff
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	v_and_b32_e64 v0, s2, v0
-                                        ; kill: def $vgpr0 killed $vgpr0 def $vgpr0_vgpr1 killed $exec
-	v_mov_b32_e32 v1, s1
-	s_mov_b32 s1, 3
-	s_lshl_b32 s1, s0, s1
-	v_lshlrev_b64 v[0:1], s1, v[0:1]
-	v_mov_b32_e32 v3, v1
-	v_mov_b32_e32 v6, v5
-	v_or_b32_e64 v3, v3, v6
-                                        ; kill: def $vgpr0 killed $vgpr0 killed $vgpr0_vgpr1 killed $exec
-	v_mov_b32_e32 v1, v4
-	v_or_b32_e64 v0, v0, v1
-                                        ; kill: def $vgpr0 killed $vgpr0 def $vgpr0_vgpr1 killed $exec
-	v_mov_b32_e32 v1, v3
-	s_mov_b32 s1, 1
-	s_add_i32 s2, s0, s1
-	v_cmp_eq_u32_e64 s[0:1], s2, v2
-	s_or_b64 s[0:1], s[0:1], s[4:5]
-	s_mov_b64 s[4:5], s[0:1]
-	v_writelane_b32 v35, s4, 55
-	s_nop 1
-	v_writelane_b32 v35, s5, 56
-	v_writelane_b32 v35, s2, 57
-	v_mov_b64_e32 v[2:3], v[0:1]
-	scratch_store_dwordx2 off, v[2:3], s33 offset:400 ; 8-byte Folded Spill
-	scratch_store_dwordx2 off, v[0:1], s33 offset:436 ; 8-byte Folded Spill
-	s_mov_b64 s[2:3], s[0:1]
-	v_writelane_b32 v35, s2, 62
-	s_nop 1
-	v_writelane_b32 v35, s3, 63
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_store_dword off, v35, s33       ; 4-byte Folded Spill
-	s_mov_b64 exec, s[22:23]
-	s_andn2_b64 exec, exec, s[0:1]
-	s_cbranch_execnz .LBB6_32
-; %bb.33:                               ;   in Loop: Header=BB6_4 Depth=1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 62
-	v_readlane_b32 s1, v35, 63
-	s_or_b64 exec, exec, s[0:1]
-; %bb.34:                               ;   in Loop: Header=BB6_4 Depth=1
-	scratch_load_dwordx2 v[0:1], off, s33 offset:436 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx2 off, v[0:1], s33 offset:392 ; 8-byte Folded Spill
-.LBB6_35:                               ;   in Loop: Header=BB6_4 Depth=1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 58
-	v_readlane_b32 s1, v35, 59
-	s_or_b64 exec, exec, s[0:1]
-	scratch_load_dwordx2 v[0:1], off, s33 offset:348 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[2:3], off, s33 offset:392 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx2 off, v[2:3], s33 offset:428 ; 8-byte Folded Spill
-	scratch_store_dwordx2 off, v[0:1], s33 offset:372 ; 8-byte Folded Spill
-	s_branch .LBB6_30
-.LBB6_36:                               ;   in Loop: Header=BB6_4 Depth=1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 60
-	v_readlane_b32 s1, v35, 61
-	s_or_b64 exec, exec, s[0:1]
-	scratch_load_dwordx2 v[0:1], off, s33 offset:420 ; 8-byte Folded Reload
-	scratch_load_dword v2, off, s33 offset:416 ; 4-byte Folded Reload
-	scratch_load_dwordx2 v[4:5], off, s33 offset:408 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx2 off, v[4:5], s33 offset:456 ; 8-byte Folded Spill
-	scratch_store_dword off, v2, s33 offset:452 ; 4-byte Folded Spill
-	s_mov_b32 s0, 8
-	v_cmp_lt_u32_e64 s[0:1], v2, s0
-	s_mov_b64 s[2:3], 8
-	v_lshl_add_u64 v[0:1], v[0:1], 0, s[2:3]
-                                        ; implicit-def: $vgpr2_vgpr3
-	scratch_store_dwordx2 off, v[0:1], s33 offset:444 ; 8-byte Folded Spill
-	s_mov_b64 s[2:3], exec
-	s_and_b64 s[0:1], s[2:3], s[0:1]
-	s_xor_b64 s[2:3], s[0:1], s[2:3]
-                                        ; implicit-def: $vgpr35 : SGPR spill to VGPR lane
-	v_writelane_b32 v35, s2, 0
-	s_nop 1
-	v_writelane_b32 v35, s3, 1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_store_dword off, v35, s33 offset:4 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[22:23]
-	s_mov_b64 exec, s[0:1]
-	s_cbranch_execz .LBB6_38
-; %bb.37:                               ;   in Loop: Header=BB6_4 Depth=1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33 offset:4 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	scratch_load_dword v0, off, s33 offset:452 ; 4-byte Folded Reload
-	s_mov_b32 s0, 0
-	s_waitcnt vmcnt(0)
-	v_cmp_ne_u32_e64 s[2:3], v0, s0
-	s_mov_b64 s[4:5], 0
-	v_mov_b64_e32 v[2:3], 0
-	v_mov_b64_e32 v[0:1], 0
-	v_writelane_b32 v35, s4, 2
-	s_nop 1
-	v_writelane_b32 v35, s5, 3
-	v_writelane_b32 v35, s0, 4
-	scratch_store_dwordx2 off, v[2:3], s33 offset:472 ; 8-byte Folded Spill
-	scratch_store_dwordx2 off, v[0:1], s33 offset:464 ; 8-byte Folded Spill
-	s_mov_b64 s[0:1], exec
-	v_writelane_b32 v35, s0, 5
-	s_nop 1
-	v_writelane_b32 v35, s1, 6
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_store_dword off, v35, s33 offset:4 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[22:23]
-	s_and_b64 s[0:1], s[0:1], s[2:3]
-	s_mov_b64 exec, s[0:1]
-	s_cbranch_execz .LBB6_43
-	s_branch .LBB6_40
-.LBB6_38:                               ;   in Loop: Header=BB6_4 Depth=1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33 offset:4 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 0
-	v_readlane_b32 s1, v35, 1
-	s_or_saveexec_b64 s[0:1], s[0:1]
-	scratch_load_dwordx2 v[0:1], off, s33 offset:500 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[2:3], off, s33 offset:444 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx2 off, v[2:3], s33 offset:492 ; 8-byte Folded Spill
-	v_mov_b32_e32 v2, 0
-	scratch_store_dword off, v2, s33 offset:488 ; 4-byte Folded Spill
-	scratch_store_dwordx2 off, v[0:1], s33 offset:480 ; 8-byte Folded Spill
-	s_and_b64 s[0:1], exec, s[0:1]
-	v_writelane_b32 v35, s0, 7
-	s_nop 1
-	v_writelane_b32 v35, s1, 8
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_store_dword off, v35, s33 offset:4 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[22:23]
-	s_xor_b64 exec, exec, s[0:1]
-	s_cbranch_execz .LBB6_44
-; %bb.39:                               ;   in Loop: Header=BB6_4 Depth=1
-	scratch_load_dword v2, off, s33 offset:452 ; 4-byte Folded Reload
-	scratch_load_dwordx2 v[0:1], off, s33 offset:420 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	flat_load_dwordx2 v[0:1], v[0:1]
-	s_mov_b32 s0, -8
-	v_add_u32_e64 v2, v2, s0
-	scratch_store_dword off, v2, s33 offset:488 ; 4-byte Folded Spill
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	scratch_store_dwordx2 off, v[0:1], s33 offset:480 ; 8-byte Folded Spill
-	s_branch .LBB6_44
-.LBB6_40:                               ;   Parent Loop BB6_4 Depth=1
-                                        ; =>  This Inner Loop Header: Depth=2
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33 offset:4 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 4
-	v_readlane_b32 s4, v35, 2
-	v_readlane_b32 s5, v35, 3
-	scratch_load_dwordx2 v[4:5], off, s33 offset:472 ; 8-byte Folded Reload
-	scratch_load_dword v2, off, s33 offset:452 ; 4-byte Folded Reload
-	scratch_load_dwordx2 v[0:1], off, s33 offset:420 ; 8-byte Folded Reload
-	s_mov_b32 s1, 0
-	s_mov_b32 s2, s0
-	s_mov_b32 s3, s1
-	s_waitcnt vmcnt(0)
-	v_lshl_add_u64 v[0:1], v[0:1], 0, s[2:3]
-	flat_load_ubyte v0, v[0:1]
-	s_mov_b32 s2, 0xffff
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	v_and_b32_e64 v0, s2, v0
-                                        ; kill: def $vgpr0 killed $vgpr0 def $vgpr0_vgpr1 killed $exec
-	v_mov_b32_e32 v1, s1
-	s_mov_b32 s1, 3
-	s_lshl_b32 s1, s0, s1
-	v_lshlrev_b64 v[0:1], s1, v[0:1]
-	v_mov_b32_e32 v3, v1
-	v_mov_b32_e32 v6, v5
-	v_or_b32_e64 v3, v3, v6
-                                        ; kill: def $vgpr0 killed $vgpr0 killed $vgpr0_vgpr1 killed $exec
-	v_mov_b32_e32 v1, v4
-	v_or_b32_e64 v0, v0, v1
-                                        ; kill: def $vgpr0 killed $vgpr0 def $vgpr0_vgpr1 killed $exec
-	v_mov_b32_e32 v1, v3
-	s_mov_b32 s1, 1
-	s_add_i32 s2, s0, s1
-	v_cmp_eq_u32_e64 s[0:1], s2, v2
-	s_or_b64 s[0:1], s[0:1], s[4:5]
-	s_mov_b64 s[4:5], s[0:1]
-	v_writelane_b32 v35, s4, 2
-	s_nop 1
-	v_writelane_b32 v35, s5, 3
-	v_writelane_b32 v35, s2, 4
-	v_mov_b64_e32 v[2:3], v[0:1]
-	scratch_store_dwordx2 off, v[2:3], s33 offset:472 ; 8-byte Folded Spill
-	scratch_store_dwordx2 off, v[0:1], s33 offset:508 ; 8-byte Folded Spill
-	s_mov_b64 s[2:3], s[0:1]
-	v_writelane_b32 v35, s2, 9
-	s_nop 1
-	v_writelane_b32 v35, s3, 10
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_store_dword off, v35, s33 offset:4 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[22:23]
-	s_andn2_b64 exec, exec, s[0:1]
-	s_cbranch_execnz .LBB6_40
-; %bb.41:                               ;   in Loop: Header=BB6_4 Depth=1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33 offset:4 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 9
-	v_readlane_b32 s1, v35, 10
-	s_or_b64 exec, exec, s[0:1]
-; %bb.42:                               ;   in Loop: Header=BB6_4 Depth=1
-	scratch_load_dwordx2 v[0:1], off, s33 offset:508 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx2 off, v[0:1], s33 offset:464 ; 8-byte Folded Spill
-.LBB6_43:                               ;   in Loop: Header=BB6_4 Depth=1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33 offset:4 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 5
-	v_readlane_b32 s1, v35, 6
-	s_or_b64 exec, exec, s[0:1]
-	scratch_load_dwordx2 v[0:1], off, s33 offset:420 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[2:3], off, s33 offset:464 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx2 off, v[2:3], s33 offset:500 ; 8-byte Folded Spill
-	scratch_store_dwordx2 off, v[0:1], s33 offset:444 ; 8-byte Folded Spill
-	s_branch .LBB6_38
-.LBB6_44:                               ;   in Loop: Header=BB6_4 Depth=1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33 offset:4 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 7
-	v_readlane_b32 s1, v35, 8
-	s_or_b64 exec, exec, s[0:1]
-	scratch_load_dwordx2 v[0:1], off, s33 offset:492 ; 8-byte Folded Reload
-	scratch_load_dword v2, off, s33 offset:488 ; 4-byte Folded Reload
-	scratch_load_dwordx2 v[4:5], off, s33 offset:480 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx2 off, v[4:5], s33 offset:528 ; 8-byte Folded Spill
-	scratch_store_dword off, v2, s33 offset:524 ; 4-byte Folded Spill
-	s_mov_b32 s0, 8
-	v_cmp_lt_u32_e64 s[0:1], v2, s0
-	s_mov_b64 s[2:3], 8
-	v_lshl_add_u64 v[0:1], v[0:1], 0, s[2:3]
-                                        ; implicit-def: $vgpr2_vgpr3
-	scratch_store_dwordx2 off, v[0:1], s33 offset:516 ; 8-byte Folded Spill
-	s_mov_b64 s[2:3], exec
-	s_and_b64 s[0:1], s[2:3], s[0:1]
-	s_xor_b64 s[2:3], s[0:1], s[2:3]
-	v_writelane_b32 v35, s2, 11
-	s_nop 1
-	v_writelane_b32 v35, s3, 12
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_store_dword off, v35, s33 offset:4 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[22:23]
-	s_mov_b64 exec, s[0:1]
-	s_cbranch_execz .LBB6_46
-; %bb.45:                               ;   in Loop: Header=BB6_4 Depth=1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33 offset:4 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	scratch_load_dword v0, off, s33 offset:524 ; 4-byte Folded Reload
-	s_mov_b32 s0, 0
-	s_waitcnt vmcnt(0)
-	v_cmp_ne_u32_e64 s[2:3], v0, s0
-	s_mov_b64 s[4:5], 0
-	v_mov_b64_e32 v[2:3], 0
-	v_mov_b64_e32 v[0:1], 0
-	v_writelane_b32 v35, s4, 13
-	s_nop 1
-	v_writelane_b32 v35, s5, 14
-	v_writelane_b32 v35, s0, 15
-	scratch_store_dwordx2 off, v[2:3], s33 offset:544 ; 8-byte Folded Spill
-	scratch_store_dwordx2 off, v[0:1], s33 offset:536 ; 8-byte Folded Spill
-	s_mov_b64 s[0:1], exec
-	v_writelane_b32 v35, s0, 16
-	s_nop 1
-	v_writelane_b32 v35, s1, 17
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_store_dword off, v35, s33 offset:4 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[22:23]
-	s_and_b64 s[0:1], s[0:1], s[2:3]
-	s_mov_b64 exec, s[0:1]
-	s_cbranch_execz .LBB6_51
-	s_branch .LBB6_48
-.LBB6_46:                               ;   in Loop: Header=BB6_4 Depth=1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33 offset:4 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 11
-	v_readlane_b32 s1, v35, 12
-	s_or_saveexec_b64 s[0:1], s[0:1]
-	scratch_load_dwordx2 v[0:1], off, s33 offset:572 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[2:3], off, s33 offset:516 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx2 off, v[2:3], s33 offset:564 ; 8-byte Folded Spill
-	v_mov_b32_e32 v2, 0
-	scratch_store_dword off, v2, s33 offset:560 ; 4-byte Folded Spill
-	scratch_store_dwordx2 off, v[0:1], s33 offset:552 ; 8-byte Folded Spill
-	s_and_b64 s[0:1], exec, s[0:1]
-	v_writelane_b32 v35, s0, 18
-	s_nop 1
-	v_writelane_b32 v35, s1, 19
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_store_dword off, v35, s33 offset:4 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[22:23]
-	s_xor_b64 exec, exec, s[0:1]
-	s_cbranch_execz .LBB6_52
-; %bb.47:                               ;   in Loop: Header=BB6_4 Depth=1
-	scratch_load_dword v2, off, s33 offset:524 ; 4-byte Folded Reload
-	scratch_load_dwordx2 v[0:1], off, s33 offset:492 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	flat_load_dwordx2 v[0:1], v[0:1]
-	s_mov_b32 s0, -8
-	v_add_u32_e64 v2, v2, s0
-	scratch_store_dword off, v2, s33 offset:560 ; 4-byte Folded Spill
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	scratch_store_dwordx2 off, v[0:1], s33 offset:552 ; 8-byte Folded Spill
-	s_branch .LBB6_52
-.LBB6_48:                               ;   Parent Loop BB6_4 Depth=1
-                                        ; =>  This Inner Loop Header: Depth=2
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33 offset:4 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 15
-	v_readlane_b32 s4, v35, 13
-	v_readlane_b32 s5, v35, 14
-	scratch_load_dwordx2 v[4:5], off, s33 offset:544 ; 8-byte Folded Reload
-	scratch_load_dword v2, off, s33 offset:524 ; 4-byte Folded Reload
-	scratch_load_dwordx2 v[0:1], off, s33 offset:492 ; 8-byte Folded Reload
-	s_mov_b32 s1, 0
-	s_mov_b32 s2, s0
-	s_mov_b32 s3, s1
-	s_waitcnt vmcnt(0)
-	v_lshl_add_u64 v[0:1], v[0:1], 0, s[2:3]
-	flat_load_ubyte v0, v[0:1]
-	s_mov_b32 s2, 0xffff
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	v_and_b32_e64 v0, s2, v0
-                                        ; kill: def $vgpr0 killed $vgpr0 def $vgpr0_vgpr1 killed $exec
-	v_mov_b32_e32 v1, s1
-	s_mov_b32 s1, 3
-	s_lshl_b32 s1, s0, s1
-	v_lshlrev_b64 v[0:1], s1, v[0:1]
-	v_mov_b32_e32 v3, v1
-	v_mov_b32_e32 v6, v5
-	v_or_b32_e64 v3, v3, v6
-                                        ; kill: def $vgpr0 killed $vgpr0 killed $vgpr0_vgpr1 killed $exec
-	v_mov_b32_e32 v1, v4
-	v_or_b32_e64 v0, v0, v1
-                                        ; kill: def $vgpr0 killed $vgpr0 def $vgpr0_vgpr1 killed $exec
-	v_mov_b32_e32 v1, v3
-	s_mov_b32 s1, 1
-	s_add_i32 s2, s0, s1
-	v_cmp_eq_u32_e64 s[0:1], s2, v2
-	s_or_b64 s[0:1], s[0:1], s[4:5]
-	s_mov_b64 s[4:5], s[0:1]
-	v_writelane_b32 v35, s4, 13
-	s_nop 1
-	v_writelane_b32 v35, s5, 14
-	v_writelane_b32 v35, s2, 15
-	v_mov_b64_e32 v[2:3], v[0:1]
-	scratch_store_dwordx2 off, v[2:3], s33 offset:544 ; 8-byte Folded Spill
-	scratch_store_dwordx2 off, v[0:1], s33 offset:580 ; 8-byte Folded Spill
-	s_mov_b64 s[2:3], s[0:1]
-	v_writelane_b32 v35, s2, 20
-	s_nop 1
-	v_writelane_b32 v35, s3, 21
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_store_dword off, v35, s33 offset:4 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[22:23]
-	s_andn2_b64 exec, exec, s[0:1]
-	s_cbranch_execnz .LBB6_48
-; %bb.49:                               ;   in Loop: Header=BB6_4 Depth=1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33 offset:4 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 20
-	v_readlane_b32 s1, v35, 21
-	s_or_b64 exec, exec, s[0:1]
-; %bb.50:                               ;   in Loop: Header=BB6_4 Depth=1
-	scratch_load_dwordx2 v[0:1], off, s33 offset:580 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx2 off, v[0:1], s33 offset:536 ; 8-byte Folded Spill
-.LBB6_51:                               ;   in Loop: Header=BB6_4 Depth=1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33 offset:4 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 16
-	v_readlane_b32 s1, v35, 17
-	s_or_b64 exec, exec, s[0:1]
-	scratch_load_dwordx2 v[0:1], off, s33 offset:492 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[2:3], off, s33 offset:536 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx2 off, v[2:3], s33 offset:572 ; 8-byte Folded Spill
-	scratch_store_dwordx2 off, v[0:1], s33 offset:516 ; 8-byte Folded Spill
-	s_branch .LBB6_46
-.LBB6_52:                               ;   in Loop: Header=BB6_4 Depth=1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33 offset:4 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 18
-	v_readlane_b32 s1, v35, 19
-	s_or_b64 exec, exec, s[0:1]
-	scratch_load_dword v0, off, s33 offset:560 ; 4-byte Folded Reload
-	scratch_load_dwordx2 v[2:3], off, s33 offset:552 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx2 off, v[2:3], s33 offset:592 ; 8-byte Folded Spill
-	scratch_store_dword off, v0, s33 offset:588 ; 4-byte Folded Spill
-	s_mov_b32 s0, 8
-	v_cmp_lt_u32_e64 s[0:1], v0, s0
-                                        ; implicit-def: $vgpr0_vgpr1
-	s_mov_b64 s[2:3], exec
-	s_and_b64 s[0:1], s[2:3], s[0:1]
-	s_xor_b64 s[2:3], s[0:1], s[2:3]
-	v_writelane_b32 v35, s2, 22
-	s_nop 1
-	v_writelane_b32 v35, s3, 23
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_store_dword off, v35, s33 offset:4 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[22:23]
-	s_mov_b64 exec, s[0:1]
-	s_cbranch_execz .LBB6_54
-; %bb.53:                               ;   in Loop: Header=BB6_4 Depth=1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33 offset:4 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	scratch_load_dword v0, off, s33 offset:588 ; 4-byte Folded Reload
-	s_mov_b32 s0, 0
-	s_waitcnt vmcnt(0)
-	v_cmp_ne_u32_e64 s[2:3], v0, s0
-	s_mov_b64 s[4:5], 0
-	v_mov_b64_e32 v[2:3], 0
-	v_mov_b64_e32 v[0:1], 0
-	v_writelane_b32 v35, s4, 24
-	s_nop 1
-	v_writelane_b32 v35, s5, 25
-	v_writelane_b32 v35, s0, 26
-	scratch_store_dwordx2 off, v[2:3], s33 offset:608 ; 8-byte Folded Spill
-	scratch_store_dwordx2 off, v[0:1], s33 offset:600 ; 8-byte Folded Spill
-	s_mov_b64 s[0:1], exec
-	v_writelane_b32 v35, s0, 27
-	s_nop 1
-	v_writelane_b32 v35, s1, 28
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_store_dword off, v35, s33 offset:4 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[22:23]
-	s_and_b64 s[0:1], s[0:1], s[2:3]
-	s_mov_b64 exec, s[0:1]
-	s_cbranch_execz .LBB6_59
-	s_branch .LBB6_56
-.LBB6_54:                               ;   in Loop: Header=BB6_4 Depth=1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33 offset:4 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 22
-	v_readlane_b32 s1, v35, 23
-	s_or_saveexec_b64 s[0:1], s[0:1]
-	scratch_load_dwordx2 v[0:1], off, s33 offset:624 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx2 off, v[0:1], s33 offset:616 ; 8-byte Folded Spill
-	s_and_b64 s[0:1], exec, s[0:1]
-	v_writelane_b32 v35, s0, 29
-	s_nop 1
-	v_writelane_b32 v35, s1, 30
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_store_dword off, v35, s33 offset:4 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[22:23]
-	s_xor_b64 exec, exec, s[0:1]
-	s_cbranch_execz .LBB6_60
-; %bb.55:                               ;   in Loop: Header=BB6_4 Depth=1
-	scratch_load_dwordx2 v[0:1], off, s33 offset:564 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	flat_load_dwordx2 v[0:1], v[0:1]
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	scratch_store_dwordx2 off, v[0:1], s33 offset:616 ; 8-byte Folded Spill
-	s_branch .LBB6_60
-.LBB6_56:                               ;   Parent Loop BB6_4 Depth=1
-                                        ; =>  This Inner Loop Header: Depth=2
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33 offset:4 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 26
-	v_readlane_b32 s4, v35, 24
-	v_readlane_b32 s5, v35, 25
-	scratch_load_dwordx2 v[4:5], off, s33 offset:608 ; 8-byte Folded Reload
-	scratch_load_dword v2, off, s33 offset:588 ; 4-byte Folded Reload
-	scratch_load_dwordx2 v[0:1], off, s33 offset:564 ; 8-byte Folded Reload
-	s_mov_b32 s1, 0
-	s_mov_b32 s2, s0
-	s_mov_b32 s3, s1
-	s_waitcnt vmcnt(0)
-	v_lshl_add_u64 v[0:1], v[0:1], 0, s[2:3]
-	flat_load_ubyte v0, v[0:1]
-	s_mov_b32 s2, 0xffff
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	v_and_b32_e64 v0, s2, v0
-                                        ; kill: def $vgpr0 killed $vgpr0 def $vgpr0_vgpr1 killed $exec
-	v_mov_b32_e32 v1, s1
-	s_mov_b32 s1, 3
-	s_lshl_b32 s1, s0, s1
-	v_lshlrev_b64 v[0:1], s1, v[0:1]
-	v_mov_b32_e32 v3, v1
-	v_mov_b32_e32 v6, v5
-	v_or_b32_e64 v3, v3, v6
-                                        ; kill: def $vgpr0 killed $vgpr0 killed $vgpr0_vgpr1 killed $exec
-	v_mov_b32_e32 v1, v4
-	v_or_b32_e64 v0, v0, v1
-                                        ; kill: def $vgpr0 killed $vgpr0 def $vgpr0_vgpr1 killed $exec
-	v_mov_b32_e32 v1, v3
-	s_mov_b32 s1, 1
-	s_add_i32 s2, s0, s1
-	v_cmp_eq_u32_e64 s[0:1], s2, v2
-	s_or_b64 s[0:1], s[0:1], s[4:5]
-	s_mov_b64 s[4:5], s[0:1]
-	v_writelane_b32 v35, s4, 24
-	s_nop 1
-	v_writelane_b32 v35, s5, 25
-	v_writelane_b32 v35, s2, 26
-	v_mov_b64_e32 v[2:3], v[0:1]
-	scratch_store_dwordx2 off, v[2:3], s33 offset:608 ; 8-byte Folded Spill
-	scratch_store_dwordx2 off, v[0:1], s33 offset:632 ; 8-byte Folded Spill
-	s_mov_b64 s[2:3], s[0:1]
-	v_writelane_b32 v35, s2, 31
-	s_nop 1
-	v_writelane_b32 v35, s3, 32
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_store_dword off, v35, s33 offset:4 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[22:23]
-	s_andn2_b64 exec, exec, s[0:1]
-	s_cbranch_execnz .LBB6_56
-; %bb.57:                               ;   in Loop: Header=BB6_4 Depth=1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33 offset:4 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 31
-	v_readlane_b32 s1, v35, 32
-	s_or_b64 exec, exec, s[0:1]
-; %bb.58:                               ;   in Loop: Header=BB6_4 Depth=1
-	scratch_load_dwordx2 v[0:1], off, s33 offset:632 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx2 off, v[0:1], s33 offset:600 ; 8-byte Folded Spill
-.LBB6_59:                               ;   in Loop: Header=BB6_4 Depth=1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33 offset:4 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 27
-	v_readlane_b32 s1, v35, 28
-	s_or_b64 exec, exec, s[0:1]
-	scratch_load_dwordx2 v[0:1], off, s33 offset:600 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx2 off, v[0:1], s33 offset:624 ; 8-byte Folded Spill
-	s_branch .LBB6_54
-.LBB6_60:                               ;   in Loop: Header=BB6_4 Depth=1
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v34, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33 offset:4 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 29
-	v_readlane_b32 s1, v35, 30
-	s_or_b64 exec, exec, s[0:1]
-	v_readlane_b32 s15, v34, 0
-	v_readlane_b32 s14, v34, 1
-	v_readlane_b32 s13, v34, 2
-	v_readlane_b32 s12, v34, 3
-	v_readlane_b32 s10, v34, 4
-	v_readlane_b32 s11, v34, 5
-	v_readlane_b32 s8, v34, 6
-	v_readlane_b32 s9, v34, 7
-	v_readlane_b32 s6, v34, 8
-	v_readlane_b32 s7, v34, 9
-	v_readlane_b32 s4, v34, 10
-	v_readlane_b32 s5, v34, 11
-	scratch_load_dwordx2 v[0:1], off, s33 offset:140 ; 8-byte Folded Reload
-	scratch_load_dword v31, off, s33 offset:44 ; 4-byte Folded Reload
-	scratch_load_dwordx2 v[20:21], off, s33 offset:592 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[22:23], off, s33 offset:528 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[24:25], off, s33 offset:456 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[26:27], off, s33 offset:384 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[28:29], off, s33 offset:312 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[32:33], off, s33 offset:240 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[4:5], off, s33 offset:132 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[2:3], off, s33 offset:152 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[18:19], off, s33 offset:616 ; 8-byte Folded Reload
-	s_waitcnt vmcnt(10)
-	v_mov_b32_e32 v1, v0
-	s_mov_b32 s0, 28
-	v_mov_b32_e32 v0, 2
-	v_lshl_add_u32 v1, v1, v0, s0
-	s_mov_b32 s0, 0x1e0
-	v_and_b32_e64 v6, v1, s0
-	s_mov_b32 s0, 0
-	v_mov_b32_e32 v1, 0
-                                        ; kill: def $vgpr6 killed $vgpr6 def $vgpr6_vgpr7 killed $exec
-	v_mov_b32_e32 v7, v1
-	s_mov_b32 s0, 0xffffff1f
-	s_mov_b32 s1, -1
-	s_mov_b32 s2, s1
-	s_waitcnt vmcnt(1)
-	v_mov_b32_e32 v1, v3
-	v_and_b32_e64 v1, v1, s2
-                                        ; kill: def $sgpr0 killed $sgpr0 killed $sgpr0_sgpr1
-	v_and_b32_e64 v2, v2, s0
-                                        ; kill: def $vgpr2 killed $vgpr2 def $vgpr2_vgpr3 killed $exec
-	v_mov_b32_e32 v3, v1
-	v_mov_b32_e32 v1, v3
-	v_mov_b32_e32 v8, v5
-	v_or_b32_e64 v1, v1, v8
-                                        ; kill: def $vgpr2 killed $vgpr2 killed $vgpr2_vgpr3 killed $exec
-	v_mov_b32_e32 v3, v4
-	v_or_b32_e64 v2, v2, v3
-                                        ; kill: def $vgpr2 killed $vgpr2 def $vgpr2_vgpr3 killed $exec
-	v_mov_b32_e32 v3, v1
-	v_mov_b32_e32 v1, v3
-	v_mov_b32_e32 v4, v7
-	v_or_b32_e64 v1, v1, v4
-	v_mov_b32_e32 v4, v2
-	v_mov_b32_e32 v5, v6
-	v_or_b32_e64 v4, v4, v5
-                                        ; kill: def $vgpr4 killed $vgpr4 def $vgpr4_vgpr5 killed $exec
-	v_mov_b32_e32 v5, v1
-	v_mov_b32_e32 v1, v4
-	s_mov_b32 s0, 32
-	v_writelane_b32 v35, s0, 33
-	v_lshrrev_b64 v[2:3], s0, v[2:3]
-                                        ; kill: def $vgpr2 killed $vgpr2 killed $vgpr2_vgpr3 killed $exec
-	v_lshrrev_b64 v[4:5], s0, v[32:33]
-                                        ; kill: def $vgpr4 killed $vgpr4 killed $vgpr4_vgpr5 killed $exec
-	v_lshrrev_b64 v[6:7], s0, v[28:29]
-                                        ; kill: def $vgpr6 killed $vgpr6 killed $vgpr6_vgpr7 killed $exec
-	v_lshrrev_b64 v[8:9], s0, v[26:27]
-                                        ; kill: def $vgpr8 killed $vgpr8 killed $vgpr8_vgpr9 killed $exec
-	v_lshrrev_b64 v[10:11], s0, v[24:25]
-                                        ; kill: def $vgpr10 killed $vgpr10 killed $vgpr10_vgpr11 killed $exec
-	v_lshrrev_b64 v[12:13], s0, v[22:23]
-                                        ; kill: def $vgpr12 killed $vgpr12 killed $vgpr12_vgpr13 killed $exec
-	v_lshrrev_b64 v[14:15], s0, v[20:21]
-                                        ; kill: def $vgpr14 killed $vgpr14 killed $vgpr14_vgpr15 killed $exec
-	s_waitcnt vmcnt(0)
-	v_lshrrev_b64 v[16:17], s0, v[18:19]
-                                        ; kill: def $vgpr16 killed $vgpr16 killed $vgpr16_vgpr17 killed $exec
-	v_mov_b32_e32 v3, v32
-	v_mov_b32_e32 v5, v28
-	v_mov_b32_e32 v7, v26
-	v_mov_b32_e32 v9, v24
-	v_mov_b32_e32 v11, v22
-	v_mov_b32_e32 v13, v20
-	v_mov_b32_e32 v15, v18
-	s_getpc_b64 s[0:1]
-	s_add_u32 s0, s0, __ockl_hostcall_preview@rel32@lo+4
-	s_addc_u32 s1, s1, __ockl_hostcall_preview@rel32@hi+12
-	s_swappc_b64 s[30:31], s[0:1]
-	scratch_load_dwordx2 v[12:13], off, s33 offset:160 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[8:9], off, s33 offset:140 ; 8-byte Folded Reload
-	scratch_load_dwordx2 v[4:5], off, s33 offset:168 ; 8-byte Folded Reload
-	v_readlane_b32 s2, v34, 18
-	v_readlane_b32 s3, v34, 19
-	v_mov_b32_e32 v10, v1
-	v_mov_b32_e32 v7, v2
-	v_mov_b32_e32 v6, v3
-                                        ; kill: def $vgpr0 killed $vgpr0 def $vgpr0_vgpr1_vgpr2_vgpr3 killed $exec
-	v_mov_b32_e32 v1, v10
-	v_mov_b32_e32 v2, v7
-	v_mov_b32_e32 v3, v6
-	s_waitcnt vmcnt(2)
-	v_mov_b32_e32 v6, v12
-	s_waitcnt vmcnt(1)
-	v_mov_b32_e32 v11, v8
-	v_mov_b32_e32 v7, v13
-	v_mov_b32_e32 v10, v9
-	v_sub_co_u32_e64 v6, s[0:1], v6, v11
-	s_nop 1
-	v_subb_co_u32_e64 v10, s[0:1], v7, v10, s[0:1]
-                                        ; kill: def $vgpr6 killed $vgpr6 def $vgpr6_vgpr7 killed $exec
-	v_mov_b32_e32 v7, v10
-	s_waitcnt vmcnt(0)
-	v_lshl_add_u64 v[4:5], v[4:5], 0, v[8:9]
-	s_mov_b64 s[0:1], 0
-	v_cmp_eq_u64_e64 s[0:1], v[6:7], s[0:1]
-	s_or_b64 s[0:1], s[0:1], s[2:3]
-	s_mov_b64 s[2:3], s[0:1]
-	v_writelane_b32 v34, s2, 14
-	s_nop 1
-	v_writelane_b32 v34, s3, 15
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_store_dword off, v34, s33       ; 4-byte Folded Spill
-	s_mov_b64 exec, s[22:23]
-	scratch_store_dwordx2 off, v[6:7], s33 offset:92 ; 8-byte Folded Spill
-	scratch_store_dwordx2 off, v[4:5], s33 offset:84 ; 8-byte Folded Spill
-	v_mov_b64_e32 v[6:7], v[2:3]
-	v_mov_b64_e32 v[4:5], v[0:1]
-	scratch_store_dwordx4 off, v[4:7], s33 offset:68 ; 16-byte Folded Spill
-	scratch_store_dwordx4 off, v[0:3], s33 offset:640 ; 16-byte Folded Spill
-	s_mov_b64 s[2:3], s[0:1]
-	v_writelane_b32 v35, s2, 34
-	s_nop 1
-	v_writelane_b32 v35, s3, 35
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_store_dword off, v35, s33 offset:4 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[22:23]
-	s_andn2_b64 exec, exec, s[0:1]
-	s_cbranch_execnz .LBB6_4
-; %bb.61:
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33 offset:4 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 34
-	v_readlane_b32 s1, v35, 35
-	s_or_b64 exec, exec, s[0:1]
-; %bb.62:
-	scratch_load_dwordx4 v[0:3], off, s33 offset:640 ; 16-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	scratch_store_dwordx4 off, v[0:3], s33 offset:108 ; 16-byte Folded Spill
-	s_branch .LBB6_3
-.LBB6_63:
-	s_or_saveexec_b64 s[22:23], -1
-	scratch_load_dword v35, off, s33        ; 4-byte Folded Reload
-	s_mov_b64 exec, s[22:23]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v35, 16
-	v_readlane_b32 s1, v35, 17
-	s_or_b64 exec, exec, s[0:1]
-	scratch_load_dwordx4 v[4:7], off, s33 offset:48 ; 16-byte Folded Reload
-	s_waitcnt vmcnt(0)
-	v_mov_b32_e32 v0, v5
-                                        ; implicit-def: $sgpr0
-                                        ; implicit-def: $sgpr1
-	v_mov_b32_e32 v2, s0
-                                        ; kill: def $vgpr2 killed $vgpr2 def $vgpr2_vgpr3 killed $exec
-	v_mov_b32_e32 v3, v0
-	v_mov_b32_e32 v0, v4
-	s_mov_b32 s0, 32
-	v_lshrrev_b64 v[2:3], s0, v[2:3]
-	v_mov_b32_e32 v1, v2
-	v_readlane_b32 s30, v30, 0
-	v_readlane_b32 s31, v30, 1
-	s_mov_b32 s32, s33
-	s_xor_saveexec_b64 s[0:1], -1
-	scratch_load_dword v30, off, s33 offset:656 ; 4-byte Folded Reload
-	scratch_load_dword v34, off, s33 offset:660 ; 4-byte Folded Reload
-	scratch_load_dword v35, off, s33 offset:664 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[0:1]
-	s_mov_b32 s33, s19
-	s_waitcnt vmcnt(0)
-	s_setpc_b64 s[30:31]
-.Lfunc_end6:
-	.size	__ockl_fprintf_append_string_n, .Lfunc_end6-__ockl_fprintf_append_string_n
-                                        ; -- End function
-	.set .L__ockl_fprintf_append_string_n.num_vgpr, max(36, .L__ockl_hostcall_preview.num_vgpr)
-	.set .L__ockl_fprintf_append_string_n.num_agpr, max(0, .L__ockl_hostcall_preview.num_agpr)
-	.set .L__ockl_fprintf_append_string_n.numbered_sgpr, max(34, .L__ockl_hostcall_preview.numbered_sgpr)
-	.set .L__ockl_fprintf_append_string_n.num_named_barrier, max(0, .L__ockl_hostcall_preview.num_named_barrier)
-	.set .L__ockl_fprintf_append_string_n.private_seg_size, 672+max(.L__ockl_hostcall_preview.private_seg_size)
-	.set .L__ockl_fprintf_append_string_n.uses_vcc, or(1, .L__ockl_hostcall_preview.uses_vcc)
-	.set .L__ockl_fprintf_append_string_n.uses_flat_scratch, or(0, .L__ockl_hostcall_preview.uses_flat_scratch)
-	.set .L__ockl_fprintf_append_string_n.has_dyn_sized_stack, or(0, .L__ockl_hostcall_preview.has_dyn_sized_stack)
-	.set .L__ockl_fprintf_append_string_n.has_recursion, or(0, .L__ockl_hostcall_preview.has_recursion)
-	.set .L__ockl_fprintf_append_string_n.has_indirect_call, or(0, .L__ockl_hostcall_preview.has_indirect_call)
-	.section	.AMDGPU.csdata,"",@progbits
-; Function info:
-; codeLenInByte = 8916
-; TotalNumSgprs: 40
-; NumVgprs: 36
-; NumAgprs: 32
-; TotalNumVgprs: 68
-; ScratchSize: 956
-; MemoryBound: 0
-	.text
-	.p2align	2                               ; -- Begin function __ockl_fprintf_append_args
-	.type	__ockl_fprintf_append_args,@function
-__ockl_fprintf_append_args:             ; @__ockl_fprintf_append_args
-; %bb.0:
-	s_waitcnt vmcnt(0) expcnt(0) lgkmcnt(0)
-	s_mov_b32 s19, s33
-	s_mov_b32 s33, s32
-	s_xor_saveexec_b64 s[0:1], -1
-	scratch_store_dword off, v24, s33 offset:4 ; 4-byte Folded Spill
-	scratch_store_dword off, v25, s33 offset:8 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[0:1]
-	s_add_i32 s32, s32, 16
-	v_writelane_b32 v24, s30, 0
-	s_nop 1
-	v_writelane_b32 v24, s31, 1
-	scratch_store_dword off, v2, s33        ; 4-byte Folded Spill
-	v_mov_b32_e32 v18, v0
-	scratch_load_dword v0, off, s33         ; 4-byte Folded Reload
-	v_mov_b32_e32 v20, v15
-                                        ; kill: def $vgpr21 killed $vgpr16 killed $exec
-	v_mov_b32_e32 v20, v13
-                                        ; kill: def $vgpr21 killed $vgpr14 killed $exec
-	v_mov_b32_e32 v20, v11
-                                        ; kill: def $vgpr21 killed $vgpr12 killed $exec
-	v_mov_b32_e32 v20, v9
-                                        ; kill: def $vgpr21 killed $vgpr10 killed $exec
-	v_mov_b32_e32 v20, v7
-                                        ; kill: def $vgpr21 killed $vgpr8 killed $exec
-	v_mov_b32_e32 v20, v5
-                                        ; kill: def $vgpr21 killed $vgpr6 killed $exec
-	v_mov_b32_e32 v20, v3
-                                        ; kill: def $vgpr21 killed $vgpr4 killed $exec
-                                        ; kill: def $vgpr18 killed $vgpr18 def $vgpr18_vgpr19 killed $exec
-	v_mov_b32_e32 v19, v1
-	s_mov_b32 s0, 0
-	v_cmp_eq_u32_e64 s[0:1], v17, s0
-	v_mov_b32_e32 v2, v19
-	s_mov_b64 s[2:3], 2
-	s_mov_b32 s16, s3
-	v_or_b32_e64 v1, v2, s16
-	v_mov_b32_e32 v17, v18
-                                        ; kill: def $sgpr2 killed $sgpr2 killed $sgpr2_sgpr3
-	v_or_b32_e64 v18, v17, s2
-                                        ; kill: def $vgpr18 killed $vgpr18 def $vgpr18_vgpr19 killed $exec
-	v_mov_b32_e32 v19, v1
-	v_mov_b32_e32 v1, v19
-	v_cndmask_b32_e64 v1, v1, v2, s[0:1]
-	v_mov_b32_e32 v2, v18
-	v_cndmask_b32_e64 v18, v2, v17, s[0:1]
-                                        ; kill: def $vgpr18 killed $vgpr18 def $vgpr18_vgpr19 killed $exec
-	v_mov_b32_e32 v19, v1
-	v_mov_b32_e32 v1, v19
-	s_mov_b32 s0, 0xffffff1f
-	s_mov_b32 s1, -1
-	s_mov_b32 s2, s1
-	v_and_b32_e64 v1, v1, s2
-	v_mov_b32_e32 v2, v18
-                                        ; kill: def $sgpr0 killed $sgpr0 killed $sgpr0_sgpr1
-	v_and_b32_e64 v20, v2, s0
-                                        ; kill: def $vgpr20 killed $vgpr20 def $vgpr20_vgpr21 killed $exec
-	v_mov_b32_e32 v21, v1
-	s_mov_b32 s0, 0
-	v_mov_b32_e32 v2, 0
-                                        ; kill: def $vgpr0 killed $vgpr0 def $vgpr0_vgpr1 killed $exec
-	v_mov_b32_e32 v1, v2
-	s_mov_b32 s0, 5
-	s_waitcnt vmcnt(0)
-	v_lshlrev_b64 v[18:19], s0, v[0:1]
-	v_mov_b32_e32 v0, v21
-	v_mov_b32_e32 v1, v19
-	v_or_b32_e64 v0, v0, v1
-	v_mov_b32_e32 v1, v20
-	v_mov_b32_e32 v2, v18
-	v_or_b32_e64 v18, v1, v2
-                                        ; kill: def $vgpr18 killed $vgpr18 def $vgpr18_vgpr19 killed $exec
-	v_mov_b32_e32 v19, v0
-	v_mov_b32_e32 v1, v18
-	s_mov_b32 s0, 32
-                                        ; implicit-def: $vgpr25 : SGPR spill to VGPR lane
-	v_writelane_b32 v25, s0, 0
-	v_lshrrev_b64 v[18:19], s0, v[18:19]
-	v_mov_b32_e32 v2, v18
-	s_getpc_b64 s[0:1]
-	s_add_u32 s0, s0, __ockl_hostcall_preview@rel32@lo+4
-	s_addc_u32 s1, s1, __ockl_hostcall_preview@rel32@hi+12
-	v_mov_b32_e32 v0, 2
-	s_swappc_b64 s[30:31], s[0:1]
-	v_readlane_b32 s0, v25, 0
-                                        ; implicit-def: $sgpr1
-                                        ; implicit-def: $sgpr2
-	v_mov_b32_e32 v2, s1
-                                        ; kill: def $vgpr2 killed $vgpr2 def $vgpr2_vgpr3 killed $exec
-	v_mov_b32_e32 v3, v1
-	v_lshrrev_b64 v[2:3], s0, v[2:3]
-	v_mov_b32_e32 v1, v2
-	v_readlane_b32 s30, v24, 0
-	v_readlane_b32 s31, v24, 1
-	s_mov_b32 s32, s33
-	s_xor_saveexec_b64 s[0:1], -1
-	scratch_load_dword v24, off, s33 offset:4 ; 4-byte Folded Reload
-	scratch_load_dword v25, off, s33 offset:8 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[0:1]
-	s_mov_b32 s33, s19
-	s_waitcnt vmcnt(0)
-	s_setpc_b64 s[30:31]
-.Lfunc_end7:
-	.size	__ockl_fprintf_append_args, .Lfunc_end7-__ockl_fprintf_append_args
-                                        ; -- End function
-	.set .L__ockl_fprintf_append_args.num_vgpr, max(26, .L__ockl_hostcall_preview.num_vgpr)
-	.set .L__ockl_fprintf_append_args.num_agpr, max(0, .L__ockl_hostcall_preview.num_agpr)
-	.set .L__ockl_fprintf_append_args.numbered_sgpr, max(34, .L__ockl_hostcall_preview.numbered_sgpr)
-	.set .L__ockl_fprintf_append_args.num_named_barrier, max(0, .L__ockl_hostcall_preview.num_named_barrier)
-	.set .L__ockl_fprintf_append_args.private_seg_size, 16+max(.L__ockl_hostcall_preview.private_seg_size)
-	.set .L__ockl_fprintf_append_args.uses_vcc, or(1, .L__ockl_hostcall_preview.uses_vcc)
-	.set .L__ockl_fprintf_append_args.uses_flat_scratch, or(0, .L__ockl_hostcall_preview.uses_flat_scratch)
-	.set .L__ockl_fprintf_append_args.has_dyn_sized_stack, or(0, .L__ockl_hostcall_preview.has_dyn_sized_stack)
-	.set .L__ockl_fprintf_append_args.has_recursion, or(0, .L__ockl_hostcall_preview.has_recursion)
-	.set .L__ockl_fprintf_append_args.has_indirect_call, or(0, .L__ockl_hostcall_preview.has_indirect_call)
-	.section	.AMDGPU.csdata,"",@progbits
-; Function info:
-; codeLenInByte = 436
-; TotalNumSgprs: 40
-; NumVgprs: 26
-; NumAgprs: 32
-; TotalNumVgprs: 60
-; ScratchSize: 300
-; MemoryBound: 0
-	.text
-	.hidden	__assert_fail                   ; -- Begin function __assert_fail
-	.weak	__assert_fail
-	.p2align	2
-	.type	__assert_fail,@function
-__assert_fail:                          ; @__assert_fail
-; %bb.0:
-	s_waitcnt vmcnt(0) expcnt(0) lgkmcnt(0)
-	s_mov_b32 s42, s33
-	s_mov_b32 s33, s32
-	s_xor_saveexec_b64 s[0:1], -1
-	scratch_store_dword off, v36, s33 offset:160 ; 4-byte Folded Spill
-	scratch_store_dword off, v37, s33 offset:164 ; 4-byte Folded Spill
-	scratch_store_dword off, v38, s33 offset:168 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[0:1]
-	s_add_i32 s32, s32, 0xb0
-	v_writelane_b32 v36, s30, 0
-	s_nop 1
-	v_writelane_b32 v36, s31, 1
-	scratch_store_dword off, v31, s33 offset:152 ; 4-byte Folded Spill
-	scratch_store_dword off, v6, s33 offset:148 ; 4-byte Folded Spill
-	v_mov_b32_e32 v6, v5
-	scratch_load_dword v5, off, s33 offset:148 ; 4-byte Folded Reload
-	s_nop 0
-	scratch_store_dword off, v6, s33 offset:144 ; 4-byte Folded Spill
-	scratch_store_dword off, v3, s33 offset:140 ; 4-byte Folded Spill
-	v_mov_b32_e32 v6, v2
-	scratch_load_dword v2, off, s33 offset:144 ; 4-byte Folded Reload
-	v_mov_b32_e32 v8, v0
-	scratch_load_dword v0, off, s33 offset:140 ; 4-byte Folded Reload
-                                        ; implicit-def: $vgpr38 : SGPR spill to VGPR lane
-	v_writelane_b32 v38, s15, 0
-	v_writelane_b32 v38, s14, 1
-	v_writelane_b32 v38, s13, 2
-	v_writelane_b32 v38, s12, 3
-	v_writelane_b32 v38, s10, 4
-	s_nop 1
-	v_writelane_b32 v38, s11, 5
-	v_writelane_b32 v38, s8, 6
-	s_nop 1
-	v_writelane_b32 v38, s9, 7
-	v_writelane_b32 v38, s6, 8
-	s_nop 1
-	v_writelane_b32 v38, s7, 9
-	v_writelane_b32 v38, s4, 10
-	s_nop 1
-	v_writelane_b32 v38, s5, 11
-                                        ; kill: def $vgpr2 killed $vgpr2 def $vgpr2_vgpr3 killed $exec
-	s_waitcnt vmcnt(4)
-	v_mov_b32_e32 v3, v5
-                                        ; kill: def $vgpr6 killed $vgpr6 def $vgpr6_vgpr7 killed $exec
-	s_waitcnt vmcnt(0)
-	v_mov_b32_e32 v7, v0
-                                        ; kill: def $vgpr8 killed $vgpr8 def $vgpr8_vgpr9 killed $exec
-	v_mov_b32_e32 v9, v1
-	s_mov_b64 s[2:3], 0
-	s_mov_b32 s25, s3
-	v_writelane_b32 v38, s25, 12
-	s_mov_b32 s26, -1
-	v_writelane_b32 v38, s26, 13
-	s_mov_b32 s1, s33
-	s_cmp_lg_u32 s1, s26
-	s_mov_b64 s[16:17], src_private_base
-	s_mov_b32 s24, s17
-	v_writelane_b32 v38, s24, 14
-	s_cselect_b32 s0, s24, s25
-	s_mov_b32 s23, s2
-	v_writelane_b32 v38, s23, 15
-	s_cselect_b32 s20, s1, s23
-                                        ; kill: def $sgpr20 killed $sgpr20 def $sgpr20_sgpr21
-	s_mov_b32 s21, s0
-	s_mov_b64 s[0:1], s[20:21]
-	v_writelane_b32 v38, s0, 16
-	s_nop 1
-	v_writelane_b32 v38, s1, 17
-	s_add_i32 s0, s33, 8
-	s_mov_b32 s1, s0
-	s_cmp_lg_u32 s1, s26
-	s_cselect_b32 s0, s24, s25
-	s_cselect_b32 s18, s1, s23
-                                        ; kill: def $sgpr18 killed $sgpr18 def $sgpr18_sgpr19
-	s_mov_b32 s19, s0
-	s_mov_b64 s[0:1], s[18:19]
-	v_writelane_b32 v38, s0, 18
-	s_nop 1
-	v_writelane_b32 v38, s1, 19
-	s_add_i32 s0, s33, 16
-	s_mov_b32 s1, s0
-	s_cmp_lg_u32 s1, s26
-	s_cselect_b32 s0, s24, s25
-	s_cselect_b32 s2, s1, s23
-                                        ; kill: def $sgpr2 killed $sgpr2 def $sgpr2_sgpr3
-	s_mov_b32 s3, s0
-	s_mov_b64 s[0:1], s[2:3]
-	v_writelane_b32 v38, s0, 20
-	s_nop 1
-	v_writelane_b32 v38, s1, 21
-	s_add_i32 s1, s33, 24
-	s_mov_b32 s0, s1
-	s_cmp_lg_u32 s0, s26
-	s_cselect_b32 s16, s24, s25
-	s_cselect_b32 s0, s0, s23
-                                        ; kill: def $sgpr0 killed $sgpr0 def $sgpr0_sgpr1
-	s_mov_b32 s1, s16
-	s_mov_b64 s[16:17], s[0:1]
-	v_writelane_b32 v38, s16, 22
-	s_nop 1
-	v_writelane_b32 v38, s17, 23
-	s_add_i32 s17, s33, 32
-	s_mov_b32 s16, s17
-	s_cmp_lg_u32 s16, s26
-	s_cselect_b32 s22, s24, s25
-	s_cselect_b32 s16, s16, s23
-                                        ; kill: def $sgpr16 killed $sgpr16 def $sgpr16_sgpr17
-	s_mov_b32 s17, s22
-	s_mov_b64 s[28:29], s[16:17]
-	v_writelane_b32 v38, s28, 24
-	s_nop 1
-	v_writelane_b32 v38, s29, 25
-	s_add_i32 s22, s33, 0x50
-	s_mov_b32 s27, s22
-	s_cmp_lg_u32 s27, s26
-	s_cselect_b32 s22, s24, s25
-	s_cselect_b32 s28, s27, s23
-                                        ; kill: def $sgpr28 killed $sgpr28 def $sgpr28_sgpr29
-	s_mov_b32 s29, s22
-	v_writelane_b32 v38, s28, 26
-	s_nop 1
-	v_writelane_b32 v38, s29, 27
-	v_writelane_b32 v38, s28, 28
-	s_nop 1
-	v_writelane_b32 v38, s29, 29
-	s_add_i32 s22, s33, 0x58
-	s_mov_b32 s27, s22
-	s_cmp_lg_u32 s27, s26
-	s_cselect_b32 s22, s24, s25
-	s_cselect_b32 s28, s27, s23
-                                        ; kill: def $sgpr28 killed $sgpr28 def $sgpr28_sgpr29
-	s_mov_b32 s29, s22
-	v_writelane_b32 v38, s28, 30
-	s_nop 1
-	v_writelane_b32 v38, s29, 31
-	v_writelane_b32 v38, s28, 32
-	s_nop 1
-	v_writelane_b32 v38, s29, 33
-	s_add_i32 s22, s33, 0x60
-	s_mov_b32 s27, s22
-	s_cmp_lg_u32 s27, s26
-	s_cselect_b32 s22, s24, s25
-	s_cselect_b32 s28, s27, s23
-                                        ; kill: def $sgpr28 killed $sgpr28 def $sgpr28_sgpr29
-	s_mov_b32 s29, s22
-	v_writelane_b32 v38, s28, 34
-	s_nop 1
-	v_writelane_b32 v38, s29, 35
-	s_add_i32 s22, s33, 0x68
-	s_mov_b32 s27, s22
-	s_cmp_lg_u32 s27, s26
-	s_cselect_b32 s22, s24, s25
-	s_cselect_b32 s28, s27, s23
-                                        ; kill: def $sgpr28 killed $sgpr28 def $sgpr28_sgpr29
-	s_mov_b32 s29, s22
-	v_writelane_b32 v38, s28, 36
-	s_nop 1
-	v_writelane_b32 v38, s29, 37
-	s_add_i32 s22, s33, 0x70
-	s_mov_b32 s27, s22
-	s_cmp_lg_u32 s27, s26
-	s_cselect_b32 s22, s24, s25
-	s_cselect_b32 s28, s27, s23
-                                        ; kill: def $sgpr28 killed $sgpr28 def $sgpr28_sgpr29
-	s_mov_b32 s29, s22
-	v_writelane_b32 v38, s28, 38
-	s_nop 1
-	v_writelane_b32 v38, s29, 39
-	s_add_i32 s27, s33, 0x78
-	s_mov_b32 s22, s27
-	s_cmp_lg_u32 s22, s26
-	s_cselect_b32 s24, s24, s25
-	s_cselect_b32 s22, s22, s23
-                                        ; kill: def $sgpr22 killed $sgpr22 def $sgpr22_sgpr23
-	s_mov_b32 s23, s24
-	v_writelane_b32 v38, s22, 40
-	s_nop 1
-	v_writelane_b32 v38, s23, 41
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_store_dword off, v38, s33 offset:128 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[40:41]
-	v_mov_b64_e32 v[0:1], s[20:21]
-	flat_store_dwordx2 v[0:1], v[8:9]
-	v_mov_b64_e32 v[0:1], s[18:19]
-	flat_store_dwordx2 v[0:1], v[6:7]
-	v_mov_b64_e32 v[0:1], s[2:3]
-	flat_store_dword v[0:1], v4
-	v_mov_b64_e32 v[0:1], s[0:1]
-	flat_store_dwordx2 v[0:1], v[2:3]
-	v_mov_b32_e32 v0, 0
-	scratch_store_dword off, v0, s33 offset:136 ; 4-byte Folded Spill
-	s_getpc_b64 s[0:1]
-	s_add_u32 s0, s0, __const.__assert_fail.fmt@rel32@lo+35
-	s_addc_u32 s1, s1, __const.__assert_fail.fmt@rel32@hi+43
-	global_load_dwordx4 v[2:5], v0, s[0:1]
-	s_getpc_b64 s[0:1]
-	s_add_u32 s0, s0, __const.__assert_fail.fmt@rel32@lo+4
-	s_addc_u32 s1, s1, __const.__assert_fail.fmt@rel32@hi+12
-	s_load_dwordx4 s[0:3], s[0:1], 0x0
-	s_getpc_b64 s[18:19]
-	s_add_u32 s18, s18, __const.__assert_fail.fmt@rel32@lo+20
-	s_addc_u32 s19, s19, __const.__assert_fail.fmt@rel32@hi+28
-	s_load_dwordx4 s[20:23], s[18:19], 0x0
-	v_mov_b64_e32 v[0:1], s[16:17]
-	s_waitcnt vmcnt(0)
-	flat_store_dwordx4 v[0:1], v[2:5] offset:31
-	v_mov_b64_e32 v[0:1], s[16:17]
-	s_waitcnt lgkmcnt(0)
-	v_mov_b64_e32 v[2:3], s[20:21]
-	v_mov_b64_e32 v[4:5], s[22:23]
-	flat_store_dwordx4 v[0:1], v[2:5] offset:16
-	v_mov_b64_e32 v[0:1], s[16:17]
-	s_nop 0
-	v_mov_b64_e32 v[4:5], s[2:3]
-	v_mov_b64_e32 v[2:3], s[0:1]
-	flat_store_dwordx4 v[0:1], v[2:5]
-	s_getpc_b64 s[0:1]
-	s_add_u32 s0, s0, __ockl_fprintf_stderr_begin@rel32@lo+4
-	s_addc_u32 s1, s1, __ockl_fprintf_stderr_begin@rel32@hi+12
-	s_swappc_b64 s[30:31], s[0:1]
-	scratch_load_dword v2, off, s33 offset:136 ; 4-byte Folded Reload
-	v_readlane_b32 s2, v38, 26
-	v_readlane_b32 s3, v38, 27
-	v_readlane_b32 s0, v38, 30
-	v_readlane_b32 s1, v38, 31
-	v_mov_b32_e32 v4, v0
-                                        ; kill: def $vgpr4 killed $vgpr4 def $vgpr4_vgpr5 killed $exec
-	v_mov_b32_e32 v5, v1
-	v_mov_b64_e32 v[0:1], s[2:3]
-	flat_store_dwordx2 v[0:1], v[4:5]
-	v_mov_b64_e32 v[0:1], s[0:1]
-	s_waitcnt vmcnt(0)
-	flat_store_dword v[0:1], v2
-; %bb.1:
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_load_dword v38, off, s33 offset:128 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[40:41]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v38, 24
-	v_readlane_b32 s1, v38, 25
-	v_readlane_b32 s2, v38, 34
-	v_readlane_b32 s3, v38, 35
-	s_nop 1
-	v_mov_b64_e32 v[0:1], s[2:3]
-	v_mov_b64_e32 v[2:3], s[0:1]
-	flat_store_dwordx2 v[0:1], v[2:3]
-	s_mov_b64 s[0:1], 0
-                                        ; implicit-def: $sgpr2_sgpr3
-	v_writelane_b32 v38, s0, 42
-	s_nop 1
-	v_writelane_b32 v38, s1, 43
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_store_dword off, v38, s33 offset:128 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[40:41]
-.LBB8_2:                                ; =>This Inner Loop Header: Depth=1
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_load_dword v38, off, s33 offset:128 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[40:41]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s2, v38, 34
-	v_readlane_b32 s3, v38, 35
-	v_readlane_b32 s0, v38, 44
-	v_readlane_b32 s1, v38, 45
-	v_readlane_b32 s4, v38, 42
-	v_readlane_b32 s5, v38, 43
-	s_nop 0
-	v_writelane_b32 v38, s4, 46
-	s_nop 1
-	v_writelane_b32 v38, s5, 47
-	v_mov_b64_e32 v[0:1], s[2:3]
-	flat_load_dwordx2 v[0:1], v[0:1]
-	s_mov_b64 s[4:5], 1
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	v_lshl_add_u64 v[4:5], v[0:1], 0, s[4:5]
-	v_mov_b64_e32 v[2:3], s[2:3]
-	flat_store_dwordx2 v[2:3], v[4:5]
-	flat_load_ubyte v0, v[0:1]
-	s_mov_b32 s2, 0
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	v_cmp_ne_u16_e64 s[2:3], v0, s2
-	s_mov_b64 s[4:5], -1
-	s_or_b64 s[0:1], s[0:1], exec
-	v_writelane_b32 v38, s0, 48
-	s_nop 1
-	v_writelane_b32 v38, s1, 49
-	v_writelane_b32 v38, s0, 50
-	s_nop 1
-	v_writelane_b32 v38, s1, 51
-	s_mov_b64 s[0:1], exec
-	v_writelane_b32 v38, s0, 52
-	s_nop 1
-	v_writelane_b32 v38, s1, 53
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_store_dword off, v38, s33 offset:128 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[40:41]
-	s_and_b64 s[0:1], s[0:1], s[2:3]
-	s_mov_b64 exec, s[0:1]
-	s_cbranch_execz .LBB8_4
-; %bb.3:                                ;   in Loop: Header=BB8_2 Depth=1
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_load_dword v38, off, s33 offset:128 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[40:41]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v38, 48
-	v_readlane_b32 s1, v38, 49
-	s_mov_b64 s[2:3], 0
-	s_andn2_b64 s[0:1], s[0:1], exec
-	v_writelane_b32 v38, s0, 50
-	s_nop 1
-	v_writelane_b32 v38, s1, 51
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_store_dword off, v38, s33 offset:128 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[40:41]
-.LBB8_4:                                ;   in Loop: Header=BB8_2 Depth=1
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_load_dword v38, off, s33 offset:128 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[40:41]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v38, 52
-	v_readlane_b32 s1, v38, 53
-	s_or_b64 exec, exec, s[0:1]
-	v_readlane_b32 s4, v38, 46
-	v_readlane_b32 s5, v38, 47
-	v_readlane_b32 s2, v38, 50
-	v_readlane_b32 s3, v38, 51
-	s_mov_b64 s[0:1], s[2:3]
-	s_and_b64 s[0:1], exec, s[0:1]
-	s_or_b64 s[0:1], s[0:1], s[4:5]
-	v_writelane_b32 v38, s2, 44
-	s_nop 1
-	v_writelane_b32 v38, s3, 45
-	s_mov_b64 s[2:3], s[0:1]
-	v_writelane_b32 v38, s2, 42
-	s_nop 1
-	v_writelane_b32 v38, s3, 43
-	s_mov_b64 s[2:3], s[0:1]
-	v_writelane_b32 v38, s2, 54
-	s_nop 1
-	v_writelane_b32 v38, s3, 55
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_store_dword off, v38, s33 offset:128 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[40:41]
-	s_andn2_b64 exec, exec, s[0:1]
-	s_cbranch_execnz .LBB8_2
-; %bb.5:
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_load_dword v38, off, s33 offset:128 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[40:41]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v38, 54
-	v_readlane_b32 s1, v38, 55
-	s_or_b64 exec, exec, s[0:1]
-; %bb.6:
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_load_dword v38, off, s33 offset:128 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[40:41]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v38, 32
-	v_readlane_b32 s1, v38, 33
-	v_readlane_b32 s2, v38, 24
-	v_readlane_b32 s3, v38, 25
-	v_readlane_b32 s4, v38, 34
-	v_readlane_b32 s5, v38, 35
-	s_nop 1
-	v_mov_b64_e32 v[0:1], s[4:5]
-	flat_load_dword v0, v[0:1]
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	v_sub_u32_e64 v2, v0, s2
-	v_mov_b64_e32 v[0:1], s[0:1]
-	flat_store_dword v[0:1], v2
-; %bb.7:
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_load_dword v38, off, s33 offset:128 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[40:41]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s16, v38, 28
-	v_readlane_b32 s17, v38, 29
-	v_readlane_b32 s15, v38, 0
-	v_readlane_b32 s14, v38, 1
-	v_readlane_b32 s13, v38, 2
-	v_readlane_b32 s12, v38, 3
-	v_readlane_b32 s10, v38, 4
-	v_readlane_b32 s11, v38, 5
-	v_readlane_b32 s8, v38, 6
-	v_readlane_b32 s9, v38, 7
-	v_readlane_b32 s6, v38, 8
-	v_readlane_b32 s7, v38, 9
-	v_readlane_b32 s4, v38, 10
-	v_readlane_b32 s5, v38, 11
-	v_readlane_b32 s0, v38, 24
-	v_readlane_b32 s1, v38, 25
-	v_readlane_b32 s2, v38, 32
-	v_readlane_b32 s3, v38, 33
-	scratch_load_dword v31, off, s33 offset:152 ; 4-byte Folded Reload
-	v_mov_b64_e32 v[0:1], s[16:17]
-	flat_load_dwordx2 v[2:3], v[0:1]
-	v_mov_b64_e32 v[0:1], s[2:3]
-	flat_load_dword v4, v[0:1]
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	v_ashrrev_i32_e64 v0, 31, v4
-	v_mov_b32_e32 v6, v4
-	v_mov_b32_e32 v7, v0
-	s_mov_b32 s3, 32
-	s_lshr_b64 s[16:17], s[0:1], s3
-	s_mov_b32 s2, s16
-	v_lshrrev_b64 v[0:1], s3, v[2:3]
-	v_mov_b32_e32 v1, v0
-	v_lshrrev_b64 v[6:7], s3, v[6:7]
-	v_mov_b32_e32 v5, v6
-	s_mov_b32 s3, s0
-	v_mov_b32_e32 v0, v2
-	s_getpc_b64 s[0:1]
-	s_add_u32 s0, s0, __ockl_fprintf_append_string_n@rel32@lo+4
-	s_addc_u32 s1, s1, __ockl_fprintf_append_string_n@rel32@hi+12
-	v_mov_b32_e32 v6, 0
-	v_mov_b32_e32 v2, s3
-	v_mov_b32_e32 v3, s2
-	s_swappc_b64 s[30:31], s[0:1]
-	v_readlane_b32 s0, v38, 28
-	v_readlane_b32 s1, v38, 29
-	v_mov_b32_e32 v2, v0
-                                        ; kill: def $vgpr2 killed $vgpr2 def $vgpr2_vgpr3 killed $exec
-	v_mov_b32_e32 v3, v1
-	v_mov_b64_e32 v[0:1], s[0:1]
-	flat_store_dwordx2 v[0:1], v[2:3]
-; %bb.8:
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_load_dword v38, off, s33 offset:128 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[40:41]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v38, 36
-	v_readlane_b32 s1, v38, 37
-	v_readlane_b32 s2, v38, 18
-	v_readlane_b32 s3, v38, 19
-	s_nop 1
-	v_mov_b64_e32 v[0:1], s[2:3]
-	flat_load_dwordx2 v[2:3], v[0:1]
-	v_mov_b64_e32 v[0:1], s[0:1]
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	flat_store_dwordx2 v[0:1], v[2:3]
-	s_mov_b64 s[0:1], 0
-                                        ; implicit-def: $sgpr2_sgpr3
-	v_writelane_b32 v38, s0, 56
-	s_nop 1
-	v_writelane_b32 v38, s1, 57
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_store_dword off, v38, s33 offset:128 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[40:41]
-.LBB8_9:                                ; =>This Inner Loop Header: Depth=1
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_load_dword v38, off, s33 offset:128 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[40:41]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s2, v38, 36
-	v_readlane_b32 s3, v38, 37
-	v_readlane_b32 s0, v38, 58
-	v_readlane_b32 s1, v38, 59
-	v_readlane_b32 s4, v38, 56
-	v_readlane_b32 s5, v38, 57
-	s_nop 0
-	v_writelane_b32 v38, s4, 60
-	s_nop 1
-	v_writelane_b32 v38, s5, 61
-	v_mov_b64_e32 v[0:1], s[2:3]
-	flat_load_dwordx2 v[0:1], v[0:1]
-	s_mov_b64 s[4:5], 1
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	v_lshl_add_u64 v[4:5], v[0:1], 0, s[4:5]
-	v_mov_b64_e32 v[2:3], s[2:3]
-	flat_store_dwordx2 v[2:3], v[4:5]
-	flat_load_ubyte v0, v[0:1]
-	s_mov_b32 s2, 0
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	v_cmp_ne_u16_e64 s[2:3], v0, s2
-	s_mov_b64 s[4:5], -1
-	s_or_b64 s[0:1], s[0:1], exec
-	v_writelane_b32 v38, s0, 62
-	s_nop 1
-	v_writelane_b32 v38, s1, 63
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_store_dword off, v38, s33 offset:128 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[40:41]
-                                        ; implicit-def: $vgpr38 : SGPR spill to VGPR lane
-	v_writelane_b32 v38, s0, 0
-	s_nop 1
-	v_writelane_b32 v38, s1, 1
-	s_mov_b64 s[0:1], exec
-	v_writelane_b32 v38, s0, 2
-	s_nop 1
-	v_writelane_b32 v38, s1, 3
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_store_dword off, v38, s33 offset:132 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[40:41]
-	s_and_b64 s[0:1], s[0:1], s[2:3]
-	s_mov_b64 exec, s[0:1]
-	s_cbranch_execz .LBB8_11
-; %bb.10:                               ;   in Loop: Header=BB8_9 Depth=1
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_load_dword v37, off, s33 offset:128 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[40:41]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v37, 62
-	v_readlane_b32 s1, v37, 63
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_load_dword v38, off, s33 offset:132 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[40:41]
-	s_mov_b64 s[2:3], 0
-	s_andn2_b64 s[0:1], s[0:1], exec
-	s_waitcnt vmcnt(0)
-	v_writelane_b32 v38, s0, 0
-	s_nop 1
-	v_writelane_b32 v38, s1, 1
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_store_dword off, v38, s33 offset:132 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[40:41]
-.LBB8_11:                               ;   in Loop: Header=BB8_9 Depth=1
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_load_dword v37, off, s33 offset:128 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[40:41]
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_load_dword v38, off, s33 offset:132 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[40:41]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v38, 2
-	v_readlane_b32 s1, v38, 3
-	s_or_b64 exec, exec, s[0:1]
-	v_readlane_b32 s4, v37, 60
-	v_readlane_b32 s5, v37, 61
-	v_readlane_b32 s2, v38, 0
-	v_readlane_b32 s3, v38, 1
-	s_mov_b64 s[0:1], s[2:3]
-	s_and_b64 s[0:1], exec, s[0:1]
-	s_or_b64 s[0:1], s[0:1], s[4:5]
-	v_writelane_b32 v37, s2, 58
-	s_nop 1
-	v_writelane_b32 v37, s3, 59
-	s_mov_b64 s[2:3], s[0:1]
-	v_writelane_b32 v37, s2, 56
-	s_nop 1
-	v_writelane_b32 v37, s3, 57
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_store_dword off, v37, s33 offset:128 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[40:41]
-	s_mov_b64 s[2:3], s[0:1]
-	v_writelane_b32 v38, s2, 4
-	s_nop 1
-	v_writelane_b32 v38, s3, 5
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_store_dword off, v38, s33 offset:132 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[40:41]
-	s_andn2_b64 exec, exec, s[0:1]
-	s_cbranch_execnz .LBB8_9
-; %bb.12:
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_load_dword v38, off, s33 offset:132 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[40:41]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v38, 4
-	v_readlane_b32 s1, v38, 5
-	s_or_b64 exec, exec, s[0:1]
-; %bb.13:
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_load_dword v38, off, s33 offset:128 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[40:41]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v38, 32
-	v_readlane_b32 s1, v38, 33
-	v_readlane_b32 s2, v38, 18
-	v_readlane_b32 s3, v38, 19
-	v_readlane_b32 s4, v38, 36
-	v_readlane_b32 s5, v38, 37
-	s_nop 1
-	v_mov_b64_e32 v[0:1], s[4:5]
-	flat_load_dword v0, v[0:1]
-	v_mov_b64_e32 v[2:3], s[2:3]
-	flat_load_dword v1, v[2:3]
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	v_sub_u32_e64 v2, v0, v1
-	v_mov_b64_e32 v[0:1], s[0:1]
-	flat_store_dword v[0:1], v2
-; %bb.14:
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_load_dword v38, off, s33 offset:128 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[40:41]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s16, v38, 28
-	v_readlane_b32 s17, v38, 29
-	v_readlane_b32 s15, v38, 0
-	v_readlane_b32 s14, v38, 1
-	v_readlane_b32 s13, v38, 2
-	v_readlane_b32 s12, v38, 3
-	v_readlane_b32 s10, v38, 4
-	v_readlane_b32 s11, v38, 5
-	v_readlane_b32 s8, v38, 6
-	v_readlane_b32 s9, v38, 7
-	v_readlane_b32 s6, v38, 8
-	v_readlane_b32 s7, v38, 9
-	v_readlane_b32 s4, v38, 10
-	v_readlane_b32 s5, v38, 11
-	v_readlane_b32 s0, v38, 32
-	v_readlane_b32 s1, v38, 33
-	v_readlane_b32 s2, v38, 18
-	v_readlane_b32 s3, v38, 19
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_load_dword v37, off, s33 offset:132 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[40:41]
-	scratch_load_dword v31, off, s33 offset:152 ; 4-byte Folded Reload
-	v_mov_b64_e32 v[0:1], s[16:17]
-	flat_load_dwordx2 v[8:9], v[0:1]
-	v_mov_b64_e32 v[0:1], s[2:3]
-	flat_load_dwordx2 v[6:7], v[0:1]
-	v_mov_b64_e32 v[0:1], s[0:1]
-	flat_load_dword v4, v[0:1]
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	v_ashrrev_i32_e64 v0, 31, v4
-	v_mov_b32_e32 v10, v4
-	v_mov_b32_e32 v11, v0
-	s_mov_b32 s0, 32
-	v_writelane_b32 v37, s0, 6
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_store_dword off, v37, s33 offset:132 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[40:41]
-	v_lshrrev_b64 v[0:1], s0, v[8:9]
-	v_mov_b32_e32 v1, v0
-	v_lshrrev_b64 v[2:3], s0, v[6:7]
-	v_mov_b32_e32 v3, v2
-	v_lshrrev_b64 v[10:11], s0, v[10:11]
-	v_mov_b32_e32 v5, v10
-	v_mov_b32_e32 v0, v8
-	v_mov_b32_e32 v2, v6
-	s_getpc_b64 s[0:1]
-	s_add_u32 s0, s0, __ockl_fprintf_append_string_n@rel32@lo+4
-	s_addc_u32 s1, s1, __ockl_fprintf_append_string_n@rel32@hi+12
-	v_mov_b32_e32 v6, 0
-	scratch_store_dword off, v6, s33 offset:156 ; 4-byte Folded Spill
-	s_swappc_b64 s[30:31], s[0:1]
-	scratch_load_dword v31, off, s33 offset:152 ; 4-byte Folded Reload
-	scratch_load_dword v17, off, s33 offset:156 ; 4-byte Folded Reload
-	v_readlane_b32 s2, v38, 20
-	v_readlane_b32 s3, v38, 21
-	v_readlane_b32 s0, v37, 6
-	v_readlane_b32 s4, v38, 10
-	v_readlane_b32 s5, v38, 11
-	v_readlane_b32 s6, v38, 8
-	v_readlane_b32 s7, v38, 9
-	v_readlane_b32 s8, v38, 6
-	v_readlane_b32 s9, v38, 7
-	v_readlane_b32 s10, v38, 4
-	v_readlane_b32 s11, v38, 5
-	v_readlane_b32 s12, v38, 3
-	v_readlane_b32 s13, v38, 2
-	v_readlane_b32 s14, v38, 1
-	v_readlane_b32 s15, v38, 0
-	v_readlane_b32 s16, v38, 28
-	v_readlane_b32 s17, v38, 29
-	v_mov_b32_e32 v2, v0
-                                        ; kill: def $vgpr2 killed $vgpr2 def $vgpr2_vgpr3 killed $exec
-	v_mov_b32_e32 v3, v1
-	v_mov_b64_e32 v[0:1], s[16:17]
-	flat_store_dwordx2 v[0:1], v[2:3]
-	v_mov_b64_e32 v[0:1], s[16:17]
-	flat_load_dwordx2 v[4:5], v[0:1]
-	v_mov_b64_e32 v[0:1], s[2:3]
-	flat_load_dword v3, v[0:1]
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	v_lshrrev_b64 v[0:1], s0, v[4:5]
-	v_mov_b32_e32 v1, v0
-	v_mov_b32_e32 v0, v4
-	s_getpc_b64 s[0:1]
-	s_add_u32 s0, s0, __ockl_fprintf_append_args@rel32@lo+4
-	s_addc_u32 s1, s1, __ockl_fprintf_append_args@rel32@hi+12
-	v_mov_b32_e32 v2, 1
-	v_mov_b32_e32 v4, v17
-	v_mov_b32_e32 v5, v17
-	v_mov_b32_e32 v6, v17
-	v_mov_b32_e32 v7, v17
-	v_mov_b32_e32 v8, v17
-	v_mov_b32_e32 v9, v17
-	v_mov_b32_e32 v10, v17
-	v_mov_b32_e32 v11, v17
-	v_mov_b32_e32 v12, v17
-	v_mov_b32_e32 v13, v17
-	v_mov_b32_e32 v14, v17
-	v_mov_b32_e32 v15, v17
-	v_mov_b32_e32 v16, v17
-	s_swappc_b64 s[30:31], s[0:1]
-	v_readlane_b32 s0, v38, 28
-	v_readlane_b32 s1, v38, 29
-	v_mov_b32_e32 v2, v0
-                                        ; kill: def $vgpr2 killed $vgpr2 def $vgpr2_vgpr3 killed $exec
-	v_mov_b32_e32 v3, v1
-	v_mov_b64_e32 v[0:1], s[0:1]
-	flat_store_dwordx2 v[0:1], v[2:3]
-; %bb.15:
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_load_dword v37, off, s33 offset:128 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[40:41]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v37, 38
-	v_readlane_b32 s1, v37, 39
-	v_readlane_b32 s2, v37, 22
-	v_readlane_b32 s3, v37, 23
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_load_dword v38, off, s33 offset:132 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[40:41]
-	v_mov_b64_e32 v[0:1], s[2:3]
-	flat_load_dwordx2 v[2:3], v[0:1]
-	v_mov_b64_e32 v[0:1], s[0:1]
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	flat_store_dwordx2 v[0:1], v[2:3]
-	s_mov_b64 s[0:1], 0
-                                        ; implicit-def: $sgpr2_sgpr3
-	v_writelane_b32 v38, s0, 7
-	s_nop 1
-	v_writelane_b32 v38, s1, 8
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_store_dword off, v38, s33 offset:132 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[40:41]
-.LBB8_16:                               ; =>This Inner Loop Header: Depth=1
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_load_dword v37, off, s33 offset:128 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[40:41]
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_load_dword v38, off, s33 offset:132 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[40:41]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s2, v37, 38
-	v_readlane_b32 s3, v37, 39
-	v_readlane_b32 s0, v38, 9
-	v_readlane_b32 s1, v38, 10
-	v_readlane_b32 s4, v38, 7
-	v_readlane_b32 s5, v38, 8
-	s_nop 0
-	v_writelane_b32 v38, s4, 11
-	s_nop 1
-	v_writelane_b32 v38, s5, 12
-	v_mov_b64_e32 v[0:1], s[2:3]
-	flat_load_dwordx2 v[0:1], v[0:1]
-	s_mov_b64 s[4:5], 1
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	v_lshl_add_u64 v[4:5], v[0:1], 0, s[4:5]
-	v_mov_b64_e32 v[2:3], s[2:3]
-	flat_store_dwordx2 v[2:3], v[4:5]
-	flat_load_ubyte v0, v[0:1]
-	s_mov_b32 s2, 0
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	v_cmp_ne_u16_e64 s[2:3], v0, s2
-	s_mov_b64 s[4:5], -1
-	s_or_b64 s[0:1], s[0:1], exec
-	v_writelane_b32 v38, s0, 13
-	s_nop 1
-	v_writelane_b32 v38, s1, 14
-	v_writelane_b32 v38, s0, 15
-	s_nop 1
-	v_writelane_b32 v38, s1, 16
-	s_mov_b64 s[0:1], exec
-	v_writelane_b32 v38, s0, 17
-	s_nop 1
-	v_writelane_b32 v38, s1, 18
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_store_dword off, v38, s33 offset:132 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[40:41]
-	s_and_b64 s[0:1], s[0:1], s[2:3]
-	s_mov_b64 exec, s[0:1]
-	s_cbranch_execz .LBB8_18
-; %bb.17:                               ;   in Loop: Header=BB8_16 Depth=1
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_load_dword v38, off, s33 offset:132 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[40:41]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v38, 13
-	v_readlane_b32 s1, v38, 14
-	s_mov_b64 s[2:3], 0
-	s_andn2_b64 s[0:1], s[0:1], exec
-	v_writelane_b32 v38, s0, 15
-	s_nop 1
-	v_writelane_b32 v38, s1, 16
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_store_dword off, v38, s33 offset:132 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[40:41]
-.LBB8_18:                               ;   in Loop: Header=BB8_16 Depth=1
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_load_dword v38, off, s33 offset:132 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[40:41]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v38, 17
-	v_readlane_b32 s1, v38, 18
-	s_or_b64 exec, exec, s[0:1]
-	v_readlane_b32 s4, v38, 11
-	v_readlane_b32 s5, v38, 12
-	v_readlane_b32 s2, v38, 15
-	v_readlane_b32 s3, v38, 16
-	s_mov_b64 s[0:1], s[2:3]
-	s_and_b64 s[0:1], exec, s[0:1]
-	s_or_b64 s[0:1], s[0:1], s[4:5]
-	v_writelane_b32 v38, s2, 9
-	s_nop 1
-	v_writelane_b32 v38, s3, 10
-	s_mov_b64 s[2:3], s[0:1]
-	v_writelane_b32 v38, s2, 7
-	s_nop 1
-	v_writelane_b32 v38, s3, 8
-	s_mov_b64 s[2:3], s[0:1]
-	v_writelane_b32 v38, s2, 19
-	s_nop 1
-	v_writelane_b32 v38, s3, 20
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_store_dword off, v38, s33 offset:132 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[40:41]
-	s_andn2_b64 exec, exec, s[0:1]
-	s_cbranch_execnz .LBB8_16
-; %bb.19:
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_load_dword v38, off, s33 offset:132 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[40:41]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v38, 19
-	v_readlane_b32 s1, v38, 20
-	s_or_b64 exec, exec, s[0:1]
-; %bb.20:
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_load_dword v38, off, s33 offset:128 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[40:41]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v38, 32
-	v_readlane_b32 s1, v38, 33
-	v_readlane_b32 s2, v38, 22
-	v_readlane_b32 s3, v38, 23
-	v_readlane_b32 s4, v38, 38
-	v_readlane_b32 s5, v38, 39
-	s_nop 1
-	v_mov_b64_e32 v[0:1], s[4:5]
-	flat_load_dword v0, v[0:1]
-	v_mov_b64_e32 v[2:3], s[2:3]
-	flat_load_dword v1, v[2:3]
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	v_sub_u32_e64 v2, v0, v1
-	v_mov_b64_e32 v[0:1], s[0:1]
-	flat_store_dword v[0:1], v2
-; %bb.21:
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_load_dword v38, off, s33 offset:128 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[40:41]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s16, v38, 28
-	v_readlane_b32 s17, v38, 29
-	v_readlane_b32 s15, v38, 0
-	v_readlane_b32 s14, v38, 1
-	v_readlane_b32 s13, v38, 2
-	v_readlane_b32 s12, v38, 3
-	v_readlane_b32 s10, v38, 4
-	v_readlane_b32 s11, v38, 5
-	v_readlane_b32 s8, v38, 6
-	v_readlane_b32 s9, v38, 7
-	v_readlane_b32 s6, v38, 8
-	v_readlane_b32 s7, v38, 9
-	v_readlane_b32 s4, v38, 10
-	v_readlane_b32 s5, v38, 11
-	v_readlane_b32 s0, v38, 32
-	v_readlane_b32 s1, v38, 33
-	v_readlane_b32 s2, v38, 22
-	v_readlane_b32 s3, v38, 23
-	scratch_load_dword v31, off, s33 offset:152 ; 4-byte Folded Reload
-	v_mov_b64_e32 v[0:1], s[16:17]
-	flat_load_dwordx2 v[8:9], v[0:1]
-	v_mov_b64_e32 v[0:1], s[2:3]
-	flat_load_dwordx2 v[6:7], v[0:1]
-	v_mov_b64_e32 v[0:1], s[0:1]
-	flat_load_dword v4, v[0:1]
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	v_ashrrev_i32_e64 v0, 31, v4
-	v_mov_b32_e32 v10, v4
-	v_mov_b32_e32 v11, v0
-	s_mov_b32 s0, 32
-	v_lshrrev_b64 v[0:1], s0, v[8:9]
-	v_mov_b32_e32 v1, v0
-	v_lshrrev_b64 v[2:3], s0, v[6:7]
-	v_mov_b32_e32 v3, v2
-	v_lshrrev_b64 v[10:11], s0, v[10:11]
-	v_mov_b32_e32 v5, v10
-	v_mov_b32_e32 v0, v8
-	v_mov_b32_e32 v2, v6
-	s_getpc_b64 s[0:1]
-	s_add_u32 s0, s0, __ockl_fprintf_append_string_n@rel32@lo+4
-	s_addc_u32 s1, s1, __ockl_fprintf_append_string_n@rel32@hi+12
-	v_mov_b32_e32 v6, 0
-	s_swappc_b64 s[30:31], s[0:1]
-	v_readlane_b32 s0, v38, 28
-	v_readlane_b32 s1, v38, 29
-	v_mov_b32_e32 v2, v0
-                                        ; kill: def $vgpr2 killed $vgpr2 def $vgpr2_vgpr3 killed $exec
-	v_mov_b32_e32 v3, v1
-	v_mov_b64_e32 v[0:1], s[0:1]
-	flat_store_dwordx2 v[0:1], v[2:3]
-; %bb.22:
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_load_dword v37, off, s33 offset:128 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[40:41]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v37, 40
-	v_readlane_b32 s1, v37, 41
-	v_readlane_b32 s2, v37, 16
-	v_readlane_b32 s3, v37, 17
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_load_dword v38, off, s33 offset:132 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[40:41]
-	v_mov_b64_e32 v[0:1], s[2:3]
-	flat_load_dwordx2 v[2:3], v[0:1]
-	v_mov_b64_e32 v[0:1], s[0:1]
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	flat_store_dwordx2 v[0:1], v[2:3]
-	s_mov_b64 s[0:1], 0
-                                        ; implicit-def: $sgpr2_sgpr3
-	v_writelane_b32 v38, s0, 21
-	s_nop 1
-	v_writelane_b32 v38, s1, 22
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_store_dword off, v38, s33 offset:132 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[40:41]
-.LBB8_23:                               ; =>This Inner Loop Header: Depth=1
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_load_dword v37, off, s33 offset:128 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[40:41]
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_load_dword v38, off, s33 offset:132 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[40:41]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s2, v37, 40
-	v_readlane_b32 s3, v37, 41
-	v_readlane_b32 s0, v38, 23
-	v_readlane_b32 s1, v38, 24
-	v_readlane_b32 s4, v38, 21
-	v_readlane_b32 s5, v38, 22
-	s_nop 0
-	v_writelane_b32 v38, s4, 25
-	s_nop 1
-	v_writelane_b32 v38, s5, 26
-	v_mov_b64_e32 v[0:1], s[2:3]
-	flat_load_dwordx2 v[0:1], v[0:1]
-	s_mov_b64 s[4:5], 1
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	v_lshl_add_u64 v[4:5], v[0:1], 0, s[4:5]
-	v_mov_b64_e32 v[2:3], s[2:3]
-	flat_store_dwordx2 v[2:3], v[4:5]
-	flat_load_ubyte v0, v[0:1]
-	s_mov_b32 s2, 0
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	v_cmp_ne_u16_e64 s[2:3], v0, s2
-	s_mov_b64 s[4:5], -1
-	s_or_b64 s[0:1], s[0:1], exec
-	v_writelane_b32 v38, s0, 27
-	s_nop 1
-	v_writelane_b32 v38, s1, 28
-	v_writelane_b32 v38, s0, 29
-	s_nop 1
-	v_writelane_b32 v38, s1, 30
-	s_mov_b64 s[0:1], exec
-	v_writelane_b32 v38, s0, 31
-	s_nop 1
-	v_writelane_b32 v38, s1, 32
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_store_dword off, v38, s33 offset:132 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[40:41]
-	s_and_b64 s[0:1], s[0:1], s[2:3]
-	s_mov_b64 exec, s[0:1]
-	s_cbranch_execz .LBB8_25
-; %bb.24:                               ;   in Loop: Header=BB8_23 Depth=1
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_load_dword v38, off, s33 offset:132 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[40:41]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v38, 27
-	v_readlane_b32 s1, v38, 28
-	s_mov_b64 s[2:3], 0
-	s_andn2_b64 s[0:1], s[0:1], exec
-	v_writelane_b32 v38, s0, 29
-	s_nop 1
-	v_writelane_b32 v38, s1, 30
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_store_dword off, v38, s33 offset:132 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[40:41]
-.LBB8_25:                               ;   in Loop: Header=BB8_23 Depth=1
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_load_dword v38, off, s33 offset:132 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[40:41]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v38, 31
-	v_readlane_b32 s1, v38, 32
-	s_or_b64 exec, exec, s[0:1]
-	v_readlane_b32 s4, v38, 25
-	v_readlane_b32 s5, v38, 26
-	v_readlane_b32 s2, v38, 29
-	v_readlane_b32 s3, v38, 30
-	s_mov_b64 s[0:1], s[2:3]
-	s_and_b64 s[0:1], exec, s[0:1]
-	s_or_b64 s[0:1], s[0:1], s[4:5]
-	v_writelane_b32 v38, s2, 23
-	s_nop 1
-	v_writelane_b32 v38, s3, 24
-	s_mov_b64 s[2:3], s[0:1]
-	v_writelane_b32 v38, s2, 21
-	s_nop 1
-	v_writelane_b32 v38, s3, 22
-	s_mov_b64 s[2:3], s[0:1]
-	v_writelane_b32 v38, s2, 33
-	s_nop 1
-	v_writelane_b32 v38, s3, 34
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_store_dword off, v38, s33 offset:132 ; 4-byte Folded Spill
-	s_mov_b64 exec, s[40:41]
-	s_andn2_b64 exec, exec, s[0:1]
-	s_cbranch_execnz .LBB8_23
-; %bb.26:
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_load_dword v38, off, s33 offset:132 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[40:41]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v38, 33
-	v_readlane_b32 s1, v38, 34
-	s_or_b64 exec, exec, s[0:1]
-; %bb.27:
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_load_dword v38, off, s33 offset:128 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[40:41]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s0, v38, 32
-	v_readlane_b32 s1, v38, 33
-	v_readlane_b32 s2, v38, 16
-	v_readlane_b32 s3, v38, 17
-	v_readlane_b32 s4, v38, 40
-	v_readlane_b32 s5, v38, 41
-	s_nop 1
-	v_mov_b64_e32 v[0:1], s[4:5]
-	flat_load_dword v0, v[0:1]
-	v_mov_b64_e32 v[2:3], s[2:3]
-	flat_load_dword v1, v[2:3]
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	v_sub_u32_e64 v2, v0, v1
-	v_mov_b64_e32 v[0:1], s[0:1]
-	flat_store_dword v[0:1], v2
-; %bb.28:
-	s_or_saveexec_b64 s[40:41], -1
-	scratch_load_dword v38, off, s33 offset:128 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[40:41]
-	s_waitcnt vmcnt(0)
-	v_readlane_b32 s15, v38, 0
-	v_readlane_b32 s14, v38, 1
-	v_readlane_b32 s13, v38, 2
-	v_readlane_b32 s12, v38, 3
-	v_readlane_b32 s10, v38, 4
-	v_readlane_b32 s11, v38, 5
-	v_readlane_b32 s8, v38, 6
-	v_readlane_b32 s9, v38, 7
-	v_readlane_b32 s6, v38, 8
-	v_readlane_b32 s7, v38, 9
-	v_readlane_b32 s4, v38, 10
-	v_readlane_b32 s5, v38, 11
-	v_readlane_b32 s0, v38, 32
-	v_readlane_b32 s1, v38, 33
-	v_readlane_b32 s2, v38, 16
-	v_readlane_b32 s3, v38, 17
-	v_readlane_b32 s16, v38, 28
-	v_readlane_b32 s17, v38, 29
-	scratch_load_dword v31, off, s33 offset:152 ; 4-byte Folded Reload
-	s_nop 0
-	v_mov_b64_e32 v[0:1], s[16:17]
-	flat_load_dwordx2 v[8:9], v[0:1]
-	v_mov_b64_e32 v[0:1], s[2:3]
-	flat_load_dwordx2 v[6:7], v[0:1]
-	v_mov_b64_e32 v[0:1], s[0:1]
-	flat_load_dword v4, v[0:1]
-	s_waitcnt vmcnt(0) lgkmcnt(0)
-	v_ashrrev_i32_e64 v0, 31, v4
-	v_mov_b32_e32 v10, v4
-	v_mov_b32_e32 v11, v0
-	s_mov_b32 s0, 32
-	v_lshrrev_b64 v[0:1], s0, v[8:9]
-	v_mov_b32_e32 v1, v0
-	v_lshrrev_b64 v[2:3], s0, v[6:7]
-	v_mov_b32_e32 v3, v2
-	v_lshrrev_b64 v[10:11], s0, v[10:11]
-	v_mov_b32_e32 v5, v10
-	v_mov_b32_e32 v0, v8
-	v_mov_b32_e32 v2, v6
-	s_getpc_b64 s[0:1]
-	s_add_u32 s0, s0, __ockl_fprintf_append_string_n@rel32@lo+4
-	s_addc_u32 s1, s1, __ockl_fprintf_append_string_n@rel32@hi+12
-	v_mov_b32_e32 v6, 1
-	s_swappc_b64 s[30:31], s[0:1]
-	s_trap 2
-	v_readlane_b32 s30, v36, 0
-	v_readlane_b32 s31, v36, 1
-	s_mov_b32 s32, s33
-	s_xor_saveexec_b64 s[0:1], -1
-	scratch_load_dword v36, off, s33 offset:160 ; 4-byte Folded Reload
-	scratch_load_dword v37, off, s33 offset:164 ; 4-byte Folded Reload
-	scratch_load_dword v38, off, s33 offset:168 ; 4-byte Folded Reload
-	s_mov_b64 exec, s[0:1]
-	s_mov_b32 s33, s42
-	s_waitcnt vmcnt(0)
-	s_setpc_b64 s[30:31]
-.Lfunc_end8:
-	.size	__assert_fail, .Lfunc_end8-__assert_fail
-                                        ; -- End function
-	.set __assert_fail.num_vgpr, max(39, .L__ockl_fprintf_stderr_begin.num_vgpr, .L__ockl_fprintf_append_string_n.num_vgpr, .L__ockl_fprintf_append_args.num_vgpr)
-	.set __assert_fail.num_agpr, max(0, .L__ockl_fprintf_stderr_begin.num_agpr, .L__ockl_fprintf_append_string_n.num_agpr, .L__ockl_fprintf_append_args.num_agpr)
-	.set __assert_fail.numbered_sgpr, max(43, .L__ockl_fprintf_stderr_begin.numbered_sgpr, .L__ockl_fprintf_append_string_n.numbered_sgpr, .L__ockl_fprintf_append_args.numbered_sgpr)
-	.set __assert_fail.num_named_barrier, max(0, .L__ockl_fprintf_stderr_begin.num_named_barrier, .L__ockl_fprintf_append_string_n.num_named_barrier, .L__ockl_fprintf_append_args.num_named_barrier)
-	.set __assert_fail.private_seg_size, 176+max(.L__ockl_fprintf_stderr_begin.private_seg_size, .L__ockl_fprintf_append_string_n.private_seg_size, .L__ockl_fprintf_append_args.private_seg_size)
-	.set __assert_fail.uses_vcc, or(1, .L__ockl_fprintf_stderr_begin.uses_vcc, .L__ockl_fprintf_append_string_n.uses_vcc, .L__ockl_fprintf_append_args.uses_vcc)
-	.set __assert_fail.uses_flat_scratch, or(0, .L__ockl_fprintf_stderr_begin.uses_flat_scratch, .L__ockl_fprintf_append_string_n.uses_flat_scratch, .L__ockl_fprintf_append_args.uses_flat_scratch)
-	.set __assert_fail.has_dyn_sized_stack, or(0, .L__ockl_fprintf_stderr_begin.has_dyn_sized_stack, .L__ockl_fprintf_append_string_n.has_dyn_sized_stack, .L__ockl_fprintf_append_args.has_dyn_sized_stack)
-	.set __assert_fail.has_recursion, or(0, .L__ockl_fprintf_stderr_begin.has_recursion, .L__ockl_fprintf_append_string_n.has_recursion, .L__ockl_fprintf_append_args.has_recursion)
-	.set __assert_fail.has_indirect_call, or(0, .L__ockl_fprintf_stderr_begin.has_indirect_call, .L__ockl_fprintf_append_string_n.has_indirect_call, .L__ockl_fprintf_append_args.has_indirect_call)
-	.section	.AMDGPU.csdata,"",@progbits
-; Function info:
-; codeLenInByte = 6236
-; TotalNumSgprs: 49
-; NumVgprs: 39
-; NumAgprs: 32
-; TotalNumVgprs: 72
-; ScratchSize: 1132
-; MemoryBound: 0
-	.text
-	.hidden	__assertfail                    ; -- Begin function __assertfail
-	.weak	__assertfail
-	.p2align	2
-	.type	__assertfail,@function
-__assertfail:                           ; @__assertfail
-; %bb.0:
-	s_waitcnt vmcnt(0) expcnt(0) lgkmcnt(0)
-	s_mov_b32 s0, s33
-	s_mov_b32 s33, s32
-	s_trap 2
-	s_mov_b32 s33, s0
-	s_setpc_b64 s[30:31]
-.Lfunc_end9:
-	.size	__assertfail, .Lfunc_end9-__assertfail
-                                        ; -- End function
-	.set __assertfail.num_vgpr, 0
-	.set __assertfail.num_agpr, 0
-	.set __assertfail.numbered_sgpr, 34
-	.set __assertfail.num_named_barrier, 0
-	.set __assertfail.private_seg_size, 0
-	.set __assertfail.uses_vcc, 0
-	.set __assertfail.uses_flat_scratch, 0
-	.set __assertfail.has_dyn_sized_stack, 0
-	.set __assertfail.has_recursion, 0
-	.set __assertfail.has_indirect_call, 0
-	.section	.AMDGPU.csdata,"",@progbits
-; Function info:
-; codeLenInByte = 24
-; TotalNumSgprs: 40
-; NumVgprs: 0
-; NumAgprs: 0
-; TotalNumVgprs: 0
+; Kernel info:
+; codeLenInByte = 192
+; TotalNumSgprs: 18
+; NumVgprs: 10
 ; ScratchSize: 0
 ; MemoryBound: 0
-	.text
-	.p2alignl 6, 3212836864
-	.fill 256, 4, 3212836864
+; FloatMode: 240
+; IeeeMode: 1
+; LDSByteSize: 0 bytes/workgroup (compile time only)
+; SGPRBlocks: 2
+; VGPRBlocks: 2
+; NumSGPRsForWavesPerEU: 18
+; NumVGPRsForWavesPerEU: 10
+; Occupancy: 10
+; WaveLimiterHint : 0
+; COMPUTE_PGM_RSRC2:SCRATCH_EN: 0
+; COMPUTE_PGM_RSRC2:USER_SGPR: 6
+; COMPUTE_PGM_RSRC2:TRAP_HANDLER: 0
+; COMPUTE_PGM_RSRC2:TGID_X_EN: 1
+; COMPUTE_PGM_RSRC2:TGID_Y_EN: 0
+; COMPUTE_PGM_RSRC2:TGID_Z_EN: 0
+; COMPUTE_PGM_RSRC2:TIDIG_COMP_CNT: 0
 	.section	.AMDGPU.gpr_maximums,"",@progbits
-	.set amdgpu.max_num_vgpr, 39
-	.set amdgpu.max_num_agpr, 32
-	.set amdgpu.max_num_sgpr, 43
-	.text
-	.type	__const.__assert_fail.fmt,@object ; @__const.__assert_fail.fmt
-	.section	.rodata.str1.16,"aMS",@progbits,1
-	.p2align	4, 0x0
-__const.__assert_fail.fmt:
-	.asciz	"%s:%u: %s: Device-side assertion `%s' failed.\n"
-	.size	__const.__assert_fail.fmt, 47
-
-	.type	__hip_cuid_cb17ed47c5977a5f,@object ; @__hip_cuid_cb17ed47c5977a5f
+	.set amdgpu.max_num_vgpr, 0
+	.set amdgpu.max_num_agpr, 0
+	.set amdgpu.max_num_sgpr, 0
+	.section	.AMDGPU.csdata,"",@progbits
+	.type	__hip_cuid_9355bdbd540905a,@object ; @__hip_cuid_9355bdbd540905a
 	.section	.bss,"aw",@nobits
-	.globl	__hip_cuid_cb17ed47c5977a5f
-__hip_cuid_cb17ed47c5977a5f:
+	.globl	__hip_cuid_9355bdbd540905a
+__hip_cuid_9355bdbd540905a:
 	.byte	0                               ; 0x0
-	.size	__hip_cuid_cb17ed47c5977a5f, 1
-
-	.type	__oclc_ISA_version,@object      ; @__oclc_ISA_version
-	.section	.rodata,"a",@progbits
-	.p2align	2, 0x0
-__oclc_ISA_version:
-	.long	9402                            ; 0x24ba
-	.size	__oclc_ISA_version, 4
-
-	.type	__oclc_ABI_version,@object      ; @__oclc_ABI_version
-	.p2align	2, 0x0
-__oclc_ABI_version:
-	.long	600                             ; 0x258
-	.size	__oclc_ABI_version, 4
+	.size	__hip_cuid_9355bdbd540905a, 1
 
 	.ident	"AMD clang version 22.0.0git (https://github.com/RadeonOpenCompute/llvm-project roc-7.2.0 26014 7b800a19466229b8479a78de19143dc33c3ab9b5)"
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
-	.addrsig_sym __ockl_fprintf_stderr_begin
-	.addrsig_sym __ockl_fprintf_append_args
-	.addrsig_sym __ockl_fprintf_append_string_n
-	.addrsig_sym __hip_cuid_cb17ed47c5977a5f
+	.addrsig_sym __hip_cuid_9355bdbd540905a
 	.amdgpu_metadata
 ---
-amdhsa.kernels:  []
-amdhsa.target:   amdgcn-amd-amdhsa--gfx942
+amdhsa.kernels:
+  - .args:
+      - .address_space:  global
+        .offset:         0
+        .size:           8
+        .value_kind:     global_buffer
+      - .address_space:  global
+        .offset:         8
+        .size:           8
+        .value_kind:     global_buffer
+      - .offset:         16
+        .size:           8
+        .value_kind:     by_value
+      - .offset:         24
+        .size:           4
+        .value_kind:     hidden_block_count_x
+      - .offset:         28
+        .size:           4
+        .value_kind:     hidden_block_count_y
+      - .offset:         32
+        .size:           4
+        .value_kind:     hidden_block_count_z
+      - .offset:         36
+        .size:           2
+        .value_kind:     hidden_group_size_x
+      - .offset:         38
+        .size:           2
+        .value_kind:     hidden_group_size_y
+      - .offset:         40
+        .size:           2
+        .value_kind:     hidden_group_size_z
+      - .offset:         42
+        .size:           2
+        .value_kind:     hidden_remainder_x
+      - .offset:         44
+        .size:           2
+        .value_kind:     hidden_remainder_y
+      - .offset:         46
+        .size:           2
+        .value_kind:     hidden_remainder_z
+      - .offset:         64
+        .size:           8
+        .value_kind:     hidden_global_offset_x
+      - .offset:         72
+        .size:           8
+        .value_kind:     hidden_global_offset_y
+      - .offset:         80
+        .size:           8
+        .value_kind:     hidden_global_offset_z
+      - .offset:         88
+        .size:           2
+        .value_kind:     hidden_grid_dims
+    .group_segment_fixed_size: 0
+    .kernarg_segment_align: 8
+    .kernarg_segment_size: 280
+    .language:       OpenCL C
+    .language_version:
+      - 2
+      - 0
+    .max_flat_workgroup_size: 1024
+    .name:           _Z20vector_square_kernelIfEvPT_S1_y
+    .private_segment_fixed_size: 0
+    .sgpr_count:     18
+    .sgpr_spill_count: 0
+    .symbol:         _Z20vector_square_kernelIfEvPT_S1_y.kd
+    .uniform_work_group_size: 1
+    .uses_dynamic_stack: false
+    .vgpr_count:     10
+    .vgpr_spill_count: 0
+    .wavefront_size: 64
+amdhsa.target:   amdgcn-amd-amdhsa--gfx906
 amdhsa.version:
   - 1
   - 2
@@ -4791,7 +225,7 @@ amdhsa.version:
 
 	.end_amdgpu_metadata
 
-# __CLANG_OFFLOAD_BUNDLE____END__ hip-amdgcn-amd-amdhsa--gfx942
+# __CLANG_OFFLOAD_BUNDLE____END__ hip-amdgcn-amd-amdhsa--gfx906
 
 # __CLANG_OFFLOAD_BUNDLE____START__ host-x86_64-unknown-linux-gnu-
 	.file	"main.hip"
@@ -4799,64 +233,1375 @@ amdhsa.version:
 	.globl	_ZSt21ios_base_library_initv
 
                                         # End of file scope inline assembly
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0                          # -- Begin function main
+.LCPI0_0:
+	.quad	0x401e848000000000              # double 7.62939453125
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0
+.LCPI0_1:
+	.quad	2                               # 0x2
+	.quad	3                               # 0x3
+.LCPI0_2:
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	1                               # 0x1
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+.LCPI0_3:
+	.long	0x3fcf1aa0                      # float 1.61800003
+	.long	0x3fcf1aa0                      # float 1.61800003
+	.long	0x3fcf1aa0                      # float 1.61800003
+	.long	0x3fcf1aa0                      # float 1.61800003
+.LCPI0_4:
+	.quad	4                               # 0x4
+	.quad	4                               # 0x4
+.LCPI0_5:
+	.quad	8                               # 0x8
+	.quad	8                               # 0x8
 	.text
-	.globl	main                            # -- Begin function main
+	.globl	main
 	.p2align	4
 	.type	main,@function
 main:                                   # @main
+.Lfunc_begin0:
 	.cfi_startproc
+	.cfi_personality 3, __gxx_personality_v0
+	.cfi_lsda 3, .Lexception0
 # %bb.0:
 	pushq	%rbp
 	.cfi_def_cfa_offset 16
+	pushq	%r15
+	.cfi_def_cfa_offset 24
+	pushq	%r14
+	.cfi_def_cfa_offset 32
+	pushq	%r12
+	.cfi_def_cfa_offset 40
+	pushq	%rbx
+	.cfi_def_cfa_offset 48
+	subq	$1600, %rsp                     # imm = 0x640
+	.cfi_def_cfa_offset 1648
+	.cfi_offset %rbx, -48
+	.cfi_offset %r12, -40
+	.cfi_offset %r14, -32
+	.cfi_offset %r15, -24
 	.cfi_offset %rbp, -16
-	movq	%rsp, %rbp
-	.cfi_def_cfa_register %rbp
-	subq	$1472, %rsp                     # imm = 0x5C0
-	leaq	-1472(%rbp), %rdi
+	.cfi_escape 0x2e, 0x00
+	leaq	128(%rsp), %rdi
 	xorl	%esi, %esi
 	callq	hipGetDevicePropertiesR0600
-	movabsq	$_ZSt4cout, %rdi
-	movabsq	$.L.str, %rsi
-	callq	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
+	testl	%eax, %eax
+	jne	.LBB0_122
+# %bb.1:
+	.cfi_escape 0x2e, 0x00
+	movl	$_ZSt4cout, %edi
+	movl	$.L.str.3, %esi
+	movl	$23, %edx
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+	.cfi_escape 0x2e, 0x00
+	leaq	128(%rsp), %rbx
+	movq	%rbx, %rdi
+	callq	strlen
+	.cfi_escape 0x2e, 0x00
+	movl	$_ZSt4cout, %edi
+	movq	%rbx, %rsi
+	movq	%rax, %rdx
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+	.cfi_escape 0x2e, 0x00
+	movl	$_ZSt4cout, %edi
+	movl	$.L.str.4, %esi
+	movl	$1, %edx
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+	.cfi_escape 0x2e, 0x00
+	movl	$_ZSt4cout, %edi
+	movl	$.L.str.5, %esi
+	movl	$25, %edx
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+	.cfi_escape 0x2e, 0x00
+	movq	.LCPI0_0(%rip), %xmm0           # xmm0 = [7.62939453125E+0,0.0E+0]
+	movl	$_ZSt4cout, %edi
+	callq	_ZNSo9_M_insertIdEERSoT_
+	movq	%rax, %rbx
+	.cfi_escape 0x2e, 0x00
+	movl	$.L.str.6, %esi
+	movl	$5, %edx
 	movq	%rax, %rdi
-	leaq	-1472(%rbp), %rsi
-	callq	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+	.cfi_escape 0x2e, 0x00
+	movl	$.L.str.4, %esi
+	movl	$1, %edx
+	movq	%rbx, %rdi
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+	.cfi_escape 0x2e, 0x00
+	movl	$4000000, %edi                  # imm = 0x3D0900
+	callq	_Znwm
+	movq	%rax, %rbx
+	.cfi_escape 0x2e, 0x00
+	movl	$4000000, %edx                  # imm = 0x3D0900
 	movq	%rax, %rdi
-	movabsq	$.L.str.1, %rsi
-	callq	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
+	xorl	%esi, %esi
+	callq	memset@PLT
+.Ltmp0:                                 # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	$4000000, %edi                  # imm = 0x3D0900
+	callq	_Znwm
+.Ltmp1:                                 # EH_LABEL
+# %bb.2:
+	movq	%rax, %r14
+	.cfi_escape 0x2e, 0x00
+	movl	$4000000, %edx                  # imm = 0x3D0900
+	movq	%rax, %rdi
+	xorl	%esi, %esi
+	callq	memset@PLT
+	movdqa	.LCPI0_1(%rip), %xmm0           # xmm0 = [2,3]
+	movdqa	.LCPI0_2(%rip), %xmm1           # xmm1 = [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0]
+	movl	$4, %eax
+	movaps	.LCPI0_3(%rip), %xmm2           # xmm2 = [1.61800003E+0,1.61800003E+0,1.61800003E+0,1.61800003E+0]
+	movdqa	.LCPI0_4(%rip), %xmm3           # xmm3 = [4,4]
+	movdqa	.LCPI0_5(%rip), %xmm4           # xmm4 = [8,8]
+	.p2align	4
+.LBB0_3:                                # =>This Inner Loop Header: Depth=1
+	movq	%xmm1, %rcx
+	xorps	%xmm5, %xmm5
+	cvtsi2ss	%rcx, %xmm5
+	pshufd	$238, %xmm1, %xmm6              # xmm6 = xmm1[2,3,2,3]
+	movq	%xmm6, %rcx
+	xorps	%xmm6, %xmm6
+	cvtsi2ss	%rcx, %xmm6
+	movq	%xmm0, %rcx
+	xorps	%xmm7, %xmm7
+	cvtsi2ss	%rcx, %xmm7
+	pshufd	$238, %xmm0, %xmm8              # xmm8 = xmm0[2,3,2,3]
+	movq	%xmm8, %rcx
+	xorps	%xmm8, %xmm8
+	cvtsi2ss	%rcx, %xmm8
+	unpcklps	%xmm6, %xmm5                    # xmm5 = xmm5[0],xmm6[0],xmm5[1],xmm6[1]
+	unpcklps	%xmm8, %xmm7                    # xmm7 = xmm7[0],xmm8[0],xmm7[1],xmm8[1]
+	movlhps	%xmm7, %xmm5                    # xmm5 = xmm5[0],xmm7[0]
+	addps	%xmm2, %xmm5
+	movups	%xmm5, -16(%rbx,%rax,4)
+	movdqa	%xmm1, %xmm5
+	paddq	%xmm3, %xmm5
+	movq	%xmm5, %rcx
+	xorps	%xmm6, %xmm6
+	cvtsi2ss	%rcx, %xmm6
+	pshufd	$238, %xmm5, %xmm5              # xmm5 = xmm5[2,3,2,3]
+	movq	%xmm5, %rcx
+	xorps	%xmm5, %xmm5
+	cvtsi2ss	%rcx, %xmm5
+	movdqa	%xmm0, %xmm7
+	paddq	%xmm3, %xmm7
+	unpcklps	%xmm5, %xmm6                    # xmm6 = xmm6[0],xmm5[0],xmm6[1],xmm5[1]
+	movq	%xmm7, %rcx
+	xorps	%xmm5, %xmm5
+	cvtsi2ss	%rcx, %xmm5
+	pshufd	$238, %xmm7, %xmm7              # xmm7 = xmm7[2,3,2,3]
+	movq	%xmm7, %rcx
+	xorps	%xmm7, %xmm7
+	cvtsi2ss	%rcx, %xmm7
+	unpcklps	%xmm7, %xmm5                    # xmm5 = xmm5[0],xmm7[0],xmm5[1],xmm7[1]
+	movlhps	%xmm5, %xmm6                    # xmm6 = xmm6[0],xmm5[0]
+	addps	%xmm2, %xmm6
+	movups	%xmm6, (%rbx,%rax,4)
+	paddq	%xmm4, %xmm1
+	paddq	%xmm4, %xmm0
+	addq	$8, %rax
+	cmpq	$1000004, %rax                  # imm = 0xF4244
+	jne	.LBB0_3
+# %bb.4:
+.Ltmp3:                                 # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	$_ZSt4cout, %edi
+	movl	$.L.str.7, %esi
+	movl	$27, %edx
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+.Ltmp4:                                 # EH_LABEL
+# %bb.5:
+.Ltmp5:                                 # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movq	.LCPI0_0(%rip), %xmm0           # xmm0 = [7.62939453125E+0,0.0E+0]
+	movl	$_ZSt4cout, %edi
+	callq	_ZNSo9_M_insertIdEERSoT_
+.Ltmp6:                                 # EH_LABEL
+# %bb.6:
+.Ltmp7:                                 # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	$.L.str.8, %esi
+	movl	$5, %edx
+	movq	%rax, %rdi
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+.Ltmp8:                                 # EH_LABEL
+# %bb.7:
+.Ltmp9:                                 # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	leaq	16(%rsp), %rdi
+	movl	$4000000, %esi                  # imm = 0x3D0900
+	callq	hipMalloc
+.Ltmp10:                                # EH_LABEL
+# %bb.8:
+	movl	%eax, %ebp
+	testl	%eax, %eax
+	jne	.LBB0_9
+# %bb.19:
+.Ltmp28:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	leaq	8(%rsp), %rdi
+	movl	$4000000, %esi                  # imm = 0x3D0900
+	callq	hipMalloc
+.Ltmp29:                                # EH_LABEL
+# %bb.20:
+	movl	%eax, %ebp
+	testl	%eax, %eax
+	jne	.LBB0_21
+# %bb.31:
+.Ltmp47:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	$_ZSt4cout, %edi
+	movl	$.L.str.9, %esi
+	movl	$23, %edx
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+.Ltmp48:                                # EH_LABEL
+# %bb.32:
+	movq	16(%rsp), %rdi
+.Ltmp50:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	$4000000, %edx                  # imm = 0x3D0900
+	movq	%rbx, %rsi
+	movl	$1, %ecx
+	callq	hipMemcpy
+.Ltmp51:                                # EH_LABEL
+# %bb.33:
+	movl	%eax, %ebp
+	testl	%eax, %eax
+	jne	.LBB0_34
+# %bb.44:
+.Ltmp69:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	$_ZSt4cout, %edi
+	movl	$.L.str.10, %esi
+	movl	$43, %edx
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+.Ltmp70:                                # EH_LABEL
+# %bb.45:
+.Ltmp71:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movabsq	$4294967808, %rdi               # imm = 0x100000200
+	movabsq	$4294967552, %rdx               # imm = 0x100000100
+	movl	$1, %esi
+	movl	$1, %ecx
+	xorl	%r8d, %r8d
+	xorl	%r9d, %r9d
+	callq	__hipPushCallConfiguration
+.Ltmp72:                                # EH_LABEL
+# %bb.46:
+	testl	%eax, %eax
+	jne	.LBB0_49
+# %bb.47:
+	movq	8(%rsp), %rax
+	movq	16(%rsp), %rcx
+	movq	%rax, 88(%rsp)
+	movq	%rcx, 80(%rsp)
+	movq	$1000000, 72(%rsp)              # imm = 0xF4240
+	leaq	88(%rsp), %rax
+	movq	%rax, 96(%rsp)
+	leaq	80(%rsp), %rax
+	movq	%rax, 104(%rsp)
+	leaq	72(%rsp), %rax
+	movq	%rax, 112(%rsp)
+.Ltmp73:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	leaq	56(%rsp), %rdi
+	leaq	40(%rsp), %rsi
+	leaq	32(%rsp), %rdx
+	leaq	24(%rsp), %rcx
+	callq	__hipPopCallConfiguration
+.Ltmp74:                                # EH_LABEL
+# %bb.48:
+	movq	56(%rsp), %rsi
+	movl	64(%rsp), %edx
+	movq	40(%rsp), %rcx
+	movl	48(%rsp), %r8d
+.Ltmp75:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x10
+	leaq	96(%rsp), %r9
+	movl	$_Z20vector_square_kernelIfEvPT_S1_y, %edi
+	pushq	24(%rsp)
+	.cfi_adjust_cfa_offset 8
+	pushq	40(%rsp)
+	.cfi_adjust_cfa_offset 8
+	callq	hipLaunchKernel
+	addq	$16, %rsp
+	.cfi_adjust_cfa_offset -16
+.Ltmp76:                                # EH_LABEL
+.LBB0_49:
+.Ltmp77:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	callq	hipGetLastError
+.Ltmp78:                                # EH_LABEL
+# %bb.50:
+	movl	%eax, %ebp
+	testl	%eax, %eax
+	jne	.LBB0_51
+# %bb.61:
+.Ltmp96:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	$_ZSt4cout, %edi
+	movl	$.L.str.11, %esi
+	movl	$23, %edx
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+.Ltmp97:                                # EH_LABEL
+# %bb.62:
+	movq	8(%rsp), %rsi
+.Ltmp98:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	$4000000, %edx                  # imm = 0x3D0900
+	movq	%r14, %rdi
+	movl	$2, %ecx
+	callq	hipMemcpy
+.Ltmp99:                                # EH_LABEL
+# %bb.63:
+	movl	%eax, %ebp
+	testl	%eax, %eax
+	jne	.LBB0_64
+# %bb.74:
+	movq	16(%rsp), %rdi
+.Ltmp117:                               # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	callq	hipFree
+.Ltmp118:                               # EH_LABEL
+# %bb.75:
+	movl	%eax, %ebp
+	testl	%eax, %eax
+	jne	.LBB0_76
+# %bb.86:
+	movq	8(%rsp), %rdi
+.Ltmp136:                               # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	callq	hipFree
+.Ltmp137:                               # EH_LABEL
+# %bb.87:
+	movl	%eax, %ebp
+	testl	%eax, %eax
+	jne	.LBB0_88
+# %bb.98:
+.Ltmp155:                               # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	$_ZSt4cout, %edi
+	movl	$.L.str.12, %esi
+	movl	$19, %edx
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+.Ltmp156:                               # EH_LABEL
+# %bb.99:
+	movl	$3, %r15d
+	.p2align	4
+.LBB0_100:                              # =>This Inner Loop Header: Depth=1
+	movss	-12(%r14,%r15,4), %xmm0         # xmm0 = mem[0],zero,zero,zero
+	movss	-12(%rbx,%r15,4), %xmm1         # xmm1 = mem[0],zero,zero,zero
+	mulss	%xmm1, %xmm1
+	ucomiss	%xmm1, %xmm0
+	jne	.LBB0_101
+	jp	.LBB0_101
+# %bb.113:                              #   in Loop: Header=BB0_100 Depth=1
+	movss	-8(%r14,%r15,4), %xmm0          # xmm0 = mem[0],zero,zero,zero
+	movss	-8(%rbx,%r15,4), %xmm1          # xmm1 = mem[0],zero,zero,zero
+	mulss	%xmm1, %xmm1
+	ucomiss	%xmm1, %xmm0
+	jne	.LBB0_102
+	jp	.LBB0_102
+# %bb.114:                              #   in Loop: Header=BB0_100 Depth=1
+	movss	-4(%r14,%r15,4), %xmm0          # xmm0 = mem[0],zero,zero,zero
+	movss	-4(%rbx,%r15,4), %xmm1          # xmm1 = mem[0],zero,zero,zero
+	mulss	%xmm1, %xmm1
+	ucomiss	%xmm1, %xmm0
+	jne	.LBB0_103
+	jp	.LBB0_103
+# %bb.115:                              #   in Loop: Header=BB0_100 Depth=1
+	movss	(%r14,%r15,4), %xmm0            # xmm0 = mem[0],zero,zero,zero
+	movss	(%rbx,%r15,4), %xmm1            # xmm1 = mem[0],zero,zero,zero
+	mulss	%xmm1, %xmm1
+	ucomiss	%xmm1, %xmm0
+	jne	.LBB0_104
+	jp	.LBB0_104
+# %bb.116:                              #   in Loop: Header=BB0_100 Depth=1
+	addq	$4, %r15
+	cmpq	$1000003, %r15                  # imm = 0xF4243
+	jne	.LBB0_100
+# %bb.117:
+.Ltmp157:                               # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	$_ZSt4cout, %edi
+	movl	$.L.str.16, %esi
+	movl	$8, %edx
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+.Ltmp158:                               # EH_LABEL
+# %bb.118:
+	.cfi_escape 0x2e, 0x00
+	movl	$4000000, %esi                  # imm = 0x3D0900
+	movq	%r14, %rdi
+	callq	_ZdlPvm
+	.cfi_escape 0x2e, 0x00
+	movl	$4000000, %esi                  # imm = 0x3D0900
+	movq	%rbx, %rdi
+	callq	_ZdlPvm
 	xorl	%eax, %eax
-	addq	$1472, %rsp                     # imm = 0x5C0
+	addq	$1600, %rsp                     # imm = 0x640
+	.cfi_def_cfa_offset 48
+	popq	%rbx
+	.cfi_def_cfa_offset 40
+	popq	%r12
+	.cfi_def_cfa_offset 32
+	popq	%r14
+	.cfi_def_cfa_offset 24
+	popq	%r15
+	.cfi_def_cfa_offset 16
 	popq	%rbp
-	.cfi_def_cfa %rsp, 8
+	.cfi_def_cfa_offset 8
 	retq
+.LBB0_102:
+	.cfi_def_cfa_offset 1648
+	addq	$-2, %r15
+	jmp	.LBB0_104
+.LBB0_103:
+	decq	%r15
+	jmp	.LBB0_104
+.LBB0_101:
+	addq	$-3, %r15
+.LBB0_104:
+.Ltmp160:                               # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	$_ZSt4cerr, %edi
+	movl	$.L.str.13, %esi
+	movl	$15, %edx
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+.Ltmp161:                               # EH_LABEL
+# %bb.105:
+.Ltmp162:                               # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	$_ZSt4cerr, %edi
+	movq	%r15, %rsi
+	callq	_ZNSo9_M_insertImEERSoT_
+.Ltmp163:                               # EH_LABEL
+# %bb.106:
+.Ltmp164:                               # EH_LABEL
+	movq	%rax, %r12
+	.cfi_escape 0x2e, 0x00
+	movl	$.L.str.14, %esi
+	movl	$3, %edx
+	movq	%rax, %rdi
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+.Ltmp165:                               # EH_LABEL
+# %bb.107:
+	movss	(%r14,%r15,4), %xmm0            # xmm0 = mem[0],zero,zero,zero
+	cvtss2sd	%xmm0, %xmm0
+.Ltmp166:                               # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movq	%r12, %rdi
+	callq	_ZNSo9_M_insertIdEERSoT_
+.Ltmp167:                               # EH_LABEL
+# %bb.108:
+.Ltmp168:                               # EH_LABEL
+	movq	%rax, %r12
+	.cfi_escape 0x2e, 0x00
+	movl	$.L.str.15, %esi
+	movl	$12, %edx
+	movq	%rax, %rdi
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+.Ltmp169:                               # EH_LABEL
+# %bb.109:
+	movss	(%rbx,%r15,4), %xmm0            # xmm0 = mem[0],zero,zero,zero
+	mulss	%xmm0, %xmm0
+	cvtss2sd	%xmm0, %xmm0
+.Ltmp170:                               # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movq	%r12, %rdi
+	callq	_ZNSo9_M_insertIdEERSoT_
+.Ltmp171:                               # EH_LABEL
+# %bb.110:
+.Ltmp172:                               # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movq	%rax, %rdi
+	movl	$10, %esi
+	callq	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_c
+.Ltmp173:                               # EH_LABEL
+# %bb.111:
+	.cfi_escape 0x2e, 0x00
+	movl	$-1, %edi
+	callq	exit
+.LBB0_122:
+	.cfi_escape 0x2e, 0x00
+	movl	$_ZSt4cerr, %edi
+	movl	$.L.str, %esi
+	movl	%eax, %ebx
+	callq	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
+	movq	%rax, %r14
+	.cfi_escape 0x2e, 0x00
+	movl	%ebx, %edi
+	callq	hipGetErrorString
+	.cfi_escape 0x2e, 0x00
+	movq	%r14, %rdi
+	movq	%rax, %rsi
+	callq	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
+	.cfi_escape 0x2e, 0x00
+	movl	$.L.str.1, %esi
+	movq	%rax, %rdi
+	callq	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
+	.cfi_escape 0x2e, 0x00
+	movl	$.L.str.2, %esi
+	movq	%rax, %rdi
+	callq	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
+	.cfi_escape 0x2e, 0x00
+	movq	%rax, %rdi
+	movl	$58, %esi
+	callq	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_c
+	.cfi_escape 0x2e, 0x00
+	movq	%rax, %rdi
+	movl	$31, %esi
+	callq	_ZNSolsEi
+	.cfi_escape 0x2e, 0x00
+	movq	%rax, %rdi
+	callq	_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+	.cfi_escape 0x2e, 0x00
+	movl	$-1, %edi
+	callq	exit
+.LBB0_9:
+.Ltmp11:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	$_ZSt4cerr, %edi
+	movl	$.L.str, %esi
+	movl	$31, %edx
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+.Ltmp12:                                # EH_LABEL
+# %bb.10:
+.Ltmp13:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	%ebp, %edi
+	callq	hipGetErrorString
+.Ltmp14:                                # EH_LABEL
+# %bb.11:
+.Ltmp15:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	$_ZSt4cerr, %edi
+	movq	%rax, %rsi
+	callq	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
+.Ltmp16:                                # EH_LABEL
+# %bb.12:
+.Ltmp17:                                # EH_LABEL
+	movq	%rax, %r15
+	.cfi_escape 0x2e, 0x00
+	movl	$.L.str.1, %esi
+	movl	$4, %edx
+	movq	%rax, %rdi
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+.Ltmp18:                                # EH_LABEL
+# %bb.13:
+.Ltmp19:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	$.L.str.2, %esi
+	movl	$8, %edx
+	movq	%r15, %rdi
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+.Ltmp20:                                # EH_LABEL
+# %bb.14:
+.Ltmp21:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movq	%r15, %rdi
+	movl	$58, %esi
+	callq	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_c
+.Ltmp22:                                # EH_LABEL
+# %bb.15:
+.Ltmp23:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movq	%rax, %rdi
+	movl	$49, %esi
+	callq	_ZNSolsEi
+.Ltmp24:                                # EH_LABEL
+# %bb.16:
+.Ltmp25:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movq	%rax, %rdi
+	callq	_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+.Ltmp26:                                # EH_LABEL
+# %bb.17:
+	.cfi_escape 0x2e, 0x00
+	movl	$-1, %edi
+	callq	exit
+.LBB0_21:
+.Ltmp30:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	$_ZSt4cerr, %edi
+	movl	$.L.str, %esi
+	movl	$31, %edx
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+.Ltmp31:                                # EH_LABEL
+# %bb.22:
+.Ltmp32:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	%ebp, %edi
+	callq	hipGetErrorString
+.Ltmp33:                                # EH_LABEL
+# %bb.23:
+.Ltmp34:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	$_ZSt4cerr, %edi
+	movq	%rax, %rsi
+	callq	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
+.Ltmp35:                                # EH_LABEL
+# %bb.24:
+.Ltmp36:                                # EH_LABEL
+	movq	%rax, %r15
+	.cfi_escape 0x2e, 0x00
+	movl	$.L.str.1, %esi
+	movl	$4, %edx
+	movq	%rax, %rdi
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+.Ltmp37:                                # EH_LABEL
+# %bb.25:
+.Ltmp38:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	$.L.str.2, %esi
+	movl	$8, %edx
+	movq	%r15, %rdi
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+.Ltmp39:                                # EH_LABEL
+# %bb.26:
+.Ltmp40:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movq	%r15, %rdi
+	movl	$58, %esi
+	callq	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_c
+.Ltmp41:                                # EH_LABEL
+# %bb.27:
+.Ltmp42:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movq	%rax, %rdi
+	movl	$50, %esi
+	callq	_ZNSolsEi
+.Ltmp43:                                # EH_LABEL
+# %bb.28:
+.Ltmp44:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movq	%rax, %rdi
+	callq	_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+.Ltmp45:                                # EH_LABEL
+# %bb.29:
+	.cfi_escape 0x2e, 0x00
+	movl	$-1, %edi
+	callq	exit
+.LBB0_34:
+.Ltmp52:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	$_ZSt4cerr, %edi
+	movl	$.L.str, %esi
+	movl	$31, %edx
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+.Ltmp53:                                # EH_LABEL
+# %bb.35:
+.Ltmp54:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	%ebp, %edi
+	callq	hipGetErrorString
+.Ltmp55:                                # EH_LABEL
+# %bb.36:
+.Ltmp56:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	$_ZSt4cerr, %edi
+	movq	%rax, %rsi
+	callq	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
+.Ltmp57:                                # EH_LABEL
+# %bb.37:
+.Ltmp58:                                # EH_LABEL
+	movq	%rax, %r15
+	.cfi_escape 0x2e, 0x00
+	movl	$.L.str.1, %esi
+	movl	$4, %edx
+	movq	%rax, %rdi
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+.Ltmp59:                                # EH_LABEL
+# %bb.38:
+.Ltmp60:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	$.L.str.2, %esi
+	movl	$8, %edx
+	movq	%r15, %rdi
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+.Ltmp61:                                # EH_LABEL
+# %bb.39:
+.Ltmp62:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movq	%r15, %rdi
+	movl	$58, %esi
+	callq	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_c
+.Ltmp63:                                # EH_LABEL
+# %bb.40:
+.Ltmp64:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movq	%rax, %rdi
+	movl	$55, %esi
+	callq	_ZNSolsEi
+.Ltmp65:                                # EH_LABEL
+# %bb.41:
+.Ltmp66:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movq	%rax, %rdi
+	callq	_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+.Ltmp67:                                # EH_LABEL
+# %bb.42:
+	.cfi_escape 0x2e, 0x00
+	movl	$-1, %edi
+	callq	exit
+.LBB0_51:
+.Ltmp79:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	$_ZSt4cerr, %edi
+	movl	$.L.str, %esi
+	movl	$31, %edx
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+.Ltmp80:                                # EH_LABEL
+# %bb.52:
+.Ltmp81:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	%ebp, %edi
+	callq	hipGetErrorString
+.Ltmp82:                                # EH_LABEL
+# %bb.53:
+.Ltmp83:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	$_ZSt4cerr, %edi
+	movq	%rax, %rsi
+	callq	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
+.Ltmp84:                                # EH_LABEL
+# %bb.54:
+.Ltmp85:                                # EH_LABEL
+	movq	%rax, %r15
+	.cfi_escape 0x2e, 0x00
+	movl	$.L.str.1, %esi
+	movl	$4, %edx
+	movq	%rax, %rdi
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+.Ltmp86:                                # EH_LABEL
+# %bb.55:
+.Ltmp87:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	$.L.str.2, %esi
+	movl	$8, %edx
+	movq	%r15, %rdi
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+.Ltmp88:                                # EH_LABEL
+# %bb.56:
+.Ltmp89:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movq	%r15, %rdi
+	movl	$58, %esi
+	callq	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_c
+.Ltmp90:                                # EH_LABEL
+# %bb.57:
+.Ltmp91:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movq	%rax, %rdi
+	movl	$66, %esi
+	callq	_ZNSolsEi
+.Ltmp92:                                # EH_LABEL
+# %bb.58:
+.Ltmp93:                                # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movq	%rax, %rdi
+	callq	_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+.Ltmp94:                                # EH_LABEL
+# %bb.59:
+	.cfi_escape 0x2e, 0x00
+	movl	$-1, %edi
+	callq	exit
+.LBB0_64:
+.Ltmp100:                               # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	$_ZSt4cerr, %edi
+	movl	$.L.str, %esi
+	movl	$31, %edx
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+.Ltmp101:                               # EH_LABEL
+# %bb.65:
+.Ltmp102:                               # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	%ebp, %edi
+	callq	hipGetErrorString
+.Ltmp103:                               # EH_LABEL
+# %bb.66:
+.Ltmp104:                               # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	$_ZSt4cerr, %edi
+	movq	%rax, %rsi
+	callq	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
+.Ltmp105:                               # EH_LABEL
+# %bb.67:
+.Ltmp106:                               # EH_LABEL
+	movq	%rax, %r15
+	.cfi_escape 0x2e, 0x00
+	movl	$.L.str.1, %esi
+	movl	$4, %edx
+	movq	%rax, %rdi
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+.Ltmp107:                               # EH_LABEL
+# %bb.68:
+.Ltmp108:                               # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	$.L.str.2, %esi
+	movl	$8, %edx
+	movq	%r15, %rdi
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+.Ltmp109:                               # EH_LABEL
+# %bb.69:
+.Ltmp110:                               # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movq	%r15, %rdi
+	movl	$58, %esi
+	callq	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_c
+.Ltmp111:                               # EH_LABEL
+# %bb.70:
+.Ltmp112:                               # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movq	%rax, %rdi
+	movl	$69, %esi
+	callq	_ZNSolsEi
+.Ltmp113:                               # EH_LABEL
+# %bb.71:
+.Ltmp114:                               # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movq	%rax, %rdi
+	callq	_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+.Ltmp115:                               # EH_LABEL
+# %bb.72:
+	.cfi_escape 0x2e, 0x00
+	movl	$-1, %edi
+	callq	exit
+.LBB0_76:
+.Ltmp119:                               # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	$_ZSt4cerr, %edi
+	movl	$.L.str, %esi
+	movl	$31, %edx
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+.Ltmp120:                               # EH_LABEL
+# %bb.77:
+.Ltmp121:                               # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	%ebp, %edi
+	callq	hipGetErrorString
+.Ltmp122:                               # EH_LABEL
+# %bb.78:
+.Ltmp123:                               # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	$_ZSt4cerr, %edi
+	movq	%rax, %rsi
+	callq	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
+.Ltmp124:                               # EH_LABEL
+# %bb.79:
+.Ltmp125:                               # EH_LABEL
+	movq	%rax, %r15
+	.cfi_escape 0x2e, 0x00
+	movl	$.L.str.1, %esi
+	movl	$4, %edx
+	movq	%rax, %rdi
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+.Ltmp126:                               # EH_LABEL
+# %bb.80:
+.Ltmp127:                               # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	$.L.str.2, %esi
+	movl	$8, %edx
+	movq	%r15, %rdi
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+.Ltmp128:                               # EH_LABEL
+# %bb.81:
+.Ltmp129:                               # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movq	%r15, %rdi
+	movl	$58, %esi
+	callq	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_c
+.Ltmp130:                               # EH_LABEL
+# %bb.82:
+.Ltmp131:                               # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movq	%rax, %rdi
+	movl	$71, %esi
+	callq	_ZNSolsEi
+.Ltmp132:                               # EH_LABEL
+# %bb.83:
+.Ltmp133:                               # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movq	%rax, %rdi
+	callq	_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+.Ltmp134:                               # EH_LABEL
+# %bb.84:
+	.cfi_escape 0x2e, 0x00
+	movl	$-1, %edi
+	callq	exit
+.LBB0_88:
+.Ltmp138:                               # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	$_ZSt4cerr, %edi
+	movl	$.L.str, %esi
+	movl	$31, %edx
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+.Ltmp139:                               # EH_LABEL
+# %bb.89:
+.Ltmp140:                               # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	%ebp, %edi
+	callq	hipGetErrorString
+.Ltmp141:                               # EH_LABEL
+# %bb.90:
+.Ltmp142:                               # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	$_ZSt4cerr, %edi
+	movq	%rax, %rsi
+	callq	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
+.Ltmp143:                               # EH_LABEL
+# %bb.91:
+.Ltmp144:                               # EH_LABEL
+	movq	%rax, %r15
+	.cfi_escape 0x2e, 0x00
+	movl	$.L.str.1, %esi
+	movl	$4, %edx
+	movq	%rax, %rdi
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+.Ltmp145:                               # EH_LABEL
+# %bb.92:
+.Ltmp146:                               # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movl	$.L.str.2, %esi
+	movl	$8, %edx
+	movq	%r15, %rdi
+	callq	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+.Ltmp147:                               # EH_LABEL
+# %bb.93:
+.Ltmp148:                               # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movq	%r15, %rdi
+	movl	$58, %esi
+	callq	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_c
+.Ltmp149:                               # EH_LABEL
+# %bb.94:
+.Ltmp150:                               # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movq	%rax, %rdi
+	movl	$72, %esi
+	callq	_ZNSolsEi
+.Ltmp151:                               # EH_LABEL
+# %bb.95:
+.Ltmp152:                               # EH_LABEL
+	.cfi_escape 0x2e, 0x00
+	movq	%rax, %rdi
+	callq	_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+.Ltmp153:                               # EH_LABEL
+# %bb.96:
+	.cfi_escape 0x2e, 0x00
+	movl	$-1, %edi
+	callq	exit
+.LBB0_123:
+.Ltmp2:                                 # EH_LABEL
+	movq	%rax, %r15
+	jmp	.LBB0_121
+.LBB0_97:
+.Ltmp154:                               # EH_LABEL
+	jmp	.LBB0_120
+.LBB0_85:
+.Ltmp135:                               # EH_LABEL
+	jmp	.LBB0_120
+.LBB0_73:
+.Ltmp116:                               # EH_LABEL
+	jmp	.LBB0_120
+.LBB0_60:
+.Ltmp95:                                # EH_LABEL
+	jmp	.LBB0_120
+.LBB0_43:
+.Ltmp68:                                # EH_LABEL
+	jmp	.LBB0_120
+.LBB0_30:
+.Ltmp46:                                # EH_LABEL
+	jmp	.LBB0_120
+.LBB0_18:
+.Ltmp27:                                # EH_LABEL
+	jmp	.LBB0_120
+.LBB0_119:
+.Ltmp49:                                # EH_LABEL
+	jmp	.LBB0_120
+.LBB0_124:
+.Ltmp159:                               # EH_LABEL
+	jmp	.LBB0_120
+.LBB0_112:
+.Ltmp174:                               # EH_LABEL
+.LBB0_120:
+	movq	%rax, %r15
+	.cfi_escape 0x2e, 0x00
+	movl	$4000000, %esi                  # imm = 0x3D0900
+	movq	%r14, %rdi
+	callq	_ZdlPvm
+.LBB0_121:
+	.cfi_escape 0x2e, 0x00
+	movl	$4000000, %esi                  # imm = 0x3D0900
+	movq	%rbx, %rdi
+	callq	_ZdlPvm
+	.cfi_escape 0x2e, 0x00
+	movq	%r15, %rdi
+	callq	_Unwind_Resume@PLT
 .Lfunc_end0:
 	.size	main, .Lfunc_end0-main
+	.cfi_endproc
+	.section	.gcc_except_table,"a",@progbits
+	.p2align	2, 0x0
+GCC_except_table0:
+.Lexception0:
+	.byte	255                             # @LPStart Encoding = omit
+	.byte	255                             # @TType Encoding = omit
+	.byte	1                               # Call site Encoding = uleb128
+	.uleb128 .Lcst_end0-.Lcst_begin0
+.Lcst_begin0:
+	.uleb128 .Lfunc_begin0-.Lfunc_begin0    # >> Call Site 1 <<
+	.uleb128 .Ltmp0-.Lfunc_begin0           #   Call between .Lfunc_begin0 and .Ltmp0
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp0-.Lfunc_begin0           # >> Call Site 2 <<
+	.uleb128 .Ltmp1-.Ltmp0                  #   Call between .Ltmp0 and .Ltmp1
+	.uleb128 .Ltmp2-.Lfunc_begin0           #     jumps to .Ltmp2
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp1-.Lfunc_begin0           # >> Call Site 3 <<
+	.uleb128 .Ltmp3-.Ltmp1                  #   Call between .Ltmp1 and .Ltmp3
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp3-.Lfunc_begin0           # >> Call Site 4 <<
+	.uleb128 .Ltmp8-.Ltmp3                  #   Call between .Ltmp3 and .Ltmp8
+	.uleb128 .Ltmp49-.Lfunc_begin0          #     jumps to .Ltmp49
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp9-.Lfunc_begin0           # >> Call Site 5 <<
+	.uleb128 .Ltmp10-.Ltmp9                 #   Call between .Ltmp9 and .Ltmp10
+	.uleb128 .Ltmp27-.Lfunc_begin0          #     jumps to .Ltmp27
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp28-.Lfunc_begin0          # >> Call Site 6 <<
+	.uleb128 .Ltmp29-.Ltmp28                #   Call between .Ltmp28 and .Ltmp29
+	.uleb128 .Ltmp46-.Lfunc_begin0          #     jumps to .Ltmp46
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp47-.Lfunc_begin0          # >> Call Site 7 <<
+	.uleb128 .Ltmp48-.Ltmp47                #   Call between .Ltmp47 and .Ltmp48
+	.uleb128 .Ltmp49-.Lfunc_begin0          #     jumps to .Ltmp49
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp50-.Lfunc_begin0          # >> Call Site 8 <<
+	.uleb128 .Ltmp51-.Ltmp50                #   Call between .Ltmp50 and .Ltmp51
+	.uleb128 .Ltmp68-.Lfunc_begin0          #     jumps to .Ltmp68
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp69-.Lfunc_begin0          # >> Call Site 9 <<
+	.uleb128 .Ltmp76-.Ltmp69                #   Call between .Ltmp69 and .Ltmp76
+	.uleb128 .Ltmp159-.Lfunc_begin0         #     jumps to .Ltmp159
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp77-.Lfunc_begin0          # >> Call Site 10 <<
+	.uleb128 .Ltmp78-.Ltmp77                #   Call between .Ltmp77 and .Ltmp78
+	.uleb128 .Ltmp95-.Lfunc_begin0          #     jumps to .Ltmp95
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp96-.Lfunc_begin0          # >> Call Site 11 <<
+	.uleb128 .Ltmp97-.Ltmp96                #   Call between .Ltmp96 and .Ltmp97
+	.uleb128 .Ltmp159-.Lfunc_begin0         #     jumps to .Ltmp159
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp98-.Lfunc_begin0          # >> Call Site 12 <<
+	.uleb128 .Ltmp99-.Ltmp98                #   Call between .Ltmp98 and .Ltmp99
+	.uleb128 .Ltmp116-.Lfunc_begin0         #     jumps to .Ltmp116
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp117-.Lfunc_begin0         # >> Call Site 13 <<
+	.uleb128 .Ltmp118-.Ltmp117              #   Call between .Ltmp117 and .Ltmp118
+	.uleb128 .Ltmp135-.Lfunc_begin0         #     jumps to .Ltmp135
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp136-.Lfunc_begin0         # >> Call Site 14 <<
+	.uleb128 .Ltmp137-.Ltmp136              #   Call between .Ltmp136 and .Ltmp137
+	.uleb128 .Ltmp154-.Lfunc_begin0         #     jumps to .Ltmp154
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp155-.Lfunc_begin0         # >> Call Site 15 <<
+	.uleb128 .Ltmp158-.Ltmp155              #   Call between .Ltmp155 and .Ltmp158
+	.uleb128 .Ltmp159-.Lfunc_begin0         #     jumps to .Ltmp159
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp160-.Lfunc_begin0         # >> Call Site 16 <<
+	.uleb128 .Ltmp173-.Ltmp160              #   Call between .Ltmp160 and .Ltmp173
+	.uleb128 .Ltmp174-.Lfunc_begin0         #     jumps to .Ltmp174
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp173-.Lfunc_begin0         # >> Call Site 17 <<
+	.uleb128 .Ltmp11-.Ltmp173               #   Call between .Ltmp173 and .Ltmp11
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp11-.Lfunc_begin0          # >> Call Site 18 <<
+	.uleb128 .Ltmp26-.Ltmp11                #   Call between .Ltmp11 and .Ltmp26
+	.uleb128 .Ltmp27-.Lfunc_begin0          #     jumps to .Ltmp27
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp30-.Lfunc_begin0          # >> Call Site 19 <<
+	.uleb128 .Ltmp45-.Ltmp30                #   Call between .Ltmp30 and .Ltmp45
+	.uleb128 .Ltmp46-.Lfunc_begin0          #     jumps to .Ltmp46
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp52-.Lfunc_begin0          # >> Call Site 20 <<
+	.uleb128 .Ltmp67-.Ltmp52                #   Call between .Ltmp52 and .Ltmp67
+	.uleb128 .Ltmp68-.Lfunc_begin0          #     jumps to .Ltmp68
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp79-.Lfunc_begin0          # >> Call Site 21 <<
+	.uleb128 .Ltmp94-.Ltmp79                #   Call between .Ltmp79 and .Ltmp94
+	.uleb128 .Ltmp95-.Lfunc_begin0          #     jumps to .Ltmp95
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp100-.Lfunc_begin0         # >> Call Site 22 <<
+	.uleb128 .Ltmp115-.Ltmp100              #   Call between .Ltmp100 and .Ltmp115
+	.uleb128 .Ltmp116-.Lfunc_begin0         #     jumps to .Ltmp116
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp119-.Lfunc_begin0         # >> Call Site 23 <<
+	.uleb128 .Ltmp134-.Ltmp119              #   Call between .Ltmp119 and .Ltmp134
+	.uleb128 .Ltmp135-.Lfunc_begin0         #     jumps to .Ltmp135
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp138-.Lfunc_begin0         # >> Call Site 24 <<
+	.uleb128 .Ltmp153-.Ltmp138              #   Call between .Ltmp138 and .Ltmp153
+	.uleb128 .Ltmp154-.Lfunc_begin0         #     jumps to .Ltmp154
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp153-.Lfunc_begin0         # >> Call Site 25 <<
+	.uleb128 .Lfunc_end0-.Ltmp153           #   Call between .Ltmp153 and .Lfunc_end0
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+.Lcst_end0:
+	.p2align	2, 0x0
+                                        # -- End function
+	.section	.text._Z35__device_stub__vector_square_kernelIfEvPT_S1_y,"axG",@progbits,_Z35__device_stub__vector_square_kernelIfEvPT_S1_y,comdat
+	.weak	_Z35__device_stub__vector_square_kernelIfEvPT_S1_y # -- Begin function _Z35__device_stub__vector_square_kernelIfEvPT_S1_y
+	.p2align	4
+	.type	_Z35__device_stub__vector_square_kernelIfEvPT_S1_y,@function
+_Z35__device_stub__vector_square_kernelIfEvPT_S1_y: # @_Z35__device_stub__vector_square_kernelIfEvPT_S1_y
+	.cfi_startproc
+# %bb.0:
+	subq	$104, %rsp
+	.cfi_def_cfa_offset 112
+	movq	%rdi, 72(%rsp)
+	movq	%rsi, 64(%rsp)
+	movq	%rdx, 56(%rsp)
+	leaq	72(%rsp), %rax
+	movq	%rax, 80(%rsp)
+	leaq	64(%rsp), %rax
+	movq	%rax, 88(%rsp)
+	leaq	56(%rsp), %rax
+	movq	%rax, 96(%rsp)
+	leaq	40(%rsp), %rdi
+	leaq	24(%rsp), %rsi
+	leaq	16(%rsp), %rdx
+	leaq	8(%rsp), %rcx
+	callq	__hipPopCallConfiguration
+	movq	40(%rsp), %rsi
+	movl	48(%rsp), %edx
+	movq	24(%rsp), %rcx
+	movl	32(%rsp), %r8d
+	leaq	80(%rsp), %r9
+	movl	$_Z20vector_square_kernelIfEvPT_S1_y, %edi
+	pushq	8(%rsp)
+	.cfi_adjust_cfa_offset 8
+	pushq	24(%rsp)
+	.cfi_adjust_cfa_offset 8
+	callq	hipLaunchKernel
+	addq	$120, %rsp
+	.cfi_adjust_cfa_offset -120
+	retq
+.Lfunc_end1:
+	.size	_Z35__device_stub__vector_square_kernelIfEvPT_S1_y, .Lfunc_end1-_Z35__device_stub__vector_square_kernelIfEvPT_S1_y
+	.cfi_endproc
+                                        # -- End function
+	.text
+	.p2align	4                               # -- Begin function __hip_module_ctor
+	.type	__hip_module_ctor,@function
+__hip_module_ctor:                      # @__hip_module_ctor
+	.cfi_startproc
+# %bb.0:
+	subq	$40, %rsp
+	.cfi_def_cfa_offset 48
+	movq	__hip_gpubin_handle_9355bdbd540905a(%rip), %rdi
+	testq	%rdi, %rdi
+	jne	.LBB2_2
+# %bb.1:
+	movl	$__hip_fatbin_wrapper, %edi
+	callq	__hipRegisterFatBinary
+	movq	%rax, %rdi
+	movq	%rax, __hip_gpubin_handle_9355bdbd540905a(%rip)
+.LBB2_2:
+	xorps	%xmm0, %xmm0
+	movups	%xmm0, 16(%rsp)
+	movups	%xmm0, (%rsp)
+	movl	$_Z20vector_square_kernelIfEvPT_S1_y, %esi
+	movl	$.L__unnamed_1, %edx
+	movl	$.L__unnamed_1, %ecx
+	movl	$-1, %r8d
+	xorl	%r9d, %r9d
+	callq	__hipRegisterFunction
+	movl	$__hip_module_dtor, %edi
+	addq	$40, %rsp
+	.cfi_def_cfa_offset 8
+	jmp	atexit                          # TAILCALL
+.Lfunc_end2:
+	.size	__hip_module_ctor, .Lfunc_end2-__hip_module_ctor
+	.cfi_endproc
+                                        # -- End function
+	.p2align	4                               # -- Begin function __hip_module_dtor
+	.type	__hip_module_dtor,@function
+__hip_module_dtor:                      # @__hip_module_dtor
+	.cfi_startproc
+# %bb.0:
+	movq	__hip_gpubin_handle_9355bdbd540905a(%rip), %rdi
+	testq	%rdi, %rdi
+	je	.LBB3_2
+# %bb.1:
+	pushq	%rax
+	.cfi_def_cfa_offset 16
+	callq	__hipUnregisterFatBinary
+	movq	$0, __hip_gpubin_handle_9355bdbd540905a(%rip)
+	addq	$8, %rsp
+	.cfi_def_cfa_offset 8
+.LBB3_2:
+	retq
+.Lfunc_end3:
+	.size	__hip_module_dtor, .Lfunc_end3-__hip_module_dtor
 	.cfi_endproc
                                         # -- End function
 	.type	.L.str,@object                  # @.str
 	.section	.rodata.str1.1,"aMS",@progbits,1
 .L.str:
-	.asciz	"Info: running on device"
-	.size	.L.str, 24
+	.asciz	"An error occured encountered: \""
+	.size	.L.str, 32
 
 	.type	.L.str.1,@object                # @.str.1
 .L.str.1:
-	.asciz	"\n"
-	.size	.L.str.1, 2
+	.asciz	"\" at"
+	.size	.L.str.1, 5
 
-	.type	__hip_cuid_cb17ed47c5977a5f,@object # @__hip_cuid_cb17ed47c5977a5f
+	.type	.L.str.2,@object                # @.str.2
+.L.str.2:
+	.asciz	"main.hip"
+	.size	.L.str.2, 9
+
+	.type	.L.str.3,@object                # @.str.3
+.L.str.3:
+	.asciz	"Info: running on device"
+	.size	.L.str.3, 24
+
+	.type	.L.str.4,@object                # @.str.4
+.L.str.4:
+	.asciz	"\n"
+	.size	.L.str.4, 2
+
+	.type	.L.str.5,@object                # @.str.5
+.L.str.5:
+	.asciz	"Info: allocate host mem ("
+	.size	.L.str.5, 26
+
+	.type	.L.str.6,@object                # @.str.6
+.L.str.6:
+	.asciz	"MiB) "
+	.size	.L.str.6, 6
+
+	.type	.L.str.7,@object                # @.str.7
+.L.str.7:
+	.asciz	"info: allocate device mem ("
+	.size	.L.str.7, 28
+
+	.type	.L.str.8,@object                # @.str.8
+.L.str.8:
+	.asciz	"MiB)\n"
+	.size	.L.str.8, 6
+
+	.type	.L.str.9,@object                # @.str.9
+.L.str.9:
+	.asciz	"info: copy Host2Device\n"
+	.size	.L.str.9, 24
+
+	.type	.L.str.10,@object               # @.str.10
+.L.str.10:
+	.asciz	"info: launch 'vector_square_kernel' kernel\n"
+	.size	.L.str.10, 44
+
+	.type	_Z20vector_square_kernelIfEvPT_S1_y,@object # @_Z20vector_square_kernelIfEvPT_S1_y
+	.section	.rodata._Z20vector_square_kernelIfEvPT_S1_y,"aG",@progbits,_Z20vector_square_kernelIfEvPT_S1_y,comdat
+	.weak	_Z20vector_square_kernelIfEvPT_S1_y
+	.p2align	3, 0x0
+_Z20vector_square_kernelIfEvPT_S1_y:
+	.quad	_Z35__device_stub__vector_square_kernelIfEvPT_S1_y
+	.size	_Z20vector_square_kernelIfEvPT_S1_y, 8
+
+	.type	.L.str.11,@object               # @.str.11
+	.section	.rodata.str1.1,"aMS",@progbits,1
+.L.str.11:
+	.asciz	"info: copy Device2Host\n"
+	.size	.L.str.11, 24
+
+	.type	.L.str.12,@object               # @.str.12
+.L.str.12:
+	.asciz	"info: check result\n"
+	.size	.L.str.12, 20
+
+	.type	.L.str.13,@object               # @.str.13
+.L.str.13:
+	.asciz	"FAILED! h_out ["
+	.size	.L.str.13, 16
+
+	.type	.L.str.14,@object               # @.str.14
+.L.str.14:
+	.asciz	"] ="
+	.size	.L.str.14, 4
+
+	.type	.L.str.15,@object               # @.str.15
+.L.str.15:
+	.asciz	", expected: "
+	.size	.L.str.15, 13
+
+	.type	.L.str.16,@object               # @.str.16
+.L.str.16:
+	.asciz	"PASSED!\n"
+	.size	.L.str.16, 9
+
+	.type	.L__unnamed_1,@object           # @0
+.L__unnamed_1:
+	.asciz	"_Z20vector_square_kernelIfEvPT_S1_y"
+	.size	.L__unnamed_1, 36
+
+	.type	__hip_fatbin_wrapper,@object    # @__hip_fatbin_wrapper
+	.section	.hipFatBinSegment,"a",@progbits
+	.p2align	3, 0x0
+__hip_fatbin_wrapper:
+	.long	1212764230                      # 0x48495046
+	.long	1                               # 0x1
+	.quad	__hip_fatbin_9355bdbd540905a
+	.quad	0
+	.size	__hip_fatbin_wrapper, 24
+
+	.type	__hip_gpubin_handle_9355bdbd540905a,@object # @__hip_gpubin_handle_9355bdbd540905a
+	.local	__hip_gpubin_handle_9355bdbd540905a
+	.comm	__hip_gpubin_handle_9355bdbd540905a,8,8
+	.section	.init_array,"aw",@init_array
+	.p2align	3, 0x0
+	.quad	__hip_module_ctor
+	.type	__hip_cuid_9355bdbd540905a,@object # @__hip_cuid_9355bdbd540905a
 	.bss
-	.globl	__hip_cuid_cb17ed47c5977a5f
-__hip_cuid_cb17ed47c5977a5f:
+	.globl	__hip_cuid_9355bdbd540905a
+__hip_cuid_9355bdbd540905a:
 	.byte	0                               # 0x0
-	.size	__hip_cuid_cb17ed47c5977a5f, 1
+	.size	__hip_cuid_9355bdbd540905a, 1
 
 	.ident	"AMD clang version 22.0.0git (https://github.com/RadeonOpenCompute/llvm-project roc-7.2.0 26014 7b800a19466229b8479a78de19143dc33c3ab9b5)"
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
-	.addrsig_sym hipGetDevicePropertiesR0600
-	.addrsig_sym _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
+	.addrsig_sym __gxx_personality_v0
+	.addrsig_sym _Z35__device_stub__vector_square_kernelIfEvPT_S1_y
+	.addrsig_sym __hip_module_ctor
+	.addrsig_sym __hip_module_dtor
+	.addrsig_sym _Unwind_Resume
+	.addrsig_sym _ZSt4cerr
 	.addrsig_sym _ZSt4cout
-	.addrsig_sym __hip_cuid_cb17ed47c5977a5f
+	.addrsig_sym _Z20vector_square_kernelIfEvPT_S1_y
+	.addrsig_sym __hip_fatbin_9355bdbd540905a
+	.addrsig_sym __hip_fatbin_wrapper
+	.addrsig_sym __hip_cuid_9355bdbd540905a
 
 # __CLANG_OFFLOAD_BUNDLE____END__ host-x86_64-unknown-linux-gnu-
