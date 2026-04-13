@@ -256,7 +256,7 @@ inline void print_gpu_info() {
 
     printf("═══════════════════════════════════════════════════════\n");
     printf("  GPU: %s\n", props.name);
-    printf("  Architecture / Arkitektur: gfx%d\n", props.gcnArch);
+    printf("  Architecture / Arkitektur: gfx%d\n", props.gcnArchName);
     printf("  Compute Units / Beräkningsenheter: %d\n",
            props.multiProcessorCount);
     printf("  VRAM: %.1f GB\n",
