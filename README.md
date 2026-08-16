@@ -1,6 +1,6 @@
 # MFMA-CDNA-AMD: A Practical Guide to AMD GPU Kernel Programming
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![ROCm](https://img.shields.io/badge/ROCm-6.0%2B-green.svg)](https://rocm.docs.amd.com/)
 [![Architecture](https://img.shields.io/badge/Target-gfx942%20(MI300X)-red.svg)](https://www.amd.com/en/products/accelerators/instinct/mi300/mi300x.html)
 
