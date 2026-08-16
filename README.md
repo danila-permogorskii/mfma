@@ -291,8 +291,8 @@ hipcc --version
 
 ```bash
 cd ~
-git clone https://github.com/bogdannadev/mfma-cdna-amd.git
-cd mfma-cdna-amd
+git clone https://github.com/danila-permogorskii/mfma.git
+cd mfma
 ```
 
 ### Step 3: Build and Run Your First Experiment
