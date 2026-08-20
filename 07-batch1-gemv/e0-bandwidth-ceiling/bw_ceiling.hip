@@ -49,28 +49,52 @@ __global__ void stream_read_dword(const float* in, float* sink, size_t n_floats)
 
 // TODO(E0), README Step 3.2: __global__ void stream_read_dwordx2(...)
 // TODO(E0), README Step 3.2: __global__ void stream_read_dwordx4(...)
-// TODO(E0), README Step 3.3: non-temporal variant(s)
 
-__global__ void stream_read_dwordx2(const float* in, float* sink, size_t n_vec2)
+__global__ void stream_read_dwordx2(const float2 *in, float *sink, size_t n_vec2)
 {
     size_t i   = (size_t)blockIdx.x * blockDim.x + threadIdx.x;
-    float2 acc = {0, 0, 0, 0};
+    float2 acc = {0, 0};
     for(size_t off = i; off < n_vec2; off += (size_t)gridDim.x * blockDim.x)
     {
         float2 v = in[off];
+        acc.x += v.x; acc.y += v.y;
+    }
+    if (acc.x == -1.0f) sink[i] = acc.x;
+}
+
+__global__ void stream_read_dwordx3(const float3 *in, float *sink, size_t n_vec3) {
+    size_t i = (size_t)blockIdx.x * blockDim.x + threadIdx.x;
+    float3 acc = {0, 0, 0};
+    for(size_t off = i; off < n_vec3; off += (size_t)gridDim.x * blockDim.x)
+    {
+        float3 v = in[off];
+        acc.x += v.x; acc.y += v.y; acc.z += v.z;
+    }
+    if (acc.x == -1.0f) sink[i] = acc.x;
+}
+
+__global__ void stream_read_dwordx4(const float4 *in, float *sink, size_t n_vec4) {
+    size_t i = (size_t) blockIdx.x * blockDim.x + threadIdx.x;
+    float4 acc = {0, 0, 0, 0};
+    for (size_t off =i; off < n_vec4; off += (size_t)gridDim.x * blockDim.x) {
+        float4 v = in[off];
         acc.x += v.x; acc.y += v.y; acc.z += v.z; acc.w += v.w;
     }
     if (acc.x == -1.0f) sink[i] = acc.x;
 }
 
-__global__ void stream_read_dwordx4(const float *in, float *sink, size_t n_vec4) {
-    size_t i = (size_t) blockIdx.x * blockDim.x + threadIdx.x;
-    float4 acc = {0, 0, 0, 0};
-    for (size_t off =i; off < n_vec4; off += (size_t)gridDix.x * blockDim.x) {
-        float4 v = in[off];
-        acc.x += v.x; acc.y += v.y; acc.z += v.z; acc.w += v.w;
+// TODO(E0), README Step 3.3: non-temporal variant(s)
+
+__global__ void stream_read_dword_nt(const float* in, float* sink, size_t n_floats)
+{
+    size_t i  = (size_t)blockIdx.x * blockDim.x + threadIdx.x;
+    float acc = 0.0f;
+    for(size_t off = i; off < n_floats; off += (size_t)gridDim.x * blockDim.x)
+    {
+        acc += __builtin_nontemporal_load(&in[off]);
     }
-    if (acc.x == -1.0f) sink[i] = acc.x;
+    if(acc == -1.0f)
+        sink[i] = acc; // keeps the load alive without adding real traffic
 }
 
 // -----------------------------------------------------------------------------

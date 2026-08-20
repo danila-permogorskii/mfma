@@ -115,10 +115,26 @@ than the others.
 ### Step 3.3 — the non-temporal variant **[type this]**
 
 Same loop, but hint the load as non-temporal so the read doesn't pollute cache on the way through.
-On CDNA3 this is expressed via a builtin/intrinsic or inline-asm scope bit rather than a keyword —
-check the ISA manual's section on cache/scope bits for the exact builtin name available in your
-ROCm version, since this has changed across generations; don't copy syntax from a gfx90a
-(MI200-era) example.
+
+Read **§9.1.10.2 "Vector Memory"** in the MI300 ISA manual (states the general rule: `SC[1:0]`
+scope — 0=wave, 1=group, 2=device, 3=system — plus a 1-bit `NT`) and **Table 48 "Load Controls"**
+directly below it, which gives the full truth table: for every `(SC1, SC0, NT)` combination, what
+happens to CU cache, L2, and *last-level cache* behavior — that last column is MALL, the thing
+`00-measurement-methodology.md` is about. Separately, **§10.1, Table 53** ("Flat, Global and
+Scratch Microcode Formats") confirms `SC`/`NT` are real fields on `GLOBAL_LOAD_DWORD` and friends,
+so Table 48 applies directly to the plain-pointer loads your kernels already compile to.
+
+Work out from Table 48 which `(SC1, SC0, NT)` row gets you "don't let this become long-lived in the
+last-level cache" rather than picking `NT=1` and guessing at scope — the table's last column is a
+direct answer if you read it as a table rather than a keyword to grep for.
+
+For the C++-level spelling, the manual only documents the hardware bits, not how to set them from
+HIP — that's LLVM's side, not this PDF's. Two avenues worth testing (not trusting) yourself: a
+generic nontemporal-load builtin (check whether it sets `NT` alone or also pins a scope you didn't
+choose — disassemble to find out, don't assume), or inline asm using the mnemonic/field names from
+Table 53/54 directly, which gives you control over `SC1`/`SC0` independently if the builtin
+doesn't. Whichever you pick, verify the specific bits landed the way your chosen Table 48 row
+implies — the same ISA-verification habit as every other exercise, not a shortcut for this one.
 
 ### Step 3.4 — the sweep driver **[type this]**
 
