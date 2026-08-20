@@ -98,8 +98,8 @@ compiler's own output, see Step 3.4), and achieved occupancy (from `rocprof-comp
 ### Step 3.4 — read the register allocation **[paste this, then read it]**
 
 ```bash
-amdclang++ -x hip --offload-arch=gfx942 -O3 -Rpass-analysis=kernel-resource-usage \
-  -c -o /dev/null rows_per_wave_gemv.cpp -I../common 2>&1 | grep -A5 "rows_per_wave_gemv"
+amdclang++ --offload-arch=gfx942 -O3 -Rpass-analysis=kernel-resource-usage \
+  -c -o /dev/null rows_per_wave_gemv.hip -I../common 2>&1 | grep -A5 "rows_per_wave_gemv"
 ```
 
 This prints VGPR/SGPR/AGPR counts and occupancy estimate per kernel instantiation without a full

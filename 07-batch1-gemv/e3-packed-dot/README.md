@@ -33,7 +33,7 @@ answered.
 
 ### Step 3.1 — files **[paste this]**
 
-Copy `wave_gemv_dpp` from E2 into `dot2_gemv.cpp` as your starting point (paste it — it's the
+Copy `wave_gemv_dpp` from E2 into `dot2_gemv.hip` as your starting point (paste it — it's the
 proven baseline, not the new material).
 
 ### Step 3.2 — pack and dot **[type this]**

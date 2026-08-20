@@ -16,7 +16,7 @@
  * for the topology background this exercise reuses.
  *
  * BUILD:
- *   amdclang++ -x hip --offload-arch=gfx942 -O3 -o xcd_gemv xcd_gemv.cpp -I../common
+ *   amdclang++ --offload-arch=gfx942 -O3 -o xcd_gemv xcd_gemv.hip -I../common
  *
  * =============================================================================
  */

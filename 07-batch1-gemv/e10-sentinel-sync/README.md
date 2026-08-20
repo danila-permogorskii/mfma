@@ -67,7 +67,7 @@ to cite precisely.
 
 ### Step 3.1 — files **[paste this]**
 
-`sentinel_sync.cpp` stub sets up a persistent kernel with a producer/consumer dependency between
+`sentinel_sync.hip` stub sets up a persistent kernel with a producer/consumer dependency between
 blocks (e.g. block *i* produces a value block *i+1* consumes) and buffer allocation for all three
 schemes.
 

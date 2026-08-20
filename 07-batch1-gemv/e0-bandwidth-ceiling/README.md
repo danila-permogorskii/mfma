@@ -45,8 +45,8 @@ stop mattering — that plateau is your ceiling.
 
 ### Step 3.1 — directory and files **[paste this]**
 
-You already have `e0-bandwidth-ceiling/bw_ceiling.cpp` and `Makefile` as stubs. Open
-`bw_ceiling.cpp` — the `main()`, argument handling, and buffer setup via
+You already have `e0-bandwidth-ceiling/bw_ceiling.hip` and `Makefile` as stubs. Open
+`bw_ceiling.hip` — the `main()`, argument handling, and buffer setup via
 `RotatingBuffers<float4>` from `common/gemv_common.hpp` are already written. What's missing is the
 kernel itself and the sweep driver, both marked `TODO(E0)`.
 
@@ -123,7 +123,7 @@ resident wave count with `rocprofv3` rather than assuming your launch configurat
 ### Step 3.5 — verify in the ISA **[paste this, then read it]**
 
 ```bash
-amdclang++ -x hip --offload-arch=gfx942 -O3 -save-temps -o bw_ceiling bw_ceiling.cpp -I../common
+amdclang++ --offload-arch=gfx942 -O3 -save-temps -o bw_ceiling bw_ceiling.hip -I../common
 llvm-objdump -d --offloading bw_ceiling > bw_ceiling.isa.txt
 grep -E "dwordx4|dwordx2|global_load" bw_ceiling.isa.txt
 ```

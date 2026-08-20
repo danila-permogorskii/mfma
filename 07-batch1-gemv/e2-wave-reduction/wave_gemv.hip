@@ -16,7 +16,7 @@
  * SEE: README.md in this directory for the full guide.
  *
  * BUILD:
- *   amdclang++ -x hip --offload-arch=gfx942 -O3 -o wave_gemv wave_gemv.cpp -I../common
+ *   amdclang++ --offload-arch=gfx942 -O3 -o wave_gemv wave_gemv.hip -I../common
  *
  * =============================================================================
  */

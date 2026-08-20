@@ -11,17 +11,18 @@
 #   make isa        — Build with -save-temps and disassemble to $(TARGET).isa.txt
 #   make clean      — Remove build artifacts
 #
+# Source is .hip, not .cpp — amdclang++ auto-detects HIP language from the
+# extension, so no -x hip flag is needed anywhere below.
 # =============================================================================
 
 HIPCC = amdclang++
-HIPFLAGS_LANG = -x hip
 ARCH = gfx942
 INCLUDES = -I../common
-HIPFLAGS = $(HIPFLAGS_LANG) --offload-arch=$(ARCH) -O3 $(INCLUDES)
-DEBUGFLAGS = $(HIPFLAGS_LANG) --offload-arch=$(ARCH) -O0 -g -save-temps $(INCLUDES)
+HIPFLAGS = --offload-arch=$(ARCH) -O3 $(INCLUDES)
+DEBUGFLAGS = --offload-arch=$(ARCH) -O0 -g -save-temps $(INCLUDES)
 
 TARGET = naive_gemv
-SRC = naive_gemv.cpp
+SRC = naive_gemv.hip
 
 .PHONY: all run profile profile-v3 debug isa clean help
 

@@ -14,7 +14,7 @@
  * SEE: README.md in this directory for the full guide.
  *
  * BUILD:
- *   amdclang++ -x hip --offload-arch=gfx942 -O3 -o naive_gemv naive_gemv.cpp -I../common
+ *   amdclang++ --offload-arch=gfx942 -O3 -o naive_gemv naive_gemv.hip -I../common
  *
  * =============================================================================
  */

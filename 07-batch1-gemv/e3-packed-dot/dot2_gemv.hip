@@ -16,7 +16,7 @@
  * SEE: README.md in this directory for the full guide.
  *
  * BUILD:
- *   amdclang++ -x hip --offload-arch=gfx942 -O3 -o dot2_gemv dot2_gemv.cpp -I../common
+ *   amdclang++ --offload-arch=gfx942 -O3 -o dot2_gemv dot2_gemv.hip -I../common
  *
  * =============================================================================
  */

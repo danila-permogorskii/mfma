@@ -25,9 +25,10 @@ See "How to use these guides" below for exactly where that line falls in each ex
   CDNA3/CDNA2 part, since a few instructions (packed dot products, DPP modifiers) vary by
   generation.
 - `amdclang++`, `rocprofv3` (or `rocprof`), and `llvm-objdump` on `PATH`. Every build command in
-  this module invokes `amdclang++ -x hip` directly rather than the `hipcc` wrapper script used in
-  modules 01–06 — same underlying compiler, no functional difference, just a more direct
-  invocation.
+  this module invokes `amdclang++` directly rather than the `hipcc` wrapper script used in modules
+  01–06 — same underlying compiler, no functional difference. Source files use the `.hip`
+  extension (not `.cpp`, unlike modules 01–06) specifically so `amdclang++` auto-detects HIP
+  language from the extension alone — no `-x hip` flag needed anywhere in this module.
 - **Read [`00-measurement-methodology.md`](00-measurement-methodology.md) before starting E0.** It
   is not optional background reading — E0's acceptance criteria depend on it.
 
@@ -35,7 +36,7 @@ See "How to use these guides" below for exactly where that line falls in each ex
 
 This module was written and verified against the ROCm **7.14** stack (`amdclang++` reports
 `AMD clang version 23.0.0git`, `Found HIP installation: .../core-7.14, version 7.14.60850`),
-installed alongside an older `rocm-core` 7.0.2 base. If `amdclang++ -x hip ...` fails with
+installed alongside an older `rocm-core` 7.0.2 base. If `amdclang++ ...` fails with
 `'hip/hip_runtime.h' file not found` even though the compiler itself is found, the `-dev` package
 with 7.14's own headers is likely missing (only the runtime library was installed, not the
 headers). Fix with:
@@ -48,7 +49,7 @@ This pulls in `amdrocm-llvm-dev7.14` as well and installs cleanly alongside the 
 base (no removals or upgrades of anything already installed). Confirm it worked with:
 
 ```bash
-amdclang++ -x hip --offload-arch=gfx942 -O3 -c -o /dev/null e0-bandwidth-ceiling/bw_ceiling.cpp -I common
+amdclang++ --offload-arch=gfx942 -O3 -c -o /dev/null e0-bandwidth-ceiling/bw_ceiling.hip -I common
 ```
 
 ---
@@ -81,7 +82,7 @@ Each `eN-*/` directory contains:
 ```
 eN-topic/
 ├── README.md          ← the guide: objective, concept, step-by-step build, acceptance criteria
-├── <name>.cpp          ← stub: working main()/scaffolding, kernel body left as TODO(E<n>)
+├── <name>.hip           ← stub: working main()/scaffolding, kernel body left as TODO(E<n>)
 └── Makefile             ← all / run / profile / profile-v3 / debug / clean / help
 ```
 

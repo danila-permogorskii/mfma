@@ -41,7 +41,7 @@ story of why E1 is slow and E2 isn't.
 
 ### Step 3.1 — files **[paste this]**
 
-`naive_gemv.cpp` stub has `main()`, matrix/vector allocation via `RotatingBuffers<half>`, and the
+`naive_gemv.hip` stub has `main()`, matrix/vector allocation via `RotatingBuffers<half>`, and the
 timing harness already wired. The kernel is `TODO(E1)`.
 
 ### Step 3.2 — the kernel **[type this]**

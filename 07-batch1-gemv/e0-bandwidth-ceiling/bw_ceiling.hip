@@ -19,7 +19,7 @@
  * reading the corresponding step.
  *
  * BUILD:
- *   amdclang++ -x hip --offload-arch=gfx942 -O3 -o bw_ceiling bw_ceiling.cpp -I../common
+ *   amdclang++ --offload-arch=gfx942 -O3 -o bw_ceiling bw_ceiling.hip -I../common
  *
  * =============================================================================
  */
@@ -35,18 +35,35 @@
 // dwordx2 and dwordx4 (and optionally dwordx3-via-asm) variants yourself
 // following the same shape.
 // -----------------------------------------------------------------------------
-__global__ void stream_read_dword(const float *in, float *sink, size_t n_floats) {
-    size_t i = (size_t) blockIdx.x * blockDim.x + threadIdx.x;
+__global__ void stream_read_dword(const float* in, float* sink, size_t n_floats)
+{
+    size_t i  = (size_t)blockIdx.x * blockDim.x + threadIdx.x;
     float acc = 0.0f;
-    for (size_t off = i; off < n_floats; off += (size_t) gridDim.x * blockDim.x) {
+    for(size_t off = i; off < n_floats; off += (size_t)gridDim.x * blockDim.x)
+    {
         acc += in[off];
     }
-    if (acc == -1.0f) sink[i] = acc; // keeps the load alive without adding real traffic
+    if(acc == -1.0f)
+        sink[i] = acc; // keeps the load alive without adding real traffic
 }
 
 // TODO(E0), README Step 3.2: __global__ void stream_read_dwordx2(...)
 // TODO(E0), README Step 3.2: __global__ void stream_read_dwordx4(...)
 // TODO(E0), README Step 3.3: non-temporal variant(s)
+
+__global__ void stream_read_dwordx2(const float* in, float* sink, size_t n_vec2)
+{
+    size_t i   = (size_t)blockIdx.x * blockDim.x + threadIdx.x;
+    float2 acc = {0, 0, 0, 0};
+    for(size_t off = i; off < n_vec4; off += (size_t)gridDim.x * blockDim.x)
+    {
+        float2 v = in[off];
+        acc.x += v.x; acc.y += v.y; acc.z += v.z; acc.w += v.w;
+    }
+    if (acc.x == -1.0f) sink[i] = acc.x;
+}
+
+__global__ void
 
 // -----------------------------------------------------------------------------
 // TODO(E0), README Step 3.4: the sweep driver.
@@ -55,15 +72,18 @@ __global__ void stream_read_dword(const float *in, float *sink, size_t n_floats)
 // bracket the kernel region with device_timestamp(), and report median+IQR
 // GB/s via median_iqr() from gemv_common.hpp.
 // -----------------------------------------------------------------------------
-void run_sweep() {
+void run_sweep()
+{
     // TODO(E0): implement the sweep described in README Step 3.4.
     printf("TODO(E0): sweep not yet implemented — see README.md Step 3.4\n");
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv)
+{
     int device_count = 0;
     HIP_CHECK(hipGetDeviceCount(&device_count));
-    if (device_count == 0) {
+    if(device_count == 0)
+    {
         printf("No HIP devices found.\n");
         return 1;
     }

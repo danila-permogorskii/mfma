@@ -22,7 +22,7 @@
  *
  * WHAT IS DELIBERATELY NOT HERE:
  *   The GEMV kernel itself. Every exercise's kernel is the point of that
- *   exercise and is written by hand in that exercise's .cpp file, following
+ *   exercise and is written by hand in that exercise's .hip file, following
  *   its README. This header is boilerplate only.
  *
  * BUILD:

@@ -19,7 +19,7 @@
  * exercise reuses.
  *
  * BUILD:
- *   amdclang++ -x hip --offload-arch=gfx942 -O3 -o mfma_trap_gemv mfma_trap_gemv.cpp -I../common
+ *   amdclang++ --offload-arch=gfx942 -O3 -o mfma_trap_gemv mfma_trap_gemv.hip -I../common
  *
  * =============================================================================
  */
@@ -45,7 +45,7 @@ __global__ void mfma_trap_gemv(const half *W, const half *x, float *y, int rows,
 
 // -----------------------------------------------------------------------------
 // Comparison baseline — E2's wave-per-row VALU kernel. Paste your working E2
-// implementation here (or #include its .cpp) so both kernels run against
+// implementation here (or #include its .hip) so both kernels run against
 // identical data in the same binary.
 // -----------------------------------------------------------------------------
 __global__ void wave_gemv_dpp(const half *W, const half *x, float *y, int rows, int cols) {

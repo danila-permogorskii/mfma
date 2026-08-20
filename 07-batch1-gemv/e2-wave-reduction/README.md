@@ -61,7 +61,7 @@ but "should" is not "measured" — build both and compare, per the acceptance cr
 
 ### Step 3.1 — files **[paste this]**
 
-`wave_gemv.cpp` stub reuses the buffer-setup/timing shape from E1 (paste it forward) with two
+`wave_gemv.hip` stub reuses the buffer-setup/timing shape from E1 (paste it forward) with two
 kernel slots: `wave_gemv_dpp` and `wave_gemv_lds`, both `TODO(E2)`.
 
 ### Step 3.2 — where `x` lives **[type this, read first]**

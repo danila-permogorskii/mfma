@@ -42,7 +42,7 @@ Copy this block for each session:
 **Started with:** fresh clone, no prior work on this module.
 
 **Did:**
-- Built bw_ceiling.cpp with the dword variant from the guide, typed by hand.
+- Built bw_ceiling.hip with the dword variant from the guide, typed by hand.
 - Wrote dwordx2/dwordx4 variants myself, following the same shape.
 - Wrote the sweep driver for width x waves/CU x cached/NT.
 

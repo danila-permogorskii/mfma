@@ -136,7 +136,7 @@ Two things this definition deliberately does *not* use:
 Several guides ask you to check that the compiler emitted what you intended. The general recipe:
 
 ```bash
-amdclang++ -x hip --offload-arch=gfx942 -O3 -save-temps -o exe source.cpp
+amdclang++ --offload-arch=gfx942 -O3 -save-temps -o exe source.hip
 ```
 
 `-save-temps` leaves behind `.ll` (LLVM IR), `.bc` (bitcode), and other intermediate files next to
