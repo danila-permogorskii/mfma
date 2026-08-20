@@ -75,7 +75,8 @@ but the compiler cannot prove that at compile time and must keep the accumulatio
 this worked in Step 3.5 — don't take it on faith.
 
 Now write the `dwordx2` and `dwordx4` variants the same way, using `float2`/`float4` as the load
-type instead of `float`. Same loop shape, wider element type:
+type instead of `float`. Same loop shape, wider element type — **but the sink trick needs a change
+once there's more than one component, or you will silently measure the wrong width:**
 
 ```cpp
 __global__ void stream_read_dwordx4(const float4 *in, float *sink, size_t n_vec4) {
@@ -85,14 +86,31 @@ __global__ void stream_read_dwordx4(const float4 *in, float *sink, size_t n_vec4
         float4 v = in[off];
         acc.x += v.x; acc.y += v.y; acc.z += v.z; acc.w += v.w;
     }
-    if (acc.x == -1.0f) sink[i] = acc.x;
+    float s = acc.x + acc.y + acc.z + acc.w;   // sum ALL components — see warning below
+    if (s == -1.0f) sink[i] = s;
 }
 ```
 
-For `dwordx3` (12 bytes/lane) HIP has no built-in vector type — reproduce it with inline asm if you
-want the full sweep; it's the same trick the monokernel-style engines use to get an odd-width load
-the compiler wouldn't generate on its own. This one is optional; the width sweep is informative
-even without it.
+**Why the sum matters — a live example of "the compiler did something you didn't ask for."** If
+you write `if (acc.x == -1.0f) sink[i] = acc.x;` instead — the same pattern that's correct for the
+scalar `dword` kernel above — the compiler can prove `acc.y`, `acc.z`, and `acc.w` are never
+observed anywhere, and eliminates them. Once those accumulations are gone, three of the four loaded
+components are dead too, and `-O3` narrows the load from `dwordx4` down to reading only `.x` — you
+end up compiling something that disassembles identically to the `dword` kernel, with no warning,
+no error, just a suspiciously-similar number if you'd skipped Step 3.5. Summing every component
+into the value that actually gets checked and stored is what forces the compiler to keep (and
+therefore load) all of it. This is not a hypothetical — compiling the `if (acc.x == ...)` version
+and disassembling it shows exactly one `global_load_dword`; the summed version shows
+`global_load_dwordx4`. Check this yourself in Step 3.5 rather than taking it on faith either way.
+
+For `dwordx3` (12 bytes/lane), HIP *does* have a built-in vector type — `float3`, same family as
+`float2`/`float4` in `amd_hip_vector_types.h` — no inline asm required. Write
+`stream_read_dwordx3` the same way, with `const float3 *in` and the same summed-sink pattern; the
+compiler emits a genuine `global_load_dwordx3` for it. (An earlier draft of this guide claimed
+`float3` didn't exist and asked you to reach for inline asm — it does exist and you don't need to;
+that claim was wrong and has been corrected here.) This one is still optional if you're short on
+time — the dword/dwordx2/dwordx4 sweep is informative on its own — but it's no longer harder to get
+than the others.
 
 ### Step 3.3 — the non-temporal variant **[type this]**
 
@@ -125,13 +143,25 @@ resident wave count with `rocprofv3` rather than assuming your launch configurat
 ```bash
 amdclang++ --offload-arch=gfx942 -O3 -save-temps -o bw_ceiling bw_ceiling.hip -I../common
 llvm-objdump -d --offloading bw_ceiling > bw_ceiling.isa.txt
-grep -E "dwordx4|dwordx2|global_load" bw_ceiling.isa.txt
+grep -E "dwordx4|dwordx3|dwordx2|global_load" bw_ceiling.isa.txt
 ```
 
-Confirm the width you intended survived. Compilers routinely narrow `dwordx4` to two `dwordx2`s or
-four `dword`s when they can't prove 16-byte alignment on the pointer — if your `dwordx4` kernel's
-disassembly doesn't show `dwordx4` loads, that's why, and the fix is usually an explicit alignment
-annotation on the pointer or the allocation.
+Confirm the width you intended survived — and check it once per kernel, not just once overall,
+since each width can narrow for a different reason. Two distinct causes to check for, both real,
+both silent:
+
+1. **Alignment.** Compilers narrow `dwordx4` to two `dwordx2`s or four `dword`s when they can't
+   prove 16-byte alignment on the pointer. Fix with an explicit alignment annotation on the
+   pointer/allocation.
+2. **Dead-component elimination** (Step 3.2's warning). If your sink only observes `.x`, the
+   compiler narrows the load to just `.x`'s width regardless of alignment — no alignment fix will
+   help here, because alignment was never the problem. Fix by summing all components into whatever
+   the sink actually checks/stores.
+
+If a width narrowed and you're not sure which cause it was, alignment failures usually still show
+a load wider than `dword` (e.g. `dwordx4` narrowed to `dwordx2`), while dead-component elimination
+typically narrows all the way to plain `dword` regardless of the original width — that asymmetry is
+a useful first clue before you dig further.
 
 ### Step 3.6 — run and profile **[paste this]**
 
@@ -153,10 +183,17 @@ make profile-v3
 
 ## 5. Failure modes
 
-- **The loads got eliminated.** Symptom: suspiciously fast, suspiciously flat timing across widths.
-  Check the ISA — if the load instructions aren't there at all, the sink trick didn't work; make
-  the "almost never true" condition depend on more of the accumulated state, or write to a
-  `volatile` sink unconditionally on one thread per block.
+- **The loads got eliminated entirely.** Symptom: suspiciously fast, suspiciously flat timing
+  across widths, with no `global_load` at all in the disassembly for that kernel. The sink didn't
+  keep anything alive; make the "almost never true" condition depend on the accumulated state, or
+  write to a `volatile` sink unconditionally on one thread per block.
+- **The loads got *narrowed*, not eliminated — the width-specific version of the above.** Symptom:
+  a `dwordx4` (or `dwordx2`/`dwordx3`) kernel disassembles with a plain `global_load_dword`, and its
+  timing suspiciously matches the scalar `dword` kernel's. This is the Step 3.2/3.5 dead-component
+  trap: the sink observed only one component (typically `.x`), so the compiler proved the rest dead
+  and shrank the load to match. Distinct from full elimination — you still get *a* load, just the
+  wrong width — and the fix is different too: sum every component into whatever the sink actually
+  checks and stores, not just watch for a missing load instruction.
 - **Too few waves in flight.** Symptom: bandwidth well below what wider loads should achieve.
   Check resident wave count with `rocprofv3`, not just your launch configuration.
 - **First-touch page-fault cost included in the timing.** Symptom: iteration 1 is an outlier.

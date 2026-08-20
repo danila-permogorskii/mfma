@@ -55,7 +55,7 @@ __global__ void stream_read_dwordx2(const float* in, float* sink, size_t n_vec2)
 {
     size_t i   = (size_t)blockIdx.x * blockDim.x + threadIdx.x;
     float2 acc = {0, 0, 0, 0};
-    for(size_t off = i; off < n_vec4; off += (size_t)gridDim.x * blockDim.x)
+    for(size_t off = i; off < n_vec2; off += (size_t)gridDim.x * blockDim.x)
     {
         float2 v = in[off];
         acc.x += v.x; acc.y += v.y; acc.z += v.z; acc.w += v.w;
@@ -63,7 +63,15 @@ __global__ void stream_read_dwordx2(const float* in, float* sink, size_t n_vec2)
     if (acc.x == -1.0f) sink[i] = acc.x;
 }
 
-__global__ void
+__global__ void stream_read_dwordx4(const float *in, float *sink, size_t n_vec4) {
+    size_t i = (size_t) blockIdx.x * blockDim.x + threadIdx.x;
+    float4 acc = {0, 0, 0, 0};
+    for (size_t off =i; off < n_vec4; off += (size_t)gridDix.x * blockDim.x) {
+        float4 v = in[off];
+        acc.x += v.x; acc.y += v.y; acc.z += v.z; acc.w += v.w;
+    }
+    if (acc.x == -1.0f) sink[i] = acc.x;
+}
 
 // -----------------------------------------------------------------------------
 // TODO(E0), README Step 3.4: the sweep driver.
