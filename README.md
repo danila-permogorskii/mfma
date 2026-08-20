@@ -247,6 +247,8 @@ The course consists of progressive experiments. Complete them in order—each bu
 | 03 | LDS Memory | 2–3 hours | Shared memory, bank conflicts, synchronisation |
 | 04 | MFMA Introduction | 2–3 hours | Matrix cores, AGPR/VGPR, correct vector types |
 | 05 | MFMA GEMM | 2–3 hours | Tiled GEMM, cooperative loading, optimisation |
+| 06 | XCD Awareness | 3–6 hours (3 sub-experiments) | NUMA-aware kernel design, swizzled scheduling, L2 profiling |
+| 07 | Batch-1 GEMV | ~1 week (10 exercises) | Bandwidth-bound decode kernels, coalescing, register pressure, non-temporal hints, sentinel synchronisation — see [`07-batch1-gemv/README.md`](07-batch1-gemv/README.md) |
 
 ### Experiment Format
 
@@ -409,15 +411,17 @@ Key sections for this course:
 | ✅ | 03-lds-memory | Local Data Share, bank conflicts, synchronisation |
 | ✅ | 04-mfma-intro | MFMA instruction basics, AGPR usage, correct vector types |
 | ✅ | 05-mfma-gemm | Tiled GEMM implementation with MFMA |
+| ✅ | 06-xcd-awareness | NUMA-aware kernel design, swizzled scheduling, L2 profiling |
+| ✅ | 07-batch1-gemv | Bandwidth-bound batch-1 decode kernels (10 exercises) |
 
 ### Planned Additions
 
 These experiments are under development:
 
-- **06-mfma-attention** — Flash Attention kernel using MFMA
-- **07-multi-gpu** — Peer-to-peer communication patterns
-- **08-profiling-deep-dive** — Advanced rocprof usage and optimisation
-- **09-composable-kernel-study** — Guided tour of CK source code
+- **08-mfma-attention** — Flash Attention kernel using MFMA
+- **09-multi-gpu** — Peer-to-peer communication patterns
+- **10-profiling-deep-dive** — Advanced rocprof usage and optimisation
+- **11-composable-kernel-study** — Guided tour of CK source code
 
 Watch this repository for updates.
 
